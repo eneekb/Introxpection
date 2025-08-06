@@ -1,4 +1,47 @@
 /**
+     * Sélection d'une réponse avec passage automatique à la question suivante
+     */
+    selectAnswerAndAdvance(answerIndex) {
+        // Sélectionner la réponse
+        this.selectAnswer(answerIndex, true);
+        
+        // Attendre un peu pour l'animation puis passer à la question suivante
+        setTimeout(() => {
+            if (this.currentQuestion < this.config.questions.length - 1) {
+                this.nextQuestionWithSlide();
+            } else {
+                this.completeQuiz();
+            }
+        }, 800); // Délai pour voir la sélection
+    }
+    
+    /**
+     * Question suivante avec animation de glissement
+     */
+    nextQuestionWithSlide() {
+        const container = document.querySelector('.quiz-content');
+        
+        // Animation de sortie
+        container.classList.add('slide-out-left');
+        
+        setTimeout(() => {
+            // Changer de question
+            this.currentQuestion++;
+            this.renderQuestion();
+            this.updateProgress();
+            
+            // Animation d'entrée
+            container.classList.remove('slide-out-left');
+            container.classList.add('slide-in-right');
+            
+            // Nettoyer les classes d'animation
+            setTimeout(() => {
+                container.classList.remove('slide-in-right');
+            }, 400);
+            
+            this.scrollToTop();
+        }, 200);
+    }/**
  * Introxpection - Moteur de quiz réutilisable
  * Système de quiz modulaire pour tous les tests de personnalité
  */
@@ -53,20 +96,26 @@ class QuizEngine {
                 ${question.answers.map((answer, index) => `
                     <div class="answer-option" 
                          data-answer-index="${index}"
-                         data-answer-letter="${String.fromCharCode(65 + index)}">
+                         data-answer-letter="${String.fromCharCode(65 + index)}"
+                         tabindex="0"
+                         role="button"
+                         aria-label="Réponse ${String.fromCharCode(65 + index)}: ${answer.text}">
                         <span class="answer-letter">${String.fromCharCode(65 + index)}</span>
                         <span class="answer-text">${answer.text}</span>
                     </div>
                 `).join('')}
             </div>
             
-            <div class="navigation-buttons">
-                <button class="nav-btn prev-btn" ${this.currentQuestion === 0 ? 'disabled' : ''}>
-                    ← Précédent
-                </button>
-                <button class="nav-btn next-btn" disabled>
-                    ${this.currentQuestion === this.config.questions.length - 1 ? 'Terminer' : 'Suivant →'}
-                </button>
+            <div class="navigation-container">
+                ${this.currentQuestion > 0 ? `
+                    <button class="prev-question-btn">
+                        ← Question précédente
+                    </button>
+                ` : ''}
+            </div>
+            
+            <div class="auto-advance-hint">
+                💡 Clique sur ta réponse pour passer à la question suivante
             </div>
         `;
         
@@ -111,7 +160,7 @@ class QuizEngine {
         const backBtn = document.querySelector('.back-btn');
         if (backBtn) {
             backBtn.addEventListener('click', () => {
-                if (confirm('Êtes-vous sûr de vouloir quitter ce test ? Vos réponses seront perdues.')) {
+                if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
                     window.location.href = '../index.html';
                 }
             });
@@ -126,20 +175,20 @@ class QuizEngine {
             if (['a', 'b', 'c', 'd'].includes(keyCode)) {
                 const answerIndex = keyCode.charCodeAt(0) - 97; // a=0, b=1, c=2, d=3
                 if (answerIndex < this.config.questions[this.currentQuestion].answers.length) {
-                    this.selectAnswer(answerIndex);
+                    this.selectAnswerAndAdvance(answerIndex);
                 }
             }
             
-            // Flèches pour navigation
+            // Flèche gauche pour navigation arrière
             if (e.key === 'ArrowLeft' && this.currentQuestion > 0) {
                 this.previousQuestion();
-            } else if (e.key === 'ArrowRight' && this.answers[this.currentQuestion] !== undefined) {
-                this.nextQuestion();
             }
             
-            // Entrée pour valider
-            if (e.key === 'Enter' && this.answers[this.currentQuestion] !== undefined) {
-                this.nextQuestion();
+            // Échap pour retour accueil
+            if (e.key === 'Escape') {
+                if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                    window.location.href = '../index.html';
+                }
             }
         });
     }
@@ -148,24 +197,26 @@ class QuizEngine {
      * Gestion des événements spécifiques à la question courante
      */
     bindQuestionEvents() {
-        // Sélection des réponses
+        // Sélection des réponses avec passage automatique
         const answerOptions = document.querySelectorAll('.answer-option');
         answerOptions.forEach((option, index) => {
             option.addEventListener('click', () => {
-                this.selectAnswer(index);
+                this.selectAnswerAndAdvance(index);
+            });
+            
+            // Support clavier
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.selectAnswerAndAdvance(index);
+                }
             });
         });
         
-        // Boutons de navigation
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        
+        // Bouton précédent
+        const prevBtn = document.querySelector('.prev-question-btn');
         if (prevBtn) {
             prevBtn.addEventListener('click', () => this.previousQuestion());
-        }
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextQuestion());
         }
     }
     
@@ -189,12 +240,6 @@ class QuizEngine {
         
         // Sauvegarder la réponse
         this.answers[this.currentQuestion] = answerIndex;
-        
-        // Activer le bouton suivant
-        const nextBtn = document.querySelector('.next-btn');
-        if (nextBtn) {
-            nextBtn.disabled = false;
-        }
         
         // Calculer les scores
         this.updateScores();
@@ -266,14 +311,40 @@ class QuizEngine {
     }
     
     /**
-     * Question précédente
+     * Question précédente avec animation
      */
     previousQuestion() {
         if (this.currentQuestion > 0) {
-            this.currentQuestion--;
-            this.renderQuestion();
-            this.updateProgress();
-            this.scrollToTop();
+            const container = document.querySelector('.quiz-content');
+            
+            // Animation de sortie vers la droite
+            container.style.transform = 'translateX(100%)';
+            container.style.opacity = '0';
+            container.style.transition = 'all 0.3s ease-out';
+            
+            setTimeout(() => {
+                this.currentQuestion--;
+                this.renderQuestion();
+                this.updateProgress();
+                
+                // Animation d'entrée depuis la gauche
+                container.style.transform = 'translateX(-100%)';
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    container.style.transform = 'translateX(0)';
+                    container.style.opacity = '1';
+                    
+                    // Nettoyer les styles inline après l'animation
+                    setTimeout(() => {
+                        container.style.transform = '';
+                        container.style.opacity = '';
+                        container.style.transition = '';
+                    }, 300);
+                }, 50);
+                
+                this.scrollToTop();
+            }, 150);
         }
     }
     
@@ -412,35 +483,10 @@ class QuizEngine {
     /**
      * Utilitaires
      */
-    showWarning(message) {
-        const existing = document.querySelector('.warning-message');
-        if (existing) existing.remove();
-        
-        const warning = document.createElement('div');
-        warning.className = 'warning-message';
-        warning.textContent = message;
-        
-        const container = document.querySelector('.quiz-content');
-        container.insertBefore(warning, container.firstChild);
-        
-        setTimeout(() => warning.remove(), 3000);
-    }
-    
     showNotification(message) {
-        // Simple notification toast
+        // Notification toast améliorée
         const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            animation: slideIn 0.3s ease-out;
-        `;
+        notification.className = 'notification';
         notification.textContent = message;
         
         document.body.appendChild(notification);
@@ -452,10 +498,19 @@ class QuizEngine {
     }
     
     addSelectAnimation(element) {
+        // Animation de sélection plus élaborée
         element.style.transform = 'scale(1.05)';
+        element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Réinitialiser après l'animation
         setTimeout(() => {
             element.style.transform = '';
-        }, 150);
+        }, 300);
+        
+        // Effet de vibration subtile pour feedback tactile (mobile)
+        if (navigator.vibrate && window.navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/)) {
+            navigator.vibrate(50);
+        }
     }
     
     addAnimations() {
