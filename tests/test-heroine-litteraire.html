@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quelle héroïne littéraire es-tu ? - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn">← Accueil</button>
+            <h1 class="quiz-title">Quelle héroïne littéraire es-tu ?</h1>
+            <p class="quiz-subtitle">Découvre quel personnage de roman correspond à ta personnalité !</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+                <span class="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Configuration du test "Quelle héroïne littéraire es-tu ?"
+        const quizConfig = {
+            id: 'heroine-litteraire',
+            title: 'Quelle héroïne littéraire es-tu ?',
+            description: 'Découvre quel personnage de roman correspond à ta personnalité !',
+            
+            questions: [
+                {
+                    text: "Un samedi après-midi parfait pour toi, c'est...",
+                    answers: [
+                        { text: "Lire dans ton lit avec une tasse de chocolat chaud", scores: { anne: 2, matilda: 3, jo: 1 } },
+                        { text: "Sortir explorer la nature et prendre des photos", scores: { anne: 3, luna: 2, elizabeth: 1 } },
+                        { text: "Organiser ta chambre tout en écoutant de la musique", scores: { hermione: 2, elizabeth: 1, jo: 2 } },
+                        { text: "Rêver et inventer des histoires dans ta tête", scores: { anne: 1, luna: 3, jo: 3 } }
+                    ]
+                },
+                {
+                    text: "Face à un problème difficile, tu...",
+                    answers: [
+                        { text: "Cherches toutes les informations possibles avant d'agir", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "Fais confiance à ton instinct et tes émotions", scores: { anne: 3, luna: 2, jo: 1 } },
+                        { text: "Analyses la situation avec logique et pragmatisme", scores: { elizabeth: 3, hermione: 1, matilda: 1 } },
+                        { text: "Laisses ton imagination trouver une solution créative", scores: { luna: 3, anne: 2, jo: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton livre idéal raconte l'histoire de...",
+                    answers: [
+                        { text: "Une jeune fille qui découvre des pouvoirs magiques", scores: { hermione: 2, luna: 2, matilda: 3 } },
+                        { text: "Une héroïne indépendante qui défie les conventions", scores: { elizabeth: 3, jo: 3, anne: 1 } },
+                        { text: "Une famille unie qui traverse des épreuves ensemble", scores: { jo: 2, anne: 2, elizabeth: 1 } },
+                        { text: "Une aventure dans un monde fantastique et coloré", scores: { luna: 3, anne: 3, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec ta famille, tu es plutôt...",
+                    answers: [
+                        { text: "Celle qui raconte des histoires et fait rire tout le monde", scores: { anne: 3, jo: 2, luna: 1 } },
+                        { text: "Celle qui aide et conseille quand il y a des problèmes", scores: { hermione: 3, elizabeth: 2, matilda: 1 } },
+                        { text: "Celle qui apporte sa créativité aux projets familiaux", scores: { jo: 3, anne: 1, luna: 2 } },
+                        { text: "Celle qui défend ses opinions même si elles diffèrent", scores: { elizabeth: 3, matilda: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu pouvais vivre dans n'importe quel endroit, ce serait...",
+                    answers: [
+                        { text: "Une grande maison à la campagne avec un immense jardin", scores: { anne: 3, elizabeth: 2, jo: 1 } },
+                        { text: "Une bibliothèque géante dans un château magique", scores: { hermione: 3, matilda: 2, luna: 1 } },
+                        { text: "Un manoir élégant où tu peux recevoir tes amis", scores: { elizabeth: 3, jo: 2, hermione: 1 } },
+                        { text: "Une maison originale pleine d'objets bizarres et colorés", scores: { luna: 3, anne: 1, jo: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton plus grand rêve serait de...",
+                    answers: [
+                        { text: "Devenir une écrivaine célèbre et inspirante", scores: { jo: 3, anne: 2, elizabeth: 1 } },
+                        { text: "Découvrir des connaissances qui n'existent nulle part ailleurs", scores: { hermione: 3, matilda: 2, luna: 1 } },
+                        { text: "Vivre une grande histoire d'amour authentique", scores: { elizabeth: 3, anne: 2, jo: 1 } },
+                        { text: "Créer quelque chose d'unique qui émerveillerait les autres", scores: { luna: 3, anne: 2, jo: 2 } }
+                    ]
+                },
+                {
+                    text: "Quand tu es contrariée, tu...",
+                    answers: [
+                        { text: "Exprimes tes émotions avec passion et franchise", scores: { anne: 3, jo: 2, elizabeth: 1 } },
+                        { text: "Gardes ton calme et réfléchis rationnellement", scores: { hermione: 3, elizabeth: 2, matilda: 1 } },
+                        { text: "Utilises ton humour pour détendre l'atmosphère", scores: { luna: 3, anne: 1, jo: 2 } },
+                        { text: "Te retires dans ton monde intérieur pour réfléchir", scores: { matilda: 3, luna: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton activité créative préférée serait...",
+                    answers: [
+                        { text: "Écrire des poèmes ou des nouvelles", scores: { jo: 3, anne: 2, elizabeth: 1 } },
+                        { text: "Faire du théâtre et jouer différents personnages", scores: { anne: 3, jo: 2, luna: 1 } },
+                        { text: "Créer des objets décoratifs originaux pour ta chambre", scores: { luna: 3, anne: 1, jo: 2 } },
+                        { text: "Apprendre de nouvelles langues ou de nouveaux savoirs", scores: { hermione: 3, matilda: 2, elizabeth: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans un groupe d'amis, tu es souvent...",
+                    answers: [
+                        { text: "Celle qui propose les idées les plus originales", scores: { luna: 3, anne: 2, jo: 1 } },
+                        { text: "Celle vers qui on se tourne pour des conseils", scores: { hermione: 3, elizabeth: 2, matilda: 1 } },
+                        { text: "Celle qui apporte l'énergie et l'enthousiasme", scores: { anne: 3, jo: 2, elizabeth: 1 } },
+                        { text: "Celle qui préfère écouter et observer avant de parler", scores: { matilda: 3, luna: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton environnement de travail idéal serait...",
+                    answers: [
+                        { text: "Un bureau bien organisé avec tous tes livres préférés", scores: { hermione: 3, matilda: 2, jo: 1 } },
+                        { text: "Un coin cosy près d'une fenêtre avec vue sur la nature", scores: { anne: 3, elizabeth: 2, luna: 1 } },
+                        { text: "Un espace lumineux où tu peux étaler tous tes projets créatifs", scores: { jo: 3, luna: 2, anne: 1 } },
+                        { text: "Un endroit calme où personne ne te dérange", scores: { matilda: 3, luna: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu devais choisir un super-pouvoir, ce serait...",
+                    answers: [
+                        { text: "Pouvoir communiquer avec les animaux et la nature", scores: { anne: 3, luna: 2, jo: 1 } },
+                        { text: "Connaître instantanément la réponse à toutes les questions", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "Voyager dans le temps pour rencontrer des écrivains célèbres", scores: { jo: 3, elizabeth: 2, hermione: 1 } },
+                        { text: "Voir des créatures magiques invisibles aux autres", scores: { luna: 3, anne: 2, matilda: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de passer du temps avec tes parents serait...",
+                    answers: [
+                        { text: "Avoir de longues discussions profondes sur la vie", scores: { elizabeth: 3, jo: 2, hermione: 1 } },
+                        { text: "Faire des activités créatives ensemble", scores: { jo: 3, anne: 2, luna: 1 } },
+                        { text: "Partager tes découvertes et ce que tu apprends", scores: { hermione: 3, matilda: 2, anne: 1 } },
+                        { text: "Simplement être ensemble, même en silence", scores: { anne: 3, luna: 2, matilda: 1 } }
+                    ]
+                },
+                {
+                    text: "Face à une injustice, tu...",
+                    answers: [
+                        { text: "T'exprimes avec passion pour défendre ce qui est juste", scores: { jo: 3, anne: 2, elizabeth: 1 } },
+                        { text: "Cherches des preuves et des arguments solides", scores: { hermione: 3, elizabeth: 2, matilda: 1 } },
+                        { text: "Utilises ton intelligence pour trouver une solution créative", scores: { matilda: 3, luna: 2, hermione: 1 } },
+                        { text: "Gardes confiance que la vérité finira par triompher", scores: { luna: 3, anne: 2, elizabeth: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton moment préféré de la journée est...",
+                    answers: [
+                        { text: "Le coucher de soleil, quand tout devient magique", scores: { anne: 3, luna: 2, jo: 1 } },
+                        { text: "Le matin tôt, quand tu peux réfléchir en paix", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "L'après-midi, quand tu peux créer et t'exprimer", scores: { jo: 3, luna: 2, anne: 1 } },
+                        { text: "Le soir, quand la famille se retrouve", scores: { elizabeth: 3, jo: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu écrivais un livre, il parlerait de...",
+                    answers: [
+                        { text: "Une jeune fille qui transforme son quotidien en aventure", scores: { anne: 3, jo: 2, elizabeth: 1 } },
+                        { text: "Des mystères à résoudre grâce à l'intelligence et l'observation", scores: { hermione: 3, matilda: 2, luna: 1 } },
+                        { text: "Une famille qui découvre l'importance de rester unie", scores: { jo: 3, elizabeth: 2, anne: 1 } },
+                        { text: "Un monde parallèle plein de créatures fantastiques", scores: { luna: 3, anne: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton style vestimentaire idéal serait...",
+                    answers: [
+                        { text: "Romantique et féminin, avec des détails délicats", scores: { elizabeth: 3, anne: 2, jo: 1 } },
+                        { text: "Pratique et élégant, adapté à toutes les situations", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "Original et artistique, qui reflète ta créativité", scores: { luna: 3, jo: 2, anne: 1 } },
+                        { text: "Confortable et naturel, qui te permet d'être libre", scores: { anne: 3, luna: 2, jo: 2 } }
+                    ]
+                },
+                {
+                    text: "Ta plus grande peur serait de...",
+                    answers: [
+                        { text: "Perdre ta capacité à rêver et imaginer", scores: { anne: 3, luna: 2, jo: 1 } },
+                        { text: "Ne pas réussir à atteindre tes objectifs académiques", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "Devoir te conformer et perdre ton originalité", scores: { luna: 3, jo: 2, anne: 1 } },
+                        { text: "Être séparée de ceux que tu aimes", scores: { elizabeth: 3, jo: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton cadeau d'anniversaire rêvé serait...",
+                    answers: [
+                        { text: "Une collection complète de tes livres préférés", scores: { hermione: 3, matilda: 2, jo: 1 } },
+                        { text: "Un carnet de voyage pour noter tes aventures", scores: { anne: 3, jo: 2, elizabeth: 1 } },
+                        { text: "Du matériel artistique pour tes créations", scores: { jo: 3, luna: 2, anne: 1 } },
+                        { text: "Quelque chose d'unique que personne d'autre n'a", scores: { luna: 3, anne: 2, matilda: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu imagines ton futur, tu te vois...",
+                    answers: [
+                        { text: "Inspirant les autres par ton travail créatif", scores: { jo: 3, anne: 2, luna: 1 } },
+                        { text: "Faisant des découvertes importantes pour l'humanité", scores: { hermione: 3, matilda: 2, elizabeth: 1 } },
+                        { text: "Vivant une vie riche en émotions et relations authentiques", scores: { elizabeth: 3, anne: 2, jo: 1 } },
+                        { text: "Gardant ton âme d'enfant tout en devenant adulte", scores: { luna: 3, anne: 2, hermione: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui te motive le plus au quotidien, c'est...",
+                    answers: [
+                        { text: "La beauté du monde qui t'entoure", scores: { anne: 3, luna: 2, elizabeth: 1 } },
+                        { text: "La satisfaction d'apprendre quelque chose de nouveau", scores: { hermione: 3, matilda: 2, jo: 1 } },
+                        { text: "L'envie de créer et de partager tes idées", scores: { jo: 3, luna: 2, anne: 1 } },
+                        { text: "L'amour de ta famille et de tes proches", scores: { elizabeth: 3, jo: 2, hermione: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'anne',
+                    name: 'Anne Shirley',
+                    subtitle: 'La rêveuse passionnée',
+                    icon: '🌸',
+                    description: `
+                        <p>Tu es <strong>Anne Shirley</strong>, l'héroïne d'Anne aux Pignons Verts ! Comme elle, tu vois la magie dans chaque détail de la vie quotidienne et tu transformes le monde ordinaire en aventure extraordinaire.</p>
+                        
+                        <p>Ta sensibilité artistique et ta capacité à trouver de la beauté partout te rendent unique. Tu adores la nature, les couchers de soleil te font rêver, et tu as une imagination débordante qui te permet de créer des histoires merveilleuses.</p>
+                        
+                        <p>Comme Anne, tu es passionnée par la littérature et le théâtre, et tu n'as pas peur d'exprimer tes émotions avec sincérité. Ta famille est importante pour toi, et tu apprécies les moments de complicité et les longues discussions.</p>
+                        
+                        <p><em>Ta devise :</em> "Il y a tant de belles choses dans la vie quand on sait les voir !"</p>
+                    `,
+                    traits: [
+                        { label: 'Imagination', value: 'Débordante' },
+                        { label: 'Sensibilité', value: 'Artistique' },
+                        { label: 'Nature', value: 'Passionnée' },
+                        { label: 'Expression', value: 'Authentique' }
+                    ]
+                },
+                {
+                    id: 'hermione',
+                    name: 'Hermione Granger',
+                    subtitle: 'La brillante studieuse',
+                    icon: '📖',
+                    description: `
+                        <p>Tu es <strong>Hermione Granger</strong>, l'une des sorcières les plus brillantes de sa génération ! Comme elle, tu as soif de connaissances et tu utilises ton intelligence pour aider les autres et résoudre les problèmes.</p>
+                        
+                        <p>Tu adores apprendre, que ce soit dans les livres ou par l'expérience. Ton organisation parfaite et ta capacité à retenir des informations impressionnent tout le monde. Tu es loyale envers tes proches et tu n'hésites pas à les défendre.</p>
+                        
+                        <p>Comme Hermione, tu as des principes forts et tu te bats pour la justice. Tu aimes que les choses soient bien faites et tu mets tout ton cœur dans tes projets. Ta famille compte énormément pour toi.</p>
+                        
+                        <p><em>Ta devise :</em> "Les livres et l'intelligence sont les meilleures armes contre l'ignorance !"</p>
+                    `,
+                    traits: [
+                        { label: 'Intelligence', value: 'Exceptionnelle' },
+                        { label: 'Organisation', value: 'Parfaite' },
+                        { label: 'Loyauté', value: 'Inébranlable' },
+                        { label: 'Justice', value: 'Combattante' }
+                    ]
+                },
+                {
+                    id: 'elizabeth',
+                    name: 'Elizabeth Bennet',
+                    subtitle: "L'indépendante spirituelle",
+                    icon: '💭',
+                    description: `
+                        <p>Tu es <strong>Elizabeth Bennet</strong>, l'héroïne d'Orgueil et Préjugés ! Comme elle, tu es une jeune femme indépendante qui n'a pas peur de défendre ses opinions et qui privilégie l'authenticité aux conventions.</p>
+                        
+                        <p>Tu as un esprit vif et une grande intelligence émotionnelle. Tes discussions avec ton père sont précieuses pour toi, et tu apprécies les échanges intellectuels profonds. Tu sais voir au-delà des apparences et juger les gens sur leur vrai caractère.</p>
+                        
+                        <p>Comme Elizabeth, tu es proche de ta famille tout en gardant ton indépendance. Tu rêves d'une relation authentique basée sur le respect mutuel et la complicité intellectuelle.</p>
+                        
+                        <p><em>Ta devise :</em> "Je préfère être vraie que populaire !"</p>
+                    `,
+                    traits: [
+                        { label: 'Indépendance', value: 'Forte' },
+                        { label: 'Esprit critique', value: 'Développé' },
+                        { label: 'Famille', value: 'Précieuse' },
+                        { label: 'Authenticité', value: 'Prioritaire' }
+                    ]
+                },
+                {
+                    id: 'matilda',
+                    name: 'Matilda Wormwood',
+                    subtitle: 'La petite génie curieuse',
+                    icon: '✨',
+                    description: `
+                        <p>Tu es <strong>Matilda</strong>, la petite héroïne au pouvoir extraordinaire ! Comme elle, tu es incroyablement intelligente et tu utilises tes capacités pour défendre ce qui est juste et protéger ceux qui en ont besoin.</p>
+                        
+                        <p>Tu dévores les livres et tu apprends tout ce qui te tombe sous la main. Ton esprit logique et ta détermination te permettent de résoudre les problèmes les plus complexes. Tu n'hésites pas à utiliser ton intelligence pour rendre justice.</p>
+                        
+                        <p>Comme Matilda, tu as parfois l'impression d'être différente des autres, mais tu as appris que c'est ta force. Tu apprécies les moments calmes pour réfléchir et tu aimes avoir ton propre espace organisé.</p>
+                        
+                        <p><em>Ta devise :</em> "L'intelligence et la détermination peuvent changer le monde !"</p>
+                    `,
+                    traits: [
+                        { label: 'Génie', value: 'Naturel' },
+                        { label: 'Justice', value: 'Sens aigu' },
+                        { label: 'Lecture', value: 'Passionnée' },
+                        { label: 'Détermination', value: 'Inébranlable' }
+                    ]
+                },
+                {
+                    id: 'jo',
+                    name: 'Jo March',
+                    subtitle: "L'écrivaine passionnée",
+                    icon: '✍️',
+                    description: `
+                        <p>Tu es <strong>Jo March</strong>, l'héroïne des Quatre Filles du docteur March ! Comme elle, tu es une créatrice née qui exprime ses émotions et ses idées à travers l'écriture et les arts.</p>
+                        
+                        <p>Tu adores écrire des histoires, jouer la comédie et créer des projets artistiques. Ta famille est au cœur de ta vie, et tu apprécies particulièrement les moments créatifs partagés avec tes proches. Tu as une énergie débordante pour tes passions.</p>
+                        
+                        <p>Comme Jo, tu rêves de devenir écrivaine et d'inspirer les autres par tes créations. Tu n'hésites pas à exprimer tes opinions avec passion et tu défends ardemment ce en quoi tu crois.</p>
+                        
+                        <p><em>Ta devise :</em> "L'art et l'écriture sont les langues du cœur !"</p>
+                    `,
+                    traits: [
+                        { label: 'Créativité', value: 'Débordante' },
+                        { label: 'Écriture', value: 'Passion' },
+                        { label: 'Famille', value: 'Centrale' },
+                        { label: 'Expression', value: 'Passionnée' }
+                    ]
+                },
+                {
+                    id: 'luna',
+                    name: 'Luna Lovegood',
+                    subtitle: "L'originale visionnaire",
+                    icon: '🦋',
+                    description: `
+                        <p>Tu es <strong>Luna Lovegood</strong>, l'originale de Poudlard ! Comme elle, tu vois le monde différemment des autres et tu n'as pas peur d'être unique. Ta créativité et ton originalité font de toi quelqu'un de vraiment spécial.</p>
+                        
+                        <p>Tu adores créer des objets décoratifs uniques, prendre des photos artistiques et imaginer des mondes fantastiques. Ton esprit ouvert te permet de voir des possibilités que les autres ne voient pas. Tu apprécies les moments de solitude créative.</p>
+                        
+                        <p>Comme Luna, tu restes fidèle à toi-même malgré les regards des autres. Tu crois en la magie du quotidien et tu sais trouver de la beauté dans les choses les plus inattendues.</p>
+                        
+                        <p><em>Ta devise :</em> "Être différente, c'est être magique !"</p>
+                    `,
+                    traits: [
+                        { label: 'Originalité', value: 'Unique' },
+                        { label: 'Créativité', value: 'Visionnaire' },
+                        { label: 'Imagination', value: 'Sans limites' },
+                        { label: 'Authenticité', value: 'Totale' }
+                    ]
+                }
+            ]
+        };
+
+        // Mise à jour de la progression en pourcentage
+        function updateProgressPercentage() {
+            const currentQ = parseInt(document.querySelector('.current-question').textContent);
+            const totalQ = parseInt(document.querySelector('.total-questions').textContent);
+            const percentage = Math.round((currentQ / totalQ) * 100);
+            document.querySelector('.progress-percentage').textContent = `${percentage}%`;
+        }
+
+        // Override de la méthode updateProgress pour inclure le pourcentage
+        const originalUpdateProgress = QuizEngine.prototype.updateProgress;
+        QuizEngine.prototype.updateProgress = function() {
+            originalUpdateProgress.call(this);
+            setTimeout(updateProgressPercentage, 10);
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            window.quizEngine = initQuiz(quizConfig);
+        });
+    </script>
+</body>
+</html>
