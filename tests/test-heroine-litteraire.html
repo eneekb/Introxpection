@@ -21,7 +21,6 @@
         <div class="container">
             <div class="progress-info">
                 <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
-                <span class="progress-percentage">0%</span>
             </div>
             <div class="progress-bar-container">
                 <div class="progress-bar"></div>
@@ -361,21 +360,6 @@
                     ]
                 }
             ]
-        };
-
-        // Mise à jour de la progression en pourcentage
-        function updateProgressPercentage() {
-            const currentQ = parseInt(document.querySelector('.current-question').textContent);
-            const totalQ = parseInt(document.querySelector('.total-questions').textContent);
-            const percentage = Math.round((currentQ / totalQ) * 100);
-            document.querySelector('.progress-percentage').textContent = `${percentage}%`;
-        }
-
-        // Override de la méthode updateProgress pour inclure le pourcentage
-        const originalUpdateProgress = QuizEngine.prototype.updateProgress;
-        QuizEngine.prototype.updateProgress = function() {
-            originalUpdateProgress.call(this);
-            setTimeout(updateProgressPercentage, 10);
         };
 
         // Initialisation du quiz
