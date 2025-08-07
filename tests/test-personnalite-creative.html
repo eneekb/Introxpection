@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta personnalité créative - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ta personnalité créative"
+        const quizConfig = {
+            id: 'personnalite-creative',
+            title: 'Ta personnalité créative',
+            description: 'Découvre quel type de créateur ou créatrice sommeille en toi !',
+            
+            questions: [
+                {
+                    text: "Quand tu commences un nouveau projet créatif, tu...",
+                    answers: [
+                        { text: "Imagines d'abord toute l'histoire et l'univers dans ta tête", scores: { conteuse: 3, architecte: 2, artiste: 1 } },
+                        { text: "Planifies chaque étape et organises ton matériel", scores: { organisatrice: 3, architecte: 2, performeuse: 1 } },
+                        { text: "Te lances directement en laissant l'inspiration te guider", scores: { performeuse: 3, artiste: 2, conteuse: 1 } },
+                        { text: "Réfléchis à comment le partager avec les autres", scores: { creatrice: 3, performeuse: 2, organisatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec tes Lego et Playmobil, tu préfères créer...",
+                    answers: [
+                        { text: "Des villes entières avec tous les détails d'architecture", scores: { architecte: 3, organisatrice: 2, conteuse: 1 } },
+                        { text: "Des scènes qui racontent des histoires de familles ou d'aventures", scores: { conteuse: 3, creatrice: 2, artiste: 1 } },
+                        { text: "Des décors pour jouer et mettre en scène des spectacles", scores: { performeuse: 3, conteuse: 2, architecte: 1 } },
+                        { text: "Des espaces organisés et esthétiques qui te plaisent à regarder", scores: { organisatrice: 3, artiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu joues à Minecraft ou aux Sims, tu passes le plus de temps à...",
+                    answers: [
+                        { text: "Construire des bâtiments impressionnants et fonctionnels", scores: { architecte: 3, organisatrice: 2, performeuse: 1 } },
+                        { text: "Créer des personnages et leurs histoires de vie", scores: { conteuse: 3, creatrice: 2, artiste: 1 } },
+                        { text: "Décorer et arranger les espaces pour qu'ils soient parfaits", scores: { organisatrice: 3, artiste: 2, architecte: 1 } },
+                        { text: "Explorer et découvrir tous les recoins de l'univers", scores: { artiste: 3, architecte: 2, conteuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Tes photos préférées à prendre, ce sont...",
+                    answers: [
+                        { text: "Les couchers de soleil et paysages qui t'émeuvent", scores: { artiste: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "Les détails architecturaux et jeux de lignes", scores: { architecte: 3, artiste: 2, organisatrice: 1 } },
+                        { text: "Les moments de famille et souvenirs précieux", scores: { creatrice: 3, conteuse: 2, organisatrice: 1 } },
+                        { text: "Tes créations et projets pour montrer ton travail", scores: { organisatrice: 3, performeuse: 2, artiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu chantes ou danses, c'est pour...",
+                    answers: [
+                        { text: "Exprimer tes émotions et te sentir libre", scores: { performeuse: 3, artiste: 2, conteuse: 1 } },
+                        { text: "Faire plaisir à ta famille et créer des moments joyeux", scores: { creatrice: 3, performeuse: 2, organisatrice: 1 } },
+                        { text: "Raconter une histoire ou incarner un personnage", scores: { conteuse: 3, performeuse: 2, artiste: 1 } },
+                        { text: "Te concentrer et organiser tes pensées en rythme", scores: { organisatrice: 3, artiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton activité théâtrale préférée serait...",
+                    answers: [
+                        { text: "Jouer différents personnages et explorer leurs émotions", scores: { performeuse: 3, conteuse: 2, artiste: 1 } },
+                        { text: "Créer les décors et costumes en pensant à chaque détail", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Inventer l'histoire et diriger toute la pièce", scores: { conteuse: 3, architecte: 2, creatrice: 1 } },
+                        { text: "Organiser les répétitions et coordonner toute l'équipe", scores: { organisatrice: 3, creatrice: 2, performeuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu ranges ta chambre, tu...",
+                    answers: [
+                        { text: "Crées des espaces thématiques et des coins dédiés", scores: { architecte: 3, organisatrice: 2, conteuse: 1 } },
+                        { text: "Disposes tout de manière esthétique et harmonieuse", scores: { organisatrice: 3, artiste: 2, architecte: 1 } },
+                        { text: "Organises tes créations pour raconter ton histoire personnelle", scores: { conteuse: 3, artiste: 2, creatrice: 1 } },
+                        { text: "Penses à comment tes visiteurs se sentiront dans ton espace", scores: { creatrice: 3, organisatrice: 2, performeuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de faire plaisir à quelqu'un que tu aimes, c'est...",
+                    answers: [
+                        { text: "Lui créer quelque chose d'unique avec tes mains", scores: { artiste: 3, conteuse: 2, organisatrice: 1 } },
+                        { text: "Lui envoyer une carte postale avec un message personnel", scores: { creatrice: 3, artiste: 2, conteuse: 1 } },
+                        { text: "Lui organiser une surprise parfaitement orchestrée", scores: { organisatrice: 3, architecte: 2, creatrice: 1 } },
+                        { text: "Lui offrir un spectacle ou une prestation rien que pour lui", scores: { performeuse: 3, conteuse: 2, artiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton projet créatif de rêve serait de...",
+                    answers: [
+                        { text: "Concevoir et construire ta maison idéale dans les moindres détails", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Écrire et mettre en scène une pièce de théâtre pour ta famille", scores: { conteuse: 3, performeuse: 2, creatrice: 1 } },
+                        { text: "Créer une exposition de toutes tes photos et œuvres", scores: { artiste: 3, organisatrice: 2, performeuse: 1 } },
+                        { text: "Organiser un festival artistique qui rassemble tous tes talents", scores: { organisatrice: 3, performeuse: 2, creatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu travailles en groupe (avec ta famille par exemple), tu...",
+                    answers: [
+                        { text: "Proposes des idées originales et guides l'imagination collective", scores: { conteuse: 3, artiste: 2, performeuse: 1 } },
+                        { text: "T'assures que tout le monde participe et se sente inclus", scores: { creatrice: 3, organisatrice: 2, performeuse: 1 } },
+                        { text: "Organises le travail pour que ce soit efficace et harmonieux", scores: { organisatrice: 3, architecte: 2, creatrice: 1 } },
+                        { text: "Apportes l'énergie et la motivation pour dynamiser le groupe", scores: { performeuse: 3, creatrice: 2, conteuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton espace créatif idéal ressemblerait à...",
+                    answers: [
+                        { text: "Un atelier d'architecte avec plans, règles et matériaux de construction", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Un studio d'artiste avec pinceaux, appareils photo et carnet d'esquisses", scores: { artiste: 3, conteuse: 2, architecte: 1 } },
+                        { text: "Une scène de théâtre avec costumes, éclairages et miroirs", scores: { performeuse: 3, conteuse: 2, organisatrice: 1 } },
+                        { text: "Un bureau d'écrivain avec livres, carnets et objets inspirants", scores: { conteuse: 3, artiste: 2, creatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui t'inspire le plus pour créer, c'est...",
+                    answers: [
+                        { text: "Les histoires que tu inventes sur les gens et les situations", scores: { conteuse: 3, artiste: 2, creatrice: 1 } },
+                        { text: "Les formes, couleurs et compositions que tu observes", scores: { artiste: 3, architecte: 2, organisatrice: 1 } },
+                        { text: "L'envie de construire quelque chose de durable et fonctionnel", scores: { architecte: 3, organisatrice: 2, conteuse: 1 } },
+                        { text: "Le plaisir de voir les autres heureux grâce à tes créations", scores: { creatrice: 3, performeuse: 2, organisatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand une de tes créations ne marche pas comme prévu, tu...",
+                    answers: [
+                        { text: "Analyses ce qui n'a pas fonctionné et refais un plan d'action", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Transformes l'accident en nouvelle idée créative", scores: { artiste: 3, conteuse: 2, performeuse: 1 } },
+                        { text: "Improvises et tournes ça en spectacle amusant", scores: { performeuse: 3, creatrice: 2, artiste: 1 } },
+                        { text: "Cherches une façon de sauver le projet pour ne pas décevoir", scores: { creatrice: 3, organisatrice: 2, conteuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de garder un souvenir créatif, c'est...",
+                    answers: [
+                        { text: "Prendre une photo parfaite qui capture l'émotion du moment", scores: { artiste: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "Construire une maquette ou un objet qui représente ce moment", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Écrire l'histoire de ce qui s'est passé avec tous les détails", scores: { conteuse: 3, creatrice: 2, performeuse: 1 } },
+                        { text: "Créer un spectacle ou une chanson qui raconte l'expérience", scores: { performeuse: 3, conteuse: 2, artiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans tes discussions avec ton papa, tu aimes parler de...",
+                    answers: [
+                        { text: "Tes projets de constructions et comment tu vois les espaces", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Les histoires que tu inventes et les personnages que tu imagines", scores: { conteuse: 3, artiste: 2, creatrice: 1 } },
+                        { text: "Tes découvertes artistiques et ce qui t'inspire", scores: { artiste: 3, conteuse: 2, performeuse: 1 } },
+                        { text: "Comment organiser tes projets et réaliser tes rêves créatifs", scores: { organisatrice: 3, architecte: 2, creatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Tes câlins avec ta maman sont souvent accompagnés de...",
+                    answers: [
+                        { text: "Tes dernières créations que tu veux absolument lui montrer", scores: { creatrice: 3, artiste: 2, organisatrice: 1 } },
+                        { text: "Une chanson que tu fredons ou une danse improvisée", scores: { performeuse: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "Le récit détaillé de tes dernières aventures créatives", scores: { conteuse: 3, creatrice: 2, artiste: 1 } },
+                        { text: "La planification de votre prochain projet créatif ensemble", scores: { organisatrice: 3, architecte: 2, creatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu avais une baguette magique créative, tu...",
+                    answers: [
+                        { text: "Construirais instantanément toutes les architectures de tes rêves", scores: { architecte: 3, organisatrice: 2, conteuse: 1 } },
+                        { text: "Donnerais vie à tous tes personnages imaginaires", scores: { conteuse: 3, performeuse: 2, artiste: 1 } },
+                        { text: "Capturerais parfaitement toute la beauté que tu vois", scores: { artiste: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "Pourrais partager instantanément tes créations avec tous ceux que tu aimes", scores: { creatrice: 3, performeuse: 2, organisatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rôle dans ta famille, côté créatif, c'est plutôt...",
+                    answers: [
+                        { text: "Celle qui trouve des solutions créatives aux problèmes pratiques", scores: { architecte: 3, organisatrice: 2, artiste: 1 } },
+                        { text: "Celle qui apporte de la poésie et de la beauté au quotidien", scores: { artiste: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "Celle qui invente des jeux et raconte des histoires", scores: { conteuse: 3, performeuse: 2, creatrice: 1 } },
+                        { text: "Celle qui organise les activités créatives et rassemble tout le monde", scores: { organisatrice: 3, creatrice: 2, performeuse: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui te rend le plus fière dans tes créations, c'est...",
+                    answers: [
+                        { text: "La précision technique et la qualité de la réalisation", scores: { architecte: 3, organisatrice: 2, performeuse: 1 } },
+                        { text: "L'émotion qu'elles transmettent et les souvenirs qu'elles créent", scores: { artiste: 3, creatrice: 2, conteuse: 1 } },
+                        { text: "L'originalité de l'histoire et l'univers que tu as inventé", scores: { conteuse: 3, artiste: 2, performeuse: 1 } },
+                        { text: "Le bonheur qu'elles apportent à ceux que tu aimes", scores: { creatrice: 3, performeuse: 2, organisatrice: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans 10 ans, tu aimerais que tes créations soient...",
+                    answers: [
+                        { text: "Des constructions durables qui abritent le bonheur de ta famille", scores: { architecte: 3, organisatrice: 2, creatrice: 1 } },
+                        { text: "Des œuvres d'art qui touchent les gens et racontent ton histoire", scores: { artiste: 3, conteuse: 2, creatrice: 1 } },
+                        { text: "Des spectacles et performances qui font rêver les spectateurs", scores: { performeuse: 3, conteuse: 2, artiste: 1 } },
+                        { text: "Un héritage créatif qui inspire les générations suivantes", scores: { creatrice: 3, organisatrice: 2, artiste: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'architecte',
+                    name: 'Architecte des Rêves',
+                    subtitle: 'La bâtisseuse d\'univers',
+                    icon: '🏗️',
+                    description: `
+                        <p>Tu es une <strong>Architecte des Rêves</strong> ! Comme les plus grands architectes, tu as cette capacité exceptionnelle de voir grand, de planifier dans les moindres détails et de construire des univers cohérents qui durent dans le temps.</p>
+                        
+                        <p>Que ce soit avec tes Lego, dans Minecraft ou tes Sims, tu adores créer des espaces fonctionnels et esthétiques. Tu penses structure, logique et beauté en même temps. Tes constructions racontent des histoires et invitent à vivre de beaux moments.</p>
+                        
+                        <p>Ta passion pour l'organisation se reflète jusque dans ta chambre, que tu aménages comme un petit appartement parfait. Tu as ce don rare de créer des environnements où les autres se sentent bien et peuvent s'épanouir.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Transformer les espaces en lieux de bonheur</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Construction et espaces' },
+                        { label: 'Talent naturel', value: 'Vision d\'ensemble' },
+                        { label: 'Approche', value: 'Planification détaillée' },
+                        { label: 'But créatif', value: 'Créer du durable' }
+                    ]
+                },
+                {
+                    id: 'artiste',
+                    name: 'Artiste Contemplative',
+                    subtitle: 'La chasseuse de beauté',
+                    icon: '📷',
+                    description: `
+                        <p>Tu es une <strong>Artiste Contemplative</strong> ! Comme les grands photographes et peintres, tu as cette sensibilité unique qui te permet de capturer la beauté cachée du monde et de la révéler aux autres.</p>
+                        
+                        <p>Tes photos de couchers de soleil ne sont pas de simples images, ce sont des émotions figées dans le temps. Tu as ce regard particulier qui transforme l'ordinaire en extraordinaire. Ta créativité naît de ton observation attentive et de ton amour pour les détails précieux.</p>
+                        
+                        <p>Tu crées pour transmettre des émotions et préserver des moments magiques. Tes œuvres sont autant de fenêtres sur ton âme sensible et sur la poésie que tu vois partout autour de toi.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Révéler la beauté cachée du monde</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Photographie et arts visuels' },
+                        { label: 'Talent naturel', value: 'Œil artistique' },
+                        { label: 'Inspiration', value: 'Beauté du quotidien' },
+                        { label: 'But créatif', value: 'Transmettre l\'émotion' }
+                    ]
+                },
+                {
+                    id: 'conteuse',
+                    name: 'Conteuse d\'Univers',
+                    subtitle: 'L\'inventeuse d\'histoires',
+                    icon: '📚',
+                    description: `
+                        <p>Tu es une <strong>Conteuse d'Univers</strong> ! Comme les grands écrivains et dramaturges, tu as ce don magique de créer des mondes entiers peuplés de personnages attachants qui vivent leurs propres aventures.</p>
+                        
+                        <p>Tes Playmobil ne sont pas de simples jouets, ce sont les héros d'histoires complexes que tu imagines. Au théâtre, tu excelles à incarner différents personnages parce que tu comprends leurs motivations profondes. Ta passion pour la littérature nourrit ton imagination débordante.</p>
+                        
+                        <p>Tu crées pour faire rêver et pour donner vie aux histoires qui habitent ton esprit. Chaque création est un nouveau chapitre de ton grand livre imaginaire, et tu sais partager cette magie avec ceux qui t'entourent.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Donner vie aux histoires et aux rêves</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Narration et personnages' },
+                        { label: 'Talent naturel', value: 'Imagination débordante' },
+                        { label: 'Domaine favori', value: 'Théâtre et littérature' },
+                        { label: 'But créatif', value: 'Faire rêver' }
+                    ]
+                },
+                {
+                    id: 'organisatrice',
+                    name: 'Organisatrice Inspirée',
+                    subtitle: 'La créatrice d\'harmonie',
+                    icon: '✨',
+                    description: `
+                        <p>Tu es une <strong>Organisatrice Inspirée</strong> ! Tu as ce talent rare de transformer le chaos en beauté ordonnée, et tu fais de l'organisation un véritable art de vivre.</p>
+                        
+                        <p>Quand tu ranges ta chambre, ce n'est pas seulement pour faire du ménage : tu crées un espace harmonieux où chaque objet trouve sa place parfaite. Tes projets créatifs sont toujours impeccablement planifiés, et tu adores coordonner les activités familiales.</p>
+                        
+                        <p>Tu as compris que la vraie créativité naît souvent d'un environnement ordonné qui libère l'esprit. Ton organisation n'est jamais rigide : elle est vivante, esthétique et au service du bonheur de tous.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Créer l'harmonie et libérer la créativité des autres</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Organisation créative' },
+                        { label: 'Talent naturel', value: 'Créer l\'harmonie' },
+                        { label: 'Approche', value: 'Esthétique fonctionnelle' },
+                        { label: 'But créatif', value: 'Libérer le potentiel' }
+                    ]
+                },
+                {
+                    id: 'performeuse',
+                    name: 'Performeuse Expressive',
+                    subtitle: 'L\'âme libre du spectacle',
+                    icon: '🎭',
+                    description: `
+                        <p>Tu es une <strong>Performeuse Expressive</strong> ! Comme les grandes artistes de scène, tu as ce don naturel de transformer tes émotions en spectacle vivant et de toucher les cœurs par ta présence.</p>
+                        
+                        <p>Quand tu chantes, danses ou joues la comédie, tu ne fais pas semblant : tu vis intensément chaque moment et tu partages cette énergie avec ton public. Ta créativité s'exprime dans le mouvement, la voix et la gestuelle avec une authenticité touchante.</p>
+                        
+                        <p>Tu adores improviser et surprendre, car tu sais que les plus beaux moments naissent souvent de la spontanéité. Tes performances, même intimes en famille, ont ce pouvoir magique de rassembler et de créer de la joie.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Transformer l'émotion en énergie partagée</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Arts du spectacle' },
+                        { label: 'Talent naturel', value: 'Expression corporelle' },
+                        { label: 'Style', value: 'Spontanéité authentique' },
+                        { label: 'But créatif', value: 'Partager la joie' }
+                    ]
+                },
+                {
+                    id: 'creatrice',
+                    name: 'Créatrice de Liens',
+                    subtitle: 'L\'artiste des relations',
+                    icon: '💌',
+                    description: `
+                        <p>Tu es une <strong>Créatrice de Liens</strong> ! Ton art le plus précieux, c'est ta capacité à tisser des connexions authentiques et durables à travers tes créations et tes attentions délicates.</p>
+                        
+                        <p>Tes cartes postales ne sont pas de simples messages, ce sont des ponts tendus vers ceux que tu aimes. Tes créations prennent tout leur sens quand tu peux les partager, les offrir ou en parler avec ta famille. Tu crées avant tout pour faire plaisir et rapprocher les gens.</p>
+                        
+                        <p>Tes câlins avec maman et tes discussions avec papa nourrissent ta créativité autant qu'ils la révèlent. Tu as cette intuition rare que l'art le plus beau, c'est celui qui unit les cœurs et crée des souvenirs partagés.</p>
+                        
+                        <p><em>Ton superpouvoir :</em> Transformer l'amour en créations qui rassemblent</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Art relationnel' },
+                        { label: 'Talent naturel', value: 'Créer du lien' },
+                        { label: 'Motivation', value: 'Faire plaisir aux autres' },
+                        { label: 'But créatif', value: 'Rassembler et partager' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
