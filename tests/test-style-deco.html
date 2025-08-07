@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton style déco idéal - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton style déco idéal"
+        const quizConfig = {
+            id: 'style-deco',
+            title: 'Ton style déco idéal',
+            description: 'Découvre quel univers déco reflète le mieux ta personnalité !',
+            
+            questions: [
+                {
+                    text: "Pour ton espace de travail idéal, tu choisirais...",
+                    answers: [
+                        { text: "Un bureau en bois massif avec des livres partout", scores: { vintage: 3, scandinave: 2, boheme: 1 } },
+                        { text: "Un espace épuré avec juste l'essentiel et beaucoup de lumière", scores: { moderne: 3, scandinave: 2, classique: 1 } },
+                        { text: "Un coin douillet avec des coussins, plantes et objets personnels", scores: { boheme: 3, artistique: 2, scandinave: 1 } },
+                        { text: "Un bureau élégant avec des finitions soignées et du rangement", scores: { classique: 3, moderne: 2, vintage: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans ta chambre idéale, on trouverait surtout...",
+                    answers: [
+                        { text: "Des tons neutres, du linge de qualité et quelques photos de famille", scores: { scandinave: 3, classique: 2, moderne: 1 } },
+                        { text: "Des couleurs chaudes, des textiles variés et des créations personnelles", scores: { boheme: 3, artistique: 2, vintage: 1 } },
+                        { text: "Un mobilier intemporel, des matériaux nobles et une déco raffinée", scores: { classique: 3, vintage: 2, scandinave: 1 } },
+                        { text: "Des lignes pures, des rangements cachés et une ambiance zen", scores: { moderne: 3, scandinave: 2, classique: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour décorer tes murs, tu préfères...",
+                    answers: [
+                        { text: "Tes propres photos de couchers de soleil encadrées avec soin", scores: { artistique: 3, boheme: 2, scandinave: 1 } },
+                        { text: "Quelques œuvres d'art choisies et une bibliothèque murale", scores: { vintage: 3, classique: 2, moderne: 1 } },
+                        { text: "Un mur d'exposition avec tes créations et souvenirs", scores: { artistique: 3, boheme: 2, vintage: 1 } },
+                        { text: "Une décoration minimaliste avec un ou deux éléments forts", scores: { moderne: 3, scandinave: 2, classique: 1 } }
+                    ]
+                },
+                {
+                    text: "L'ambiance lumineuse que tu recherches, c'est...",
+                    answers: [
+                        { text: "La lumière dorée du coucher de soleil avec des bougies", scores: { boheme: 3, vintage: 2, artistique: 1 } },
+                        { text: "Une lumière naturelle maximale avec des voilages légers", scores: { scandinave: 3, moderne: 2, classique: 1 } },
+                        { text: "Des éclairages d'ambiance avec des lampes design", scores: { moderne: 3, classique: 2, artistique: 1 } },
+                        { text: "Un mélange de lumières chaudes avec des lampes vintages", scores: { vintage: 3, boheme: 2, scandinave: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton coin lecture parfait serait...",
+                    answers: [
+                        { text: "Un fauteuil confortable près d'une fenêtre avec vue sur jardin", scores: { scandinave: 3, classique: 2, vintage: 1 } },
+                        { text: "Un hamac ou des coussins au sol avec une couverture douce", scores: { boheme: 3, artistique: 2, scandinave: 1 } },
+                        { text: "Une chaise design dans un espace épuré avec une lampe moderne", scores: { moderne: 3, classique: 2, artistique: 1 } },
+                        { text: "Un fauteuil en cuir dans une bibliothèque avec des boiseries", scores: { vintage: 3, classique: 2, moderne: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour ranger tes affaires, tu privilégies...",
+                    answers: [
+                        { text: "Des rangements invisibles intégrés dans les meubles", scores: { moderne: 3, scandinave: 2, classique: 1 } },
+                        { text: "De belles boîtes, paniers et meubles de rangement visibles", scores: { scandinave: 3, boheme: 2, vintage: 1 } },
+                        { text: "Des meubles anciens rénovés avec de nouveaux usages", scores: { vintage: 3, artistique: 2, boheme: 1 } },
+                        { text: "Un mélange de rangements ouverts et fermés selon les besoins", scores: { classique: 3, moderne: 2, artistique: 1 } }
+                    ]
+                },
+                {
+                    text: "Les matériaux qui t'attirent le plus sont...",
+                    answers: [
+                        { text: "Le bois brut, le lin, les fibres naturelles", scores: { boheme: 3, scandinave: 2, vintage: 1 } },
+                        { text: "Le bois clair, la laine, le coton et les matières douces", scores: { scandinave: 3, classique: 2, moderne: 1 } },
+                        { text: "Le métal, le verre, les matières innovantes et lisses", scores: { moderne: 3, artistique: 2, classique: 1 } },
+                        { text: "Le bois patiné, le velours, les matières avec une histoire", scores: { vintage: 3, classique: 2, boheme: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta palette de couleurs idéale, c'est...",
+                    answers: [
+                        { text: "Des blancs, beiges et gris avec quelques touches colorées", scores: { scandinave: 3, moderne: 2, classique: 1 } },
+                        { text: "Des tons terreux, ocres et verts avec des accents dorés", scores: { boheme: 3, vintage: 2, artistique: 1 } },
+                        { text: "Des couleurs saturées et contrastées qui expriment ta créativité", scores: { artistique: 3, boheme: 2, moderne: 1 } },
+                        { text: "Des bleus profonds, verts sombres et tons poudrés intemporels", scores: { classique: 3, vintage: 2, scandinave: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans ton salon, l'élément central serait...",
+                    answers: [
+                        { text: "Une grande bibliothèque avec tous tes livres préférés", scores: { vintage: 3, classique: 2, scandinave: 1 } },
+                        { text: "Un espace de création avec tes projets en cours", scores: { artistique: 3, boheme: 2, moderne: 1 } },
+                        { text: "Un canapé confortable où toute la famille peut se retrouver", scores: { scandinave: 3, classique: 2, boheme: 1 } },
+                        { text: "Un meuble design qui fait la conversation", scores: { moderne: 3, artistique: 2, classique: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour personnaliser ton espace, tu ajouterais...",
+                    answers: [
+                        { text: "Tes créations personnelles et objets faits main", scores: { artistique: 3, boheme: 2, vintage: 1 } },
+                        { text: "Des souvenirs de famille et photos dans de beaux cadres", scores: { scandinave: 3, classique: 2, vintage: 1 } },
+                        { text: "Des objets de voyage et trouvailles chinées", scores: { boheme: 3, vintage: 2, artistique: 1 } },
+                        { text: "Quelques pièces d'art et objets design sélectionnés", scores: { moderne: 3, classique: 2, artistique: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton style de mobilier préféré, c'est...",
+                    answers: [
+                        { text: "Des meubles aux lignes épurées et fonctions multiples", scores: { moderne: 3, scandinave: 2, classique: 1 } },
+                        { text: "Des pièces vintage chiées et rénovées avec amour", scores: { vintage: 3, boheme: 2, artistique: 1 } },
+                        { text: "Des meubles confortables et chaleureux pour la famille", scores: { scandinave: 3, classique: 2, boheme: 1 } },
+                        { text: "Des créations originales et pièces artisanales uniques", scores: { artistique: 3, boheme: 2, vintage: 1 } }
+                    ]
+                },
+                {
+                    text: "L'atmosphère générale que tu veux créer, c'est...",
+                    answers: [
+                        { text: "Un cocon familial où chacun se sent bien", scores: { scandinave: 3, classique: 2, boheme: 1 } },
+                        { text: "Un espace d'inspiration propice à la créativité", scores: { artistique: 3, moderne: 2, boheme: 1 } },
+                        { text: "Un lieu intemporel élégant pour recevoir avec plaisir", scores: { classique: 3, vintage: 2, moderne: 1 } },
+                        { text: "Un refuge personnel qui raconte ton histoire", scores: { boheme: 3, artistique: 2, vintage: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour ton espace extérieur (balcon, terrasse), tu imagine...",
+                    answers: [
+                        { text: "Un jardin avec de vraies plantes et un coin pour observer le coucher de soleil", scores: { boheme: 3, scandinave: 2, artistique: 1 } },
+                        { text: "Un espace net avec mobilier de qualité et éclairage design", scores: { moderne: 3, classique: 2, scandinave: 1 } },
+                        { text: "Un coin douillet avec guirlandes, coussins et plantes suspendues", scores: { artistique: 3, boheme: 2, vintage: 1 } },
+                        { text: "Une terrasse élégante avec beaux matériaux et vue dégagée", scores: { classique: 3, moderne: 2, scandinave: 1 } }
+                    ]
+                },
+                {
+                    text: "Tes accessoires déco favoris seraient...",
+                    answers: [
+                        { text: "Des bougies, vases en céramique et textiles naturels", scores: { boheme: 3, scandinave: 2, vintage: 1 } },
+                        { text: "Des objets géométriques, miroirs et éléments métalliques", scores: { moderne: 3, artistique: 2, classique: 1 } },
+                        { text: "Des cadres anciens, horloges vintages et objets patinés", scores: { vintage: 3, classique: 2, boheme: 1 } },
+                        { text: "Des sculptures, créations artistiques et pièces uniques", scores: { artistique: 3, moderne: 2, boheme: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour organiser tes espaces de création (Lego, dessins), tu voudrais...",
+                    answers: [
+                        { text: "Des bacs et rangements transparents bien étiquetés", scores: { moderne: 3, scandinave: 2, classique: 1 } },
+                        { text: "De belles boîtes en bois et paniers tressés", scores: { vintage: 3, boheme: 2, scandinave: 1 } },
+                        { text: "Un atelier ouvert avec tout à portée de main", scores: { artistique: 3, boheme: 2, moderne: 1 } },
+                        { text: "Des meubles à compartiments intégrés dans la déco", scores: { classique: 3, moderne: 2, vintage: 1 } }
+                    ]
+                },
+                {
+                    text: "La vue depuis ta fenêtre idéale serait...",
+                    answers: [
+                        { text: "Un paysage naturel avec arbres et horizon dégagé", scores: { boheme: 3, scandinave: 2, artistique: 1 } },
+                        { text: "Une architecture intéressante et des jeux de lumière", scores: { moderne: 3, artistique: 2, classique: 1 } },
+                        { text: "Un jardin soigné avec des perspectives bien composées", scores: { classique: 3, scandinave: 2, moderne: 1 } },
+                        { text: "Une cour d'immeuble avec de la verdure et du charme", scores: { vintage: 3, boheme: 2, artistique: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour recevoir tes amis, tu aménagerais...",
+                    answers: [
+                        { text: "Un coin repas convivial avec grande table et chaises dépareillées", scores: { boheme: 3, vintage: 2, artistique: 1 } },
+                        { text: "Un espace modulable avec poufs et tables d'appoint", scores: { moderne: 3, artistique: 2, boheme: 1 } },
+                        { text: "Une salle à manger élégante avec service de qualité", scores: { classique: 3, vintage: 2, moderne: 1 } },
+                        { text: "Un salon chaleureux où tout le monde peut s'installer", scores: { scandinave: 3, classique: 2, boheme: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rapport à la déco, c'est plutôt...",
+                    answers: [
+                        { text: "Je crée et transforme moi-même selon mon inspiration", scores: { artistique: 3, boheme: 2, vintage: 1 } },
+                        { text: "J'achète des pièces de qualité qui durent dans le temps", scores: { classique: 3, moderne: 2, scandinave: 1 } },
+                        { text: "Je chine, récupère et donne une nouvelle vie aux objets", scores: { vintage: 3, boheme: 2, artistique: 1 } },
+                        { text: "Je privilégie la fonctionnalité avec une esthétique épurée", scores: { moderne: 3, scandinave: 2, classique: 1 } }
+                    ]
+                },
+                {
+                    text: "L'ambiance sonore de ton intérieur idéal, ce serait...",
+                    answers: [
+                        { text: "Le silence ou de la musique classique pour la concentration", scores: { moderne: 3, classique: 2, scandinave: 1 } },
+                        { text: "Des sons naturels : oiseaux, eau, vent dans les feuilles", scores: { boheme: 3, scandinave: 2, artistique: 1 } },
+                        { text: "De la musique douce qui accompagne les activités familiales", scores: { scandinave: 3, classique: 2, vintage: 1 } },
+                        { text: "Une playlist éclectique qui reflète ton univers créatif", scores: { artistique: 3, vintage: 2, boheme: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans 10 ans, tu imagines ton intérieur...",
+                    answers: [
+                        { text: "Évoluant avec tes créations et découvertes", scores: { artistique: 3, boheme: 2, vintage: 1 } },
+                        { text: "Gardant ses bases intemporelles avec quelques nouveautés", scores: { classique: 3, scandinave: 2, moderne: 1 } },
+                        { text: "Toujours épuré mais avec des pièces encore plus qualitatives", scores: { moderne: 3, classique: 2, scandinave: 1 } },
+                        { text: "Enrichi de souvenirs et objets glanés au fil des ans", scores: { vintage: 3, boheme: 2, artistique: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'boheme',
+                    name: 'Style Bohème Naturel',
+                    subtitle: 'L\'âme libre et créative',
+                    icon: '🌿',
+                    description: `
+                        <p>Tu es attirée par le <strong>style bohème naturel</strong> ! Comme une artiste libre, tu aimes créer des espaces qui racontent des histoires et invitent à la contemplation.</p>
+                        
+                        <p>Ton intérieur idéal mélange matériaux naturels, couleurs chaudes et objets personnels. Tu privilégies le bois brut, les fibres naturelles, les plantes et les textiles aux motifs ethniques. Tes photos de couchers de soleil trouvent naturellement leur place sur tes murs.</p>
+                        
+                        <p>Tu aimes chiner, récupérer et transformer les objets pour leur donner une seconde vie. Ton espace est un cocon chaleureux où règne une ambiance tamisée, parfaite pour tes moments de créativité et de lecture.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Authenticité, chaleur, créativité, nature</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Bois, lin, rotin' },
+                        { label: 'Couleurs', value: 'Ocre, terracotta, vert' },
+                        { label: 'Ambiance', value: 'Chaleureuse et libre' },
+                        { label: 'Style', value: 'Éclectique naturel' }
+                    ]
+                },
+                {
+                    id: 'scandinave',
+                    name: 'Style Scandinave Cosy',
+                    subtitle: 'Le bonheur simple et familial',
+                    icon: '🏠',
+                    description: `
+                        <p>Tu es faite pour le <strong>style scandinave cosy</strong> ! Comme les familles nordiques, tu privilégies le confort, la simplicité et les moments partagés.</p>
+                        
+                        <p>Ton intérieur respire la sérénité avec ses tons clairs, ses matériaux naturels et sa fonctionnalité intelligente. Le bois clair, les textiles doux et les rangements astucieux créent un environnement où chaque membre de la famille se sent bien.</p>
+                        
+                        <p>Tu aimes l'ordre et la propreté, mais sans rigidité. Tes espaces invitent à la détente et aux câlins en famille. Les photos de famille et quelques créations personnelles apportent la touche personnelle parfaite.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Simplicité, confort, famille, luminosité</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Bois clair, laine' },
+                        { label: 'Couleurs', value: 'Blanc, beige, gris doux' },
+                        { label: 'Ambiance', value: 'Lumineuse et apaisante' },
+                        { label: 'Style', value: 'Fonctionnel et chaleureux' }
+                    ]
+                },
+                {
+                    id: 'vintage',
+                    name: 'Style Vintage Littéraire',
+                    subtitle: 'L\'élégance intemporelle',
+                    icon: '📚',
+                    description: `
+                        <p>Tu es passionnée par le <strong>style vintage littéraire</strong> ! Comme dans les plus belles librairies anciennes, tu aimes les espaces qui ont une âme et racontent des histoires.</p>
+                        
+                        <p>Ton intérieur mélange meubles chinés, livres anciens et objets patinés par le temps. Les boiseries, le cuir patiné et les tons poudrés créent une ambiance studieuse et raffinée. Tes nombreux livres sont autant d'éléments décoratifs que de trésors à découvrir.</p>
+                        
+                        <p>Tu aimes redonner vie aux objets oubliés et créer des écrins pour tes passions. Ton espace invite à la lecture et aux longues discussions, dans l'esprit des salons littéraires d'autrefois.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Histoire, culture, élégance, nostalgie</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Bois patiné, cuir, velours' },
+                        { label: 'Couleurs', value: 'Bordeaux, vert anglais, or' },
+                        { label: 'Ambiance', value: 'Feutrée et studieuse' },
+                        { label: 'Style', value: 'Classique revisité' }
+                    ]
+                },
+                {
+                    id: 'moderne',
+                    name: 'Style Moderne Épuré',
+                    subtitle: 'La sophistication contemporaine',
+                    icon: '▫️',
+                    description: `
+                        <p>Tu es attirée par le <strong>style moderne épuré</strong> ! Comme une architecte visionnaire, tu apprécies les lignes nettes, les espaces organisés et les matériaux innovants.</p>
+                        
+                        <p>Ton intérieur privilégie la fonctionnalité intelligente et l'esthétique minimale. Chaque élément a sa place et sa raison d'être. Les rangements cachés, les surfaces lisses et l'éclairage étudié créent un environnement propice à la concentration et à la créativité.</p>
+                        
+                        <p>Tu aimes que ton environnement soit ordonné pour libérer ton esprit. Tes créations et projets trouvent leur place dans des espaces dédiés, discrets mais accessibles.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Pureté, fonctionnalité, innovation, sérénité</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Métal, verre, béton ciré' },
+                        { label: 'Couleurs', value: 'Blanc, gris, noir' },
+                        { label: 'Ambiance', value: 'Épurée et zen' },
+                        { label: 'Style', value: 'Minimaliste chic' }
+                    ]
+                },
+                {
+                    id: 'classique',
+                    name: 'Style Classique Raffiné',
+                    subtitle: 'L\'élégance éternelle',
+                    icon: '👑',
+                    description: `
+                        <p>Tu es faite pour le <strong>style classique raffiné</strong> ! Comme dans les plus beaux intérieurs bourgeois, tu apprécies l'élégance discrète et les matériaux nobles.</p>
+                        
+                        <p>Ton intérieur respire la qualité et le bon goût avec ses proportions harmonieuses, ses matériaux authentiques et son mobilier intemporel. Les boiseries, les étoffes de qualité et les finitions soignées créent un cadre propice aux réceptions familiales et aux moments précieux.</p>
+                        
+                        <p>Tu privilégies les investissements durables et les pièces qui traversent le temps. Ton sens de l'harmonie et du détail se reflète dans chaque choix décoratif.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Qualité, tradition, raffinement, harmonie</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Bois noble, marbre, soie' },
+                        { label: 'Couleurs', value: 'Bleu profond, crème, doré' },
+                        { label: 'Ambiance', value: 'Distinguée et accueillante' },
+                        { label: 'Style', value: 'Intemporel et précieux' }
+                    ]
+                },
+                {
+                    id: 'artistique',
+                    name: 'Style Artistique Créatif',
+                    subtitle: 'L\'expression de ton univers unique',
+                    icon: '🎨',
+                    description: `
+                        <p>Tu es une <strong>créatrice artistique</strong> dans l'âme ! Comme dans un atelier d'artiste, ton intérieur est un espace d'expression où règnent créativité et originalité.</p>
+                        
+                        <p>Ton environnement est un laboratoire vivant qui évolue avec tes projets et inspirations. Tu mélanges styles, époques et matériaux pour créer ton univers unique. Tes œuvres personnelles, tes photos et tes créations occupent une place centrale.</p>
+                        
+                        <p>Tu aimes expérimenter, transformer et personnaliser chaque élément. Ton espace raconte ton histoire créative et inspire tes nouvelles réalisations. C'est un lieu de vie authentique et en perpétuelle évolution.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Créativité, originalité, expression, évolution</p>
+                    `,
+                    traits: [
+                        { label: 'Matériaux', value: 'Mixtes et inattendus' },
+                        { label: 'Couleurs', value: 'Palette variée et audacieuse' },
+                        { label: 'Ambiance', value: 'Inspirante et dynamique' },
+                        { label: 'Style', value: 'Éclectique personnel' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz avec debug
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            // Vérifier que les éléments existent
+            const quizContent = document.querySelector('.quiz-content');
+            const backBtn = document.querySelector('.back-btn');
+            console.log('Quiz content found:', !!quizContent);
+            console.log('Back button found:', !!backBtn);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
