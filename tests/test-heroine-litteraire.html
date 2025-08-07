@@ -362,9 +362,31 @@
             ]
         };
 
-        // Initialisation du quiz
+        // Initialisation du quiz avec debug
         document.addEventListener('DOMContentLoaded', function() {
-            window.quizEngine = initQuiz(quizConfig);
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            // Vérifier que les éléments existent
+            const quizContent = document.querySelector('.quiz-content');
+            const backBtn = document.querySelector('.back-btn');
+            console.log('Quiz content found:', !!quizContent);
+            console.log('Back button found:', !!backBtn);
+            
+            // Tester le bouton retour directement
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    console.log('Bouton retour cliqué directement');
+                    window.location.href = '../index.html';
+                });
+            }
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
         });
     </script>
 </body>
