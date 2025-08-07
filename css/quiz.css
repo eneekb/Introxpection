@@ -5,7 +5,10 @@
 /* ==========================================================================
    Layout du quiz
    ========================================================================== */
-
+.question-text { 
+    color: red !important; 
+    font-size: 50px !important; 
+}
 .quiz-container {
     max-width: 800px;
     margin: 0 auto;
