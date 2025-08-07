@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quel élément naturel te corresponds ? - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Quel élément naturel te corresponds ?"
+        const quizConfig = {
+            id: 'element-naturel',
+            title: 'Quel élément naturel te corresponds ?',
+            description: 'Découvre quel paysage et élément de la nature habite ton âme !',
+            
+            questions: [
+                {
+                    text: "Le moment de la journée où tu te sens le plus toi-même, c'est...",
+                    answers: [
+                        { text: "Le coucher de soleil avec ses couleurs magiques", scores: { lumiere: 3, ocean: 2, foret: 1 } },
+                        { text: "L'aube quand tout est calme et plein de promesses", scores: { aurore: 3, montagne: 2, vent: 1 } },
+                        { text: "Le milieu de la journée quand la nature est vivante", scores: { foret: 3, vent: 2, lumiere: 1 } },
+                        { text: "La nuit étoilée quand on peut rêver et réfléchir", scores: { montagne: 3, ocean: 2, aurore: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu prends des photos, tu es attirée par...",
+                    answers: [
+                        { text: "Les reflets dorés du soleil sur l'eau ou les fenêtres", scores: { lumiere: 3, ocean: 2, aurore: 1 } },
+                        { text: "Les vastes étendues d'eau qui semblent infinies", scores: { ocean: 3, montagne: 2, vent: 1 } },
+                        { text: "Les détails cachés : fleurs, feuilles, textures naturelles", scores: { foret: 3, aurore: 2, lumiere: 1 } },
+                        { text: "Les paysages qui changent avec le vent et les nuages", scores: { vent: 3, montagne: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton refuge idéal pour te ressourcer serait...",
+                    answers: [
+                        { text: "Une plage au coucher de soleil, seule avec tes pensées", scores: { ocean: 3, lumiere: 2, montagne: 1 } },
+                        { text: "Une clairière secrète dans la forêt où tu peux lire", scores: { foret: 3, aurore: 2, vent: 1 } },
+                        { text: "Un sommet de montagne avec une vue à 360°", scores: { montagne: 3, vent: 2, ocean: 1 } },
+                        { text: "Un endroit haut où tu peux observer le lever du soleil", scores: { aurore: 3, montagne: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans tes rêves et moments de solitude, tu imagines...",
+                    answers: [
+                        { text: "Construire une cabane dans les arbres avec tout ce qu'il faut", scores: { foret: 3, aurore: 2, montagne: 1 } },
+                        { text: "Voyager sur un bateau en suivant le soleil", scores: { ocean: 3, lumiere: 2, vent: 1 } },
+                        { text: "Créer un observatoire secret pour contempler le monde", scores: { montagne: 3, aurore: 2, foret: 1 } },
+                        { text: "Peindre ou photographier tous les ciels que tu vois", scores: { lumiere: 3, vent: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "La sensation naturelle qui te apaise le plus, c'est...",
+                    answers: [
+                        { text: "Le bruit des vagues qui se répète inlassablement", scores: { ocean: 3, foret: 2, aurore: 1 } },
+                        { text: "Le silence total de la nature endormie", scores: { montagne: 3, foret: 2, aurore: 1 } },
+                        { text: "Le chuchotement du vent dans les feuilles", scores: { vent: 3, foret: 2, ocean: 1 } },
+                        { text: "La caresse chaude du soleil sur ta peau", scores: { lumiere: 3, aurore: 2, vent: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu ranges ta chambre, tu te sens comme...",
+                    answers: [
+                        { text: "Une organisatrice qui crée son propre petit écosystème", scores: { foret: 3, montagne: 2, aurore: 1 } },
+                        { text: "Une artiste qui arrange les éléments selon la lumière", scores: { lumiere: 3, aurore: 2, vent: 1 } },
+                        { text: "Une exploratrice qui redécouvre ses trésors cachés", scores: { montagne: 3, foret: 2, ocean: 1 } },
+                        { text: "Une créatrice qui laisse circuler l'énergie dans l'espace", scores: { vent: 3, ocean: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec ta famille, les meilleurs moments sont...",
+                    answers: [
+                        { text: "Les balades au bord de l'eau où chacun trouve son rythme", scores: { ocean: 3, vent: 2, foret: 1 } },
+                        { text: "Les couchers de soleil observés ensemble depuis la fenêtre", scores: { lumiere: 3, ocean: 2, montagne: 1 } },
+                        { text: "Les pique-niques dans la nature où on se raconte tout", scores: { foret: 3, aurore: 2, vent: 1 } },
+                        { text: "Les levés tôt pour aller voir des paysages magnifiques", scores: { aurore: 3, montagne: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton élément préféré pour tes créations (Lego, dessins), c'est...",
+                    answers: [
+                        { text: "Construire des châteaux au bord de mer et ports", scores: { ocean: 3, lumiere: 2, foret: 1 } },
+                        { text: "Créer des maisons dans les arbres et jardins secrets", scores: { foret: 3, aurore: 2, vent: 1 } },
+                        { text: "Imaginer des observatoires et tours dans les nuages", scores: { montagne: 3, vent: 2, aurore: 1 } },
+                        { text: "Inventer des villages illuminés et structures brillantes", scores: { lumiere: 3, montagne: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de communiquer tes émotions, c'est...",
+                    answers: [
+                        { text: "Par des images et photos qui parlent sans mots", scores: { lumiere: 3, aurore: 2, montagne: 1 } },
+                        { text: "Par des longues discussions calmes et profondes", scores: { foret: 3, montagne: 2, ocean: 1 } },
+                        { text: "Par des cartes postales avec des paysages qui te touchent", scores: { ocean: 3, vent: 2, aurore: 1 } },
+                        { text: "Par des gestes doux et des moments partagés en silence", scores: { aurore: 3, foret: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans tes jeux (Minecraft, Sims), tu préfères créer...",
+                    answers: [
+                        { text: "Des maisons avec de grandes baies vitrées face au coucher du soleil", scores: { lumiere: 3, ocean: 2, vent: 1 } },
+                        { text: "Des îles paradisiaques avec plages et cascades", scores: { ocean: 3, aurore: 2, foret: 1 } },
+                        { text: "Des refuges montagnards avec vue panoramique", scores: { montagne: 3, aurore: 2, vent: 1 } },
+                        { text: "Des cabanes écologiques intégrées dans la forêt", scores: { foret: 3, vent: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Le livre ou film qui te fait le plus rêver parle de...",
+                    answers: [
+                        { text: "Aventures océaniques avec des trésors cachés sous l'eau", scores: { ocean: 3, vent: 2, lumiere: 1 } },
+                        { text: "Expéditions en montagne à la recherche de lieux magiques", scores: { montagne: 3, aurore: 2, foret: 1 } },
+                        { text: "Histoires de forêts enchantées avec des créatures secrètes", scores: { foret: 3, aurore: 2, ocean: 1 } },
+                        { text: "Voyages vers des aurores boréales et phénomènes lumineux", scores: { aurore: 3, lumiere: 2, montagne: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu écoutes de la musique ou chantes, tu imagines...",
+                    answers: [
+                        { text: "Danser pieds nus sur le sable au rythme des vagues", scores: { ocean: 3, vent: 2, lumiere: 1 } },
+                        { text: "Chanter avec l'écho des montagnes qui répond", scores: { montagne: 3, vent: 2, aurore: 1 } },
+                        { text: "Te laisser porter par la mélodie comme une feuille au vent", scores: { vent: 3, foret: 2, ocean: 1 } },
+                        { text: "Créer des harmonies avec les sons de la nature", scores: { foret: 3, aurore: 2, vent: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton idée du bonheur parfait, c'est...",
+                    answers: [
+                        { text: "Regarder le soleil se coucher en sachant que ceux que tu aimes vont bien", scores: { lumiere: 3, ocean: 2, aurore: 1 } },
+                        { text: "Découvrir un endroit secret que personne ne connaît", scores: { foret: 3, montagne: 2, aurore: 1 } },
+                        { text: "Sentir que tu appartiens à quelque chose de plus grand que toi", scores: { ocean: 3, montagne: 2, vent: 1 } },
+                        { text: "Vivre un moment si beau qu'il illumine toute ta journée", scores: { aurore: 3, lumiere: 2, foret: 1 } }
+                    ]
+                },
+                {
+                    text: "Tes Playmobil et créations racontent souvent des histoires de...",
+                    answers: [
+                        { text: "Familles qui explorent des îles mystérieuses", scores: { ocean: 3, foret: 2, vent: 1 } },
+                        { text: "Héros qui découvrent des grottes illuminées", scores: { montagne: 3, lumiere: 2, aurore: 1 } },
+                        { text: "Aventuriers qui communiquent avec les animaux de la forêt", scores: { foret: 3, vent: 2, ocean: 1 } },
+                        { text: "Personnages qui assistent à des phénomènes magiques", scores: { aurore: 3, lumiere: 2, montagne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta saison préférée et pourquoi elle te correspond ?",
+                    answers: [
+                        { text: "L'automne pour ses couleurs chaudes et sa mélancolie douce", scores: { foret: 3, lumiere: 2, montagne: 1 } },
+                        { text: "L'été pour ses couchers de soleil infinis sur l'eau", scores: { ocean: 3, lumiere: 2, vent: 1 } },
+                        { text: "Le printemps pour ses aubes pleines de promesses", scores: { aurore: 3, foret: 2, vent: 1 } },
+                        { text: "L'hiver pour sa pureté et ses paysages transformés", scores: { montagne: 3, aurore: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu as besoin de réfléchir à quelque chose d'important, tu...",
+                    answers: [
+                        { text: "Regardes par la fenêtre en laissant tes pensées dériver", scores: { vent: 3, lumiere: 2, ocean: 1 } },
+                        { text: "T'isoles dans un endroit calme avec vue sur la nature", scores: { montagne: 3, foret: 2, aurore: 1 } },
+                        { text: "Marches lentement en observant les détails autour de toi", scores: { foret: 3, aurore: 2, vent: 1 } },
+                        { text: "T'assieds face à un paysage qui te hypnotise", scores: { ocean: 3, lumiere: 2, montagne: 1 } }
+                    ]
+                },
+                {
+                    text: "Le cadeau de la nature que tu aimerais offrir à quelqu'un que tu aimes ?",
+                    answers: [
+                        { text: "Une photo parfaite d'un coucher de soleil que vous avez vu ensemble", scores: { lumiere: 3, ocean: 2, aurore: 1 } },
+                        { text: "Un coquillage ou galet trouvé sur une plage spéciale", scores: { ocean: 3, foret: 2, vent: 1 } },
+                        { text: "Une fleur séchée ou feuille d'un endroit qui vous unit", scores: { foret: 3, montagne: 2, lumiere: 1 } },
+                        { text: "Une carte postale d'un paysage qui vous fait rêver", scores: { montagne: 3, aurore: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu pouvais avoir un super-pouvoir lié à la nature, ce serait...",
+                    answers: [
+                        { text: "Contrôler la lumière pour créer les plus beaux levers et couchers de soleil", scores: { lumiere: 3, aurore: 2, vent: 1 } },
+                        { text: "Respirer sous l'eau et découvrir tous les secrets de l'océan", scores: { ocean: 3, montagne: 2, foret: 1 } },
+                        { text: "Voler avec le vent et voir le monde d'en haut", scores: { vent: 3, montagne: 2, lumiere: 1 } },
+                        { text: "Comprendre le langage secret de tous les êtres vivants", scores: { foret: 3, aurore: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans 10 ans, tu t'imagines vivre...",
+                    answers: [
+                        { text: "Dans une maison avec vue sur l'océan où tu pourras photographier chaque coucher de soleil", scores: { ocean: 3, lumiere: 2, vent: 1 } },
+                        { text: "Dans un endroit entouré de nature où tu pourras créer en toute tranquillité", scores: { foret: 3, montagne: 2, aurore: 1 } },
+                        { text: "Quelque part où chaque matin t'apporte une nouvelle découverte", scores: { aurore: 3, vent: 2, foret: 1 } },
+                        { text: "Dans un lieu lumineux où tu pourras accueillir ceux que tu aimes", scores: { lumiere: 3, aurore: 2, ocean: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui t'inspire le plus dans la nature, c'est...",
+                    answers: [
+                        { text: "Sa capacité à créer des spectacles uniques chaque jour", scores: { lumiere: 3, aurore: 2, ocean: 1 } },
+                        { text: "Son rythme apaisant qui aide à relativiser les soucis", scores: { ocean: 3, foret: 2, montagne: 1 } },
+                        { text: "Sa façon de se renouveler constamment tout en gardant son essence", scores: { vent: 3, aurore: 2, foret: 1 } },
+                        { text: "Sa force tranquille et sa sagesse millénaire", scores: { montagne: 3, foret: 2, aurore: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'lumiere',
+                    name: 'Lumière Dorée',
+                    subtitle: 'L\'âme du coucher de soleil',
+                    icon: '🌅',
+                    description: `
+                        <p>Tu es <strong>Lumière Dorée</strong>, l'essence même des plus beaux couchers de soleil ! Comme ces instants magiques que tu aimes tant photographier, tu illumines la vie de ceux qui t'entourent par ta sensibilité artistique et ta capacité à voir la beauté partout.</p>
+                        
+                        <p>Ta personnalité rayonne d'une chaleur douce qui réconforte tes proches. Tu as le don de transformer les moments ordinaires en souvenirs précieux, comme ces photos de couchers de soleil qui capturent l'émotion d'un instant. Tu es à la fois contemplative et créative.</p>
+                        
+                        <p>Comme la lumière dorée de fin de journée, tu apportes de la profondeur et de l'émotion à tout ce que tu touches. Tes créations, tes relations et tes rêves sont baignés de cette même magie chaleureuse.</p>
+                        
+                        <p><em>Tes forces :</em> Créativité lumineuse, émotions authentiques, regard artistique</p>
+                    `,
+                    traits: [
+                        { label: 'Moment magique', value: 'Coucher de soleil' },
+                        { label: 'Don naturel', value: 'Illuminer les autres' },
+                        { label: 'Expression', value: 'Photographie artistique' },
+                        { label: 'Énergie', value: 'Chaleur rayonnante' }
+                    ]
+                },
+                {
+                    id: 'ocean',
+                    name: 'Océan Profond',
+                    subtitle: 'L\'âme libre et mystérieuse',
+                    icon: '🌊',
+                    description: `
+                        <p>Tu es <strong>Océan Profond</strong>, vaste et fascinante comme les étendues marines ! Tu as cette capacité rare d'être à la fois calme en surface et riche de mystères en profondeur, comme la mer que tu aimes tant.</p>
+                        
+                        <p>Ta personnalité allie sérénité et puissance. Tu sais écouter avec la patience des marées et réfléchir avec la sagesse des abysses. Tes émotions sont profondes et authentiques, et tu as besoin d'espaces de liberté pour t'épanouir.</p>
+                        
+                        <p>Comme l'océan qui unit tous les continents, tu crées des liens durables avec tes proches. Tu es à la fois un refuge apaisant et une source d'aventures infinies pour ceux qui savent te découvrir.</p>
+                        
+                        <p><em>Tes forces :</em> Profondeur émotionnelle, sagesse intuitive, liberté d'esprit</p>
+                    `,
+                    traits: [
+                        { label: 'Personnalité', value: 'Calme et mystérieuse' },
+                        { label: 'Don naturel', value: 'Écoute profonde' },
+                        { label: 'Besoin vital', value: 'Espaces de liberté' },
+                        { label: 'Pouvoir', value: 'Apaiser et inspirer' }
+                    ]
+                },
+                {
+                    id: 'foret',
+                    name: 'Forêt Secrète',
+                    subtitle: 'L\'âme sage et protectrice',
+                    icon: '🌲',
+                    description: `
+                        <p>Tu es <strong>Forêt Secrète</strong>, gardienne de la sagesse tranquille ! Comme les forêts millénaires, tu cultives tes rêves dans le silence et tu créés des refuges précieux pour toi et tes proches.</p>
+                        
+                        <p>Ta personnalité marie douceur et détermination. Tu aimes te ressourcer dans la solitude créatrice, comme dans une clairière cachée où tu peux lire, créer et laisser libre cours à ton imagination. Tu as une relation particulière avec les détails et les petits bonheurs de la vie.</p>
+                        
+                        <p>Comme la forêt qui abrite une biodiversité incroyable, ton monde intérieur regorge d'idées, de projets et de rêves. Tu es un écosystème créatif où chaque élément trouve sa place avec harmonie.</p>
+                        
+                        <p><em>Tes forces :</em> Créativité organisée, sagesse tranquille, refuge bienveillant</p>
+                    `,
+                    traits: [
+                        { label: 'Refuge idéal', value: 'Solitude créatrice' },
+                        { label: 'Don naturel', value: 'Organiser avec beauté' },
+                        { label: 'Inspiration', value: 'Petits détails magiques' },
+                        { label: 'Rôle', value: 'Protectrice douce' }
+                    ]
+                },
+                {
+                    id: 'montagne',
+                    name: 'Montagne Éternelle',
+                    subtitle: 'L\'âme contemplative et forte',
+                    icon: '⛰️',
+                    description: `
+                        <p>Tu es <strong>Montagne Éternelle</strong>, majestueuse et contemplative ! Comme ces sommets qui touchent le ciel, tu as cette capacité à prendre de la hauteur et à voir les choses avec perspective et sagesse.</p>
+                        
+                        <p>Ta personnalité allie force tranquille et vision claire. Tu aimes les moments de solitude où tu peux réfléchir et contempler, que ce soit en rangeant ta chambre ou en observant le monde depuis ta fenêtre. Tu as un sens naturel de l'organisation et de la beauté.</p>
+                        
+                        <p>Comme la montagne qui reste stable face aux tempêtes, tu es un pilier de stabilité pour ta famille. Tes discussions avec ton papa et tes câlins avec ta maman trouvent en toi cette profondeur rassurante des hauteurs éternelles.</p>
+                        
+                        <p><em>Tes forces :</em> Vision d'ensemble, stabilité émotionnelle, contemplation profonde</p>
+                    `,
+                    traits: [
+                        { label: 'Vision', value: 'Perspective élargie' },
+                        { label: 'Force', value: 'Stabilité rassurante' },
+                        { label: 'Plaisir', value: 'Contemplation silencieuse' },
+                        { label: 'Rôle familial', value: 'Pilier de sérénité' }
+                    ]
+                },
+                {
+                    id: 'vent',
+                    name: 'Vent Libre',
+                    subtitle: 'L\'âme voyageuse et changeante',
+                    icon: '💨',
+                    description: `
+                        <p>Tu es <strong>Vent Libre</strong>, esprit nomade et messager de changement ! Comme le vent qui transporte parfums, graines et nuages, tu connectes les idées, les gens et les rêves avec une grâce naturelle.</p>
+                        
+                        <p>Ta personnalité est pétillante de curiosité et d'adaptation. Tu aimes le mouvement, les nouveautés et les découvertes. Tes cartes postales sont comme des messages portés par le vent, et tu as ce don de faire circuler la joie et l'énergie positive autour de toi.</p>
+                        
+                        <p>Comme le vent qui ne se laisse jamais enfermer, tu as besoin de liberté pour t'épanouir. Tes danses, tes chants et tes créations expriment cette énergie joyeuse qui te caractérise et qui fait du bien à tous ceux qui te côtoient.</p>
+                        
+                        <p><em>Tes forces :</em> Adaptabilité joyeuse, énergie communicative, liberté créatrice</p>
+                    `,
+                    traits: [
+                        { label: 'Énergie', value: 'Mouvement perpétuel' },
+                        { label: 'Don social', value: 'Connecter les gens' },
+                        { label: 'Expression', value: 'Danse et musique' },
+                        { label: 'Besoin vital', value: 'Liberté et nouveauté' }
+                    ]
+                },
+                {
+                    id: 'aurore',
+                    name: 'Aurore Naissante',
+                    subtitle: 'L\'âme de l\'espoir et du renouveau',
+                    icon: '🌄',
+                    description: `
+                        <p>Tu es <strong>Aurore Naissante</strong>, porteuse de lumière et d'espoir ! Comme ces premières lueurs du jour qui transforment le monde, tu as ce don précieux d'apporter fraîcheur et renouveau dans tout ce que tu entreprends.</p>
+                        
+                        <p>Ta personnalité marie douceur matinale et énergie créatrice. Tu aimes les commencements, les projets neufs et les moments de grâce où tout semble possible. Tes relations familiales se nourrissent de cette tendresse et de cette capacité à voir le meilleur en chacun.</p>
+                        
+                        <p>Comme l'aurore qui révèle la beauté du monde chaque matin, tu as ce talent de faire découvrir aux autres leurs propres merveilles. Tes créations et tes gestes portent cette magie du recommencement qui rend chaque jour unique.</p>
+                        
+                        <p><em>Tes forces :</em> Optimisme naturel, tendresse révélatrice, magie du quotidien</p>
+                    `,
+                    traits: [
+                        { label: 'Magie personnelle', value: 'Révéler la beauté' },
+                        { label: 'Relation aux autres', value: 'Tendresse inspirante' },
+                        { label: 'Approche de la vie', value: 'Chaque jour est unique' },
+                        { label: 'Don créatif', value: 'Nouveaux commencements' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
