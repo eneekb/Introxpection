@@ -11,9 +11,8 @@
 <body>
     <header class="quiz-header">
         <div class="container">
-            <button class="back-btn">← Accueil</button>
-            <h1 class="quiz-title">Quelle héroïne littéraire es-tu ?</h1>
-            <p class="quiz-subtitle">Découvre quel personnage de roman correspond à ta personnalité !</p>
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
         </div>
     </header>
 
@@ -362,6 +361,13 @@
             ]
         };
 
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
         // Initialisation du quiz avec debug
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM chargé, initialisation du quiz...');
