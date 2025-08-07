@@ -51,9 +51,6 @@ class QuizEngine {
         
         const questionHTML = `
             <div class="question-container fade-in">
-                <div class="question-number">
-                    Question ${this.currentQuestion + 1}/${this.config.questions.length}
-                </div>
                 <h2 class="question-text">${question.text}</h2>
             </div>
             
@@ -71,12 +68,12 @@ class QuizEngine {
             
             <div class="navigation-container">
                 ${this.currentQuestion > 0 ? `
-                    <button class="prev-question-btn">← Question précédente</button>
+                    <button class="prev-question-btn">← Précédente</button>
                 ` : ''}
             </div>
             
             <div class="auto-advance-hint">
-                💡 Clique sur ta réponse pour passer à la question suivante
+                💡 Clique sur ta réponse pour continuer
             </div>
         `;
         
