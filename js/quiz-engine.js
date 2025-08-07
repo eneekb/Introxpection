@@ -1,49 +1,6 @@
 /**
-     * Sélection d'une réponse avec passage automatique à la question suivante
-     */
-    selectAnswerAndAdvance(answerIndex) {
-        // Sélectionner la réponse
-        this.selectAnswer(answerIndex, true);
-        
-        // Attendre un peu pour l'animation puis passer à la question suivante
-        setTimeout(() => {
-            if (this.currentQuestion < this.config.questions.length - 1) {
-                this.nextQuestionWithSlide();
-            } else {
-                this.completeQuiz();
-            }
-        }, 800); // Délai pour voir la sélection
-    }
-    
-    /**
-     * Question suivante avec animation de glissement
-     */
-    nextQuestionWithSlide() {
-        const container = document.querySelector('.quiz-content');
-        
-        // Animation de sortie
-        container.classList.add('slide-out-left');
-        
-        setTimeout(() => {
-            // Changer de question
-            this.currentQuestion++;
-            this.renderQuestion();
-            this.updateProgress();
-            
-            // Animation d'entrée
-            container.classList.remove('slide-out-left');
-            container.classList.add('slide-in-right');
-            
-            // Nettoyer les classes d'animation
-            setTimeout(() => {
-                container.classList.remove('slide-in-right');
-            }, 400);
-            
-            this.scrollToTop();
-        }, 200);
-    }/**
  * Introxpection - Moteur de quiz réutilisable
- * Système de quiz modulaire pour tous les tests de personnalité
+ * Version corrigée et simplifiée
  */
 
 class QuizEngine {
@@ -59,6 +16,7 @@ class QuizEngine {
             this.scores[profile.id] = 0;
         });
         
+        console.log('QuizEngine initialisé avec', config.questions.length, 'questions');
         this.init();
     }
     
@@ -66,10 +24,15 @@ class QuizEngine {
      * Initialisation du quiz
      */
     init() {
-        this.renderQuestion();
-        this.updateProgress();
-        this.bindEvents();
-        this.addAnimations();
+        console.log('Initialisation du quiz...');
+        try {
+            this.renderQuestion();
+            this.updateProgress();
+            this.bindEvents();
+            console.log('Quiz initialisé avec succès');
+        } catch (error) {
+            console.error('Erreur lors de l\'initialisation:', error);
+        }
     }
     
     /**
@@ -84,6 +47,8 @@ class QuizEngine {
             return;
         }
         
+        console.log('Rendu question', this.currentQuestion + 1);
+        
         const questionHTML = `
             <div class="question-container fade-in">
                 <div class="question-number">
@@ -96,10 +61,8 @@ class QuizEngine {
                 ${question.answers.map((answer, index) => `
                     <div class="answer-option" 
                          data-answer-index="${index}"
-                         data-answer-letter="${String.fromCharCode(65 + index)}"
-                         tabindex="0"
                          role="button"
-                         aria-label="Réponse ${String.fromCharCode(65 + index)}: ${answer.text}">
+                         tabindex="0">
                         <span class="answer-letter">${String.fromCharCode(65 + index)}</span>
                         <span class="answer-text">${answer.text}</span>
                     </div>
@@ -108,9 +71,7 @@ class QuizEngine {
             
             <div class="navigation-container">
                 ${this.currentQuestion > 0 ? `
-                    <button class="prev-question-btn">
-                        ← Question précédente
-                    </button>
+                    <button class="prev-question-btn">← Question précédente</button>
                 ` : ''}
             </div>
             
@@ -124,10 +85,22 @@ class QuizEngine {
         // Restaurer la réponse sélectionnée si elle existe
         const savedAnswer = this.answers[this.currentQuestion];
         if (savedAnswer !== undefined) {
-            this.selectAnswer(savedAnswer, false);
+            this.markAnswerSelected(savedAnswer);
         }
         
         this.bindQuestionEvents();
+    }
+    
+    /**
+     * Marquer une réponse comme sélectionnée visuellement
+     */
+    markAnswerSelected(answerIndex) {
+        const answerOptions = document.querySelectorAll('.answer-option');
+        answerOptions.forEach(option => option.classList.remove('selected'));
+        
+        if (answerOptions[answerIndex]) {
+            answerOptions[answerIndex].classList.add('selected');
+        }
     }
     
     /**
@@ -139,7 +112,7 @@ class QuizEngine {
         const totalQuestionsSpan = document.querySelector('.total-questions');
         
         if (progressBar) {
-            const progress = ((this.currentQuestion) / this.config.questions.length) * 100;
+            const progress = ((this.currentQuestion + 1) / this.config.questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
         
@@ -156,14 +129,21 @@ class QuizEngine {
      * Gestion des événements globaux
      */
     bindEvents() {
+        console.log('Binding des événements...');
+        
         // Bouton retour vers l'accueil
         const backBtn = document.querySelector('.back-btn');
         if (backBtn) {
-            backBtn.addEventListener('click', () => {
+            console.log('Bouton retour trouvé');
+            backBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Clic sur retour accueil');
                 if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
                     window.location.href = '../index.html';
                 }
             });
+        } else {
+            console.warn('Bouton retour non trouvé');
         }
         
         // Raccourcis clavier
@@ -182,13 +162,6 @@ class QuizEngine {
             // Flèche gauche pour navigation arrière
             if (e.key === 'ArrowLeft' && this.currentQuestion > 0) {
                 this.previousQuestion();
-            }
-            
-            // Échap pour retour accueil
-            if (e.key === 'Escape') {
-                if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
-                    window.location.href = '../index.html';
-                }
             }
         });
     }
@@ -221,28 +194,59 @@ class QuizEngine {
     }
     
     /**
-     * Sélection d'une réponse
+     * Sélection d'une réponse avec passage automatique à la question suivante
      */
-    selectAnswer(answerIndex, animate = true) {
-        // Désélectionner toutes les options
-        const answerOptions = document.querySelectorAll('.answer-option');
-        answerOptions.forEach(option => option.classList.remove('selected'));
-        
-        // Sélectionner la nouvelle option
-        const selectedOption = answerOptions[answerIndex];
-        if (selectedOption) {
-            selectedOption.classList.add('selected');
-            
-            if (animate) {
-                this.addSelectAnimation(selectedOption);
-            }
-        }
+    selectAnswerAndAdvance(answerIndex) {
+        console.log('Réponse sélectionnée:', answerIndex);
         
         // Sauvegarder la réponse
         this.answers[this.currentQuestion] = answerIndex;
         
+        // Marquer visuellement
+        this.markAnswerSelected(answerIndex);
+        
         // Calculer les scores
         this.updateScores();
+        
+        // Effet visuel de sélection
+        const selectedOption = document.querySelectorAll('.answer-option')[answerIndex];
+        if (selectedOption) {
+            selectedOption.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                selectedOption.style.transform = '';
+            }, 200);
+        }
+        
+        // Attendre un peu puis passer à la question suivante
+        setTimeout(() => {
+            if (this.currentQuestion < this.config.questions.length - 1) {
+                this.nextQuestion();
+            } else {
+                this.completeQuiz();
+            }
+        }, 800);
+    }
+    
+    /**
+     * Question suivante
+     */
+    nextQuestion() {
+        this.currentQuestion++;
+        this.renderQuestion();
+        this.updateProgress();
+        this.scrollToTop();
+    }
+    
+    /**
+     * Question précédente
+     */
+    previousQuestion() {
+        if (this.currentQuestion > 0) {
+            this.currentQuestion--;
+            this.renderQuestion();
+            this.updateProgress();
+            this.scrollToTop();
+        }
     }
     
     /**
@@ -252,22 +256,20 @@ class QuizEngine {
         const question = this.config.questions[this.currentQuestion];
         const answerIndex = this.answers[this.currentQuestion];
         
-        if (answerIndex !== undefined) {
+        if (answerIndex !== undefined && question.answers[answerIndex].scores) {
             const answer = question.answers[answerIndex];
             
             // Ajouter les points pour chaque profil
-            if (answer.scores) {
-                Object.keys(answer.scores).forEach(profileId => {
-                    if (this.scores[profileId] !== undefined) {
-                        this.scores[profileId] += answer.scores[profileId];
-                    }
-                });
-            }
+            Object.keys(answer.scores).forEach(profileId => {
+                if (this.scores[profileId] !== undefined) {
+                    this.scores[profileId] += answer.scores[profileId];
+                }
+            });
         }
     }
     
     /**
-     * Recalculer tous les scores (utilisé lors de la navigation)
+     * Recalculer tous les scores
      */
     recalculateScores() {
         // Remettre à zéro
@@ -292,71 +294,17 @@ class QuizEngine {
     }
     
     /**
-     * Question suivante
-     */
-    nextQuestion() {
-        if (this.answers[this.currentQuestion] === undefined) {
-            this.showWarning('Veuillez sélectionner une réponse avant de continuer.');
-            return;
-        }
-        
-        if (this.currentQuestion < this.config.questions.length - 1) {
-            this.currentQuestion++;
-            this.renderQuestion();
-            this.updateProgress();
-            this.scrollToTop();
-        } else {
-            this.completeQuiz();
-        }
-    }
-    
-    /**
-     * Question précédente avec animation
-     */
-    previousQuestion() {
-        if (this.currentQuestion > 0) {
-            const container = document.querySelector('.quiz-content');
-            
-            // Animation de sortie vers la droite
-            container.style.transform = 'translateX(100%)';
-            container.style.opacity = '0';
-            container.style.transition = 'all 0.3s ease-out';
-            
-            setTimeout(() => {
-                this.currentQuestion--;
-                this.renderQuestion();
-                this.updateProgress();
-                
-                // Animation d'entrée depuis la gauche
-                container.style.transform = 'translateX(-100%)';
-                container.style.opacity = '0';
-                
-                setTimeout(() => {
-                    container.style.transform = 'translateX(0)';
-                    container.style.opacity = '1';
-                    
-                    // Nettoyer les styles inline après l'animation
-                    setTimeout(() => {
-                        container.style.transform = '';
-                        container.style.opacity = '';
-                        container.style.transition = '';
-                    }, 300);
-                }, 50);
-                
-                this.scrollToTop();
-            }, 150);
-        }
-    }
-    
-    /**
      * Finalisation du quiz
      */
     completeQuiz() {
         this.isComplete = true;
         this.recalculateScores();
         
+        console.log('Scores finaux:', this.scores);
+        
         // Trouver le profil avec le score le plus élevé
         const winningProfile = this.getWinningProfile();
+        console.log('Profil gagnant:', winningProfile);
         
         // Afficher les résultats
         this.showResults(winningProfile);
@@ -427,9 +375,6 @@ class QuizEngine {
         
         container.innerHTML = resultsHTML;
         this.scrollToTop();
-        
-        // Analytics/tracking (optionnel)
-        this.trackCompletion(profile);
     }
     
     /**
@@ -450,14 +395,7 @@ class QuizEngine {
             navigator.clipboard.writeText(shareText).then(() => {
                 this.showNotification('Résultat copié dans le presse-papier !');
             }).catch(() => {
-                // Fallback ultime : sélectionner le texte
-                const textArea = document.createElement('textarea');
-                textArea.value = shareText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                this.showNotification('Résultat copié !');
+                alert(shareText);
             });
         }
     }
@@ -484,11 +422,9 @@ class QuizEngine {
      * Utilitaires
      */
     showNotification(message) {
-        // Notification toast améliorée
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.textContent = message;
-        
         document.body.appendChild(notification);
         setTimeout(() => notification.remove(), 3000);
     }
@@ -496,55 +432,14 @@ class QuizEngine {
     scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
-    addSelectAnimation(element) {
-        // Animation de sélection plus élaborée
-        element.style.transform = 'scale(1.05)';
-        element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        // Réinitialiser après l'animation
-        setTimeout(() => {
-            element.style.transform = '';
-        }, 300);
-        
-        // Effet de vibration subtile pour feedback tactile (mobile)
-        if (navigator.vibrate && window.navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/)) {
-            navigator.vibrate(50);
-        }
-    }
-    
-    addAnimations() {
-        // Ajout d'animations subtiles aux éléments
-        const animatedElements = document.querySelectorAll('.fade-in');
-        animatedElements.forEach((el, index) => {
-            el.style.animationDelay = `${index * 0.1}s`;
-        });
-    }
-    
-    trackCompletion(profile) {
-        // Ici on pourrait ajouter du tracking/analytics
-        console.log(`Quiz completed: ${this.config.title}, Result: ${profile.name}`);
-        
-        // Exemple : localStorage pour les statistiques locales
-        const stats = JSON.parse(localStorage.getItem('introxpection_stats') || '{}');
-        if (!stats[this.config.id]) {
-            stats[this.config.id] = { completions: 0, results: {} };
-        }
-        
-        stats[this.config.id].completions++;
-        if (!stats[this.config.id].results[profile.id]) {
-            stats[this.config.id].results[profile.id] = 0;
-        }
-        stats[this.config.id].results[profile.id]++;
-        
-        localStorage.setItem('introxpection_stats', JSON.stringify(stats));
-    }
 }
 
 /**
  * Fonction utilitaire pour initialiser un quiz
  */
 function initQuiz(config) {
+    console.log('initQuiz appelée avec:', config);
+    
     // Vérifier que la configuration est valide
     if (!config || !config.questions || !config.profiles) {
         console.error('Configuration de quiz invalide');
@@ -561,21 +456,13 @@ function initQuiz(config) {
         return null;
     }
     
+    console.log('Configuration valide, création du QuizEngine...');
+    
     // Créer et retourner l'instance
     return new QuizEngine(config);
 }
 
-/**
- * Configuration globale par défaut
- */
-const defaultQuizConfig = {
-    showKeyboardHints: true,
-    allowBackNavigation: true,
-    showProgressBar: true,
-    autoSave: false // Pour une future fonctionnalité
-};
-
 // Export pour utilisation modulaire
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { QuizEngine, initQuiz, defaultQuizConfig };
+    module.exports = { QuizEngine, initQuiz };
 }
