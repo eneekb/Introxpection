@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton époque historique - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton époque historique"
+        const quizConfig = {
+            id: 'epoque-historique',
+            title: 'Ton époque historique',
+            description: 'Découvre à quelle période de l\'histoire tu appartiens vraiment !',
+            
+            questions: [
+                {
+                    text: "Si tu pouvais voyager dans le temps, tu choisirais une époque où...",
+                    answers: [
+                        { text: "Les arts et la littérature sont en pleine floraison", scores: { renaissance: 3, bellEpoque: 2, antiquite: 1 } },
+                        { text: "Les grandes découvertes changent le monde", scores: { exploration: 3, siecleDesLumieres: 2, renaissance: 1 } },
+                        { text: "La beauté et l'élégance règnent en maîtres", scores: { bellEpoque: 3, antiquite: 2, moyenAge: 1 } },
+                        { text: "Les idées révolutionnent la société", scores: { siecleDesLumieres: 3, renaissance: 2, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon idéale de passer une journée à cette époque...",
+                    answers: [
+                        { text: "Dans une bibliothèque monastique à copier des manuscrits", scores: { moyenAge: 3, antiquite: 2, renaissance: 1 } },
+                        { text: "Dans un salon littéraire à discuter philosophie", scores: { siecleDesLumieres: 3, bellEpoque: 2, renaissance: 1 } },
+                        { text: "Dans un atelier d'artiste à créer et apprendre", scores: { renaissance: 3, bellEpoque: 2, antiquite: 1 } },
+                        { text: "À explorer de nouveaux territoires et merveilles", scores: { exploration: 3, antiquite: 2, moyenAge: 1 } }
+                    ]
+                },
+                {
+                    text: "L'architecture qui te fait rêver...",
+                    answers: [
+                        { text: "Les temples majestueux et harmonieux", scores: { antiquite: 3, renaissance: 2, moyenAge: 1 } },
+                        { text: "Les cathédrales gothiques qui touchent le ciel", scores: { moyenAge: 3, renaissance: 2, bellEpoque: 1 } },
+                        { text: "Les palais Renaissance aux proportions parfaites", scores: { renaissance: 3, bellEpoque: 2, siecleDesLumieres: 1 } },
+                        { text: "Les constructions Art nouveau pleines de courbes", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "Le rôle que tu aurais aimé avoir...",
+                    answers: [
+                        { text: "Enlumineuse de manuscrits précieux", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "Philosophe ou écrivaine reconnue", scores: { siecleDesLumieres: 3, antiquite: 2, bellEpoque: 1 } },
+                        { text: "Artiste protégée d'un mécène", scores: { renaissance: 3, bellEpoque: 2, moyenAge: 1 } },
+                        { text: "Exploratrice documentant ses découvertes", scores: { exploration: 3, bellEpoque: 2, siecleDesLumieres: 1 } }
+                    ]
+                },
+                {
+                    text: "Les vêtements que tu porterais avec plaisir...",
+                    answers: [
+                        { text: "Une toge élégante et des bijoux délicats", scores: { antiquite: 3, renaissance: 1, moyenAge: 1 } },
+                        { text: "Une robe longue avec hennin et voile", scores: { moyenAge: 3, renaissance: 2, bellEpoque: 1 } },
+                        { text: "Une robe corsetée aux riches étoffes", scores: { renaissance: 3, bellEpoque: 2, siecleDesLumieres: 1 } },
+                        { text: "Une tenue Art nouveau fluide et ornementée", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "La forme d'art qui t'attire le plus...",
+                    answers: [
+                        { text: "Les fresques et mosaïques monumentales", scores: { antiquite: 3, moyenAge: 2, renaissance: 1 } },
+                        { text: "Les enluminures et vitraux colorés", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "Les tableaux aux perspectives parfaites", scores: { renaissance: 3, siecleDesLumieres: 2, bellEpoque: 1 } },
+                        { text: "L'art nouveau et ses formes naturelles", scores: { bellEpoque: 3, renaissance: 1, moyenAge: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta vision de la famille à cette époque...",
+                    answers: [
+                        { text: "Un clan soudé autour de traditions millénaires", scores: { antiquite: 3, moyenAge: 2, renaissance: 1 } },
+                        { text: "Une maisonnée unie par la foi et le travail", scores: { moyenAge: 3, exploration: 2, antiquite: 1 } },
+                        { text: "Une famille cultivée partageant les arts", scores: { renaissance: 3, siecleDesLumieres: 2, bellEpoque: 1 } },
+                        { text: "Un foyer moderne ouvert sur le monde", scores: { bellEpoque: 3, siecleDesLumieres: 2, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "L'invention ou découverte qui t'aurait passionnée...",
+                    answers: [
+                        { text: "L'écriture et les premiers livres", scores: { antiquite: 3, moyenAge: 2, renaissance: 1 } },
+                        { text: "L'imprimerie qui démocratise le savoir", scores: { renaissance: 3, siecleDesLumieres: 2, exploration: 1 } },
+                        { text: "Les cartes du monde et nouveaux continents", scores: { exploration: 3, renaissance: 2, siecleDesLumieres: 1 } },
+                        { text: "La photographie pour capturer la beauté", scores: { bellEpoque: 3, siecleDesLumieres: 1, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "Le paysage où tu te sentirais chez toi...",
+                    answers: [
+                        { text: "Une cité antique avec forums et jardins", scores: { antiquite: 3, renaissance: 2, moyenAge: 1 } },
+                        { text: "Un village médiéval autour de son château", scores: { moyenAge: 3, renaissance: 1, exploration: 1 } },
+                        { text: "Une ville Renaissance aux palais magnifiques", scores: { renaissance: 3, siecleDesLumieres: 2, bellEpoque: 1 } },
+                        { text: "Une métropole moderne avec parcs et musées", scores: { bellEpoque: 3, siecleDesLumieres: 2, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon de communiquer à distance...",
+                    answers: [
+                        { text: "Des tablettes de cire et messagers", scores: { antiquite: 3, moyenAge: 2, renaissance: 1 } },
+                        { text: "Des lettres enluminées sur parchemin", scores: { moyenAge: 3, renaissance: 2, exploration: 1 } },
+                        { text: "De longues correspondances philosophiques", scores: { siecleDesLumieres: 3, renaissance: 2, bellEpoque: 1 } },
+                        { text: "Des cartes postales illustrées du monde", scores: { bellEpoque: 3, exploration: 2, siecleDesLumieres: 1 } }
+                    ]
+                },
+                {
+                    text: "L'éducation que tu aurais aimé recevoir...",
+                    answers: [
+                        { text: "Les arts libéraux et la philosophie antique", scores: { antiquite: 3, renaissance: 2, siecleDesLumieres: 1 } },
+                        { text: "L'enluminure et la calligraphie monastique", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "L'humanisme et les arts de la Renaissance", scores: { renaissance: 3, siecleDesLumieres: 2, bellEpoque: 1 } },
+                        { text: "Les sciences et découvertes modernes", scores: { siecleDesLumieres: 3, exploration: 2, bellEpoque: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton lieu de création idéal...",
+                    answers: [
+                        { text: "Un atrium romain baigné de lumière", scores: { antiquite: 3, renaissance: 2, bellEpoque: 1 } },
+                        { text: "Un scriptorium silencieux et recueilli", scores: { moyenAge: 3, renaissance: 1, antiquite: 1 } },
+                        { text: "Un atelier d'artiste florentin", scores: { renaissance: 3, bellEpoque: 2, siecleDesLumieres: 1 } },
+                        { text: "Un salon parisien élégant", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "Les histoires qui te captivent...",
+                    answers: [
+                        { text: "Les mythes et épopées légendaires", scores: { antiquite: 3, moyenAge: 2, exploration: 1 } },
+                        { text: "Les romans de chevalerie et contes", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "Les récits de voyages et découvertes", scores: { exploration: 3, siecleDesLumieres: 2, renaissance: 1 } },
+                        { text: "Les romans modernes et pièces de théâtre", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta contribution à cette époque serait...",
+                    answers: [
+                        { text: "Préserver et transmettre le savoir ancien", scores: { moyenAge: 3, antiquite: 2, renaissance: 1 } },
+                        { text: "Créer de nouvelles formes de beauté", scores: { renaissance: 3, bellEpoque: 2, antiquite: 1 } },
+                        { text: "Explorer et documenter l'inconnu", scores: { exploration: 3, siecleDesLumieres: 2, renaissance: 1 } },
+                        { text: "Faire progresser les idées et les arts", scores: { siecleDesLumieres: 3, bellEpoque: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "Le moment de la journée que tu préfères...",
+                    answers: [
+                        { text: "L'aube dans les jardins antiques", scores: { antiquite: 3, renaissance: 2, moyenAge: 1 } },
+                        { text: "Les matines dans le cloître paisible", scores: { moyenAge: 3, antiquite: 1, renaissance: 1 } },
+                        { text: "L'après-midi dans l'atelier lumineux", scores: { renaissance: 3, bellEpoque: 2, siecleDesLumieres: 1 } },
+                        { text: "Le soir dans les salons animés", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "La technologie de l'époque qui t'émerveille...",
+                    answers: [
+                        { text: "Les aqueducs et architecture monumentale", scores: { antiquite: 3, renaissance: 1, moyenAge: 1 } },
+                        { text: "Les cathédrales et leur ingénierie divine", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "Les instruments de navigation et cartes", scores: { exploration: 3, renaissance: 2, siecleDesLumieres: 1 } },
+                        { text: "L'électricité et les premières photos", scores: { bellEpoque: 3, siecleDesLumieres: 2, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rapport à la nature à cette époque...",
+                    answers: [
+                        { text: "Harmonie avec les jardins ordonnés", scores: { antiquite: 3, renaissance: 2, siecleDesLumieres: 1 } },
+                        { text: "Contemplation mystique de la création", scores: { moyenAge: 3, renaissance: 1, antiquite: 1 } },
+                        { text: "Étude scientifique et artistique", scores: { renaissance: 3, siecleDesLumieres: 2, exploration: 1 } },
+                        { text: "Promenades dans les parcs romantiques", scores: { bellEpoque: 3, siecleDesLumieres: 2, renaissance: 1 } }
+                    ]
+                },
+                {
+                    text: "Les valeurs de l'époque qui te correspondent...",
+                    answers: [
+                        { text: "Sagesse, harmonie et beauté idéale", scores: { antiquite: 3, renaissance: 2, siecleDesLumieres: 1 } },
+                        { text: "Foi, communauté et traditions", scores: { moyenAge: 3, antiquite: 1, exploration: 1 } },
+                        { text: "Curiosité, créativité et humanisme", scores: { renaissance: 3, siecleDesLumieres: 2, exploration: 1 } },
+                        { text: "Progrès, raffinement et modernité", scores: { bellEpoque: 3, siecleDesLumieres: 2, exploration: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton héritage de cette époque serait...",
+                    answers: [
+                        { text: "Des écrits philosophiques intemporels", scores: { antiquite: 3, siecleDesLumieres: 2, moyenAge: 1 } },
+                        { text: "Des manuscrits enluminés préservés", scores: { moyenAge: 3, renaissance: 2, antiquite: 1 } },
+                        { text: "Des œuvres d'art révolutionnaires", scores: { renaissance: 3, bellEpoque: 2, moyenAge: 1 } },
+                        { text: "Des photographies d'un monde en mutation", scores: { bellEpoque: 3, exploration: 2, siecleDesLumieres: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui te manquerait le plus de notre époque...",
+                    answers: [
+                        { text: "Les livres accessibles à tous", scores: { moyenAge: 3, antiquite: 2, renaissance: 1 } },
+                        { text: "La possibilité de voyager facilement", scores: { exploration: 3, antiquite: 2, moyenAge: 1 } },
+                        { text: "L'égalité et la liberté d'expression", scores: { siecleDesLumieres: 3, bellEpoque: 2, renaissance: 1 } },
+                        { text: "La photographie pour capturer les moments", scores: { bellEpoque: 3, renaissance: 2, exploration: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'antiquite',
+                    name: 'L\'Antiquité Classique',
+                    subtitle: 'L\'âge d\'or de la sagesse',
+                    icon: '🏛️',
+                    description: `
+                        <p>Tu appartiens à <strong>l'Antiquité Classique</strong> ! Ton âme résonne avec l'époque où philosophie, art et harmonie étaient les piliers de la civilisation.</p>
+                        
+                        <p>Dans la Grèce ou la Rome antique, tu aurais trouvé ta place parmi les penseurs et artistes. Tu aurais fréquenté les bibliothèques d'Alexandrie, participé aux discussions philosophiques dans les jardins d'Académie, créé des œuvres respectant les proportions divines.</p>
+                        
+                        <p>Cette époque correspond à ton amour de la beauté pure, de l'ordre harmonieux et de la sagesse intemporelle. Tu aurais été une gardienne du savoir, créant et préservant la beauté pour les générations futures. Les temples majestueux et les textes philosophiques auraient nourri ton âme contemplative.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Sagesse, harmonie, beauté éternelle, philosophie</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '500 av. J.-C. - 500 ap. J.-C.' },
+                        { label: 'Lieu idéal', value: 'Athènes ou Rome' },
+                        { label: 'Passion', value: 'Philosophie et arts' },
+                        { label: 'Héritage', value: 'Sagesse intemporelle' }
+                    ]
+                },
+                {
+                    id: 'moyenAge',
+                    name: 'Le Moyen Âge',
+                    subtitle: 'L\'époque des enluminures',
+                    icon: '🏰',
+                    description: `
+                        <p>Tu appartiens au <strong>Moyen Âge</strong> ! Ton esprit créatif aurait brillé dans cette époque de foi, de traditions et d'art sacré.</p>
+                        
+                        <p>Dans un monastère paisible ou un château fort, tu aurais trouvé ton refuge créatif. Enlumineuse de manuscrits, tu aurais passé tes journées à orner les textes sacrés de miniatures dorées. Le calme du scriptorium, l'odeur du parchemin et la lumière filtrant par les vitraux auraient été ton univers.</p>
+                        
+                        <p>Cette époque correspond à ton amour de l'ordre, de la tradition et de la beauté minutieuse. Tu aurais excellé dans l'art patient de la copie et de l'enluminure, préservant le savoir ancien tout en y ajoutant ta touche créative unique.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Tradition, patience, art sacré, préservation</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '500 - 1500' },
+                        { label: 'Lieu idéal', value: 'Monastère ou château' },
+                        { label: 'Passion', value: 'Enluminure et calligraphie' },
+                        { label: 'Héritage', value: 'Manuscrits précieux' }
+                    ]
+                },
+                {
+                    id: 'renaissance',
+                    name: 'La Renaissance',
+                    subtitle: 'L\'explosion créative',
+                    icon: '🎨',
+                    description: `
+                        <p>Tu appartiens à <strong>la Renaissance</strong> ! Cette période de renouveau artistique et intellectuel correspond parfaitement à ton esprit créatif multifacette.</p>
+                        
+                        <p>Dans les ateliers de Florence ou les cours des mécènes, tu aurais épanoui tous tes talents. Artiste polyvalente comme les grands maîtres de l'époque, tu aurais excellé dans plusieurs disciplines : peinture, architecture, littérature. L'effervescence créative et intellectuelle t'aurait portée.</p>
+                        
+                        <p>Cette époque reflète ton désir de créer de la beauté, d'explorer de nouvelles techniques et de repousser les limites de l'art. Tu aurais été une humaniste passionnée, combinant l'amour du savoir ancien avec l'innovation créative.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Créativité, innovation, humanisme, beauté</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '1400 - 1600' },
+                        { label: 'Lieu idéal', value: 'Florence ou Venise' },
+                        { label: 'Passion', value: 'Arts et humanisme' },
+                        { label: 'Héritage', value: 'Œuvres révolutionnaires' }
+                    ]
+                },
+                {
+                    id: 'exploration',
+                    name: 'L\'Âge des Explorations',
+                    subtitle: 'La découverte du monde',
+                    icon: '🗺️',
+                    description: `
+                        <p>Tu appartiens à <strong>l'Âge des Explorations</strong> ! Ton esprit aventurier et ta soif de découverte auraient trouvé leur épanouissement dans cette ère d'expansion.</p>
+                        
+                        <p>Sur les navires partant vers l'inconnu ou dans les bibliothèques cartographiant le nouveau monde, tu aurais documenté les merveilles découvertes. Ton appareil photo d'aujourd'hui aurait été remplacé par des carnets de croquis et des journaux détaillés des terres lointaines.</p>
+                        
+                        <p>Cette époque correspond à ta curiosité insatiable et ton désir de capturer la beauté du monde. Tu aurais été une exploratrice-artiste, documentant les paysages inconnus et les couchers de soleil sur des mers jamais cartographiées.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Découverte, aventure, documentation, horizons nouveaux</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '1450 - 1650' },
+                        { label: 'Lieu idéal', value: 'Ports et terres nouvelles' },
+                        { label: 'Passion', value: 'Exploration et cartographie' },
+                        { label: 'Héritage', value: 'Récits de voyages' }
+                    ]
+                },
+                {
+                    id: 'siecleDesLumieres',
+                    name: 'Le Siècle des Lumières',
+                    subtitle: 'L\'ère de la raison et du progrès',
+                    icon: '💡',
+                    description: `
+                        <p>Tu appartiens au <strong>Siècle des Lumières</strong> ! Cette époque de raison, de progrès et d'échanges intellectuels correspond à ton esprit analytique et créatif.</p>
+                        
+                        <p>Dans les salons parisiens ou les académies européennes, tu aurais brillé par tes idées et ta créativité. Les longues correspondances philosophiques, les débats passionnés sur l'art et la société, les premières expériences scientifiques... tout cela aurait nourri ton esprit curieux.</p>
+                        
+                        <p>Cette période reflète ton amour des discussions profondes avec ton père, ton désir de comprendre et d'organiser le monde. Tu aurais été une philosophe-artiste, alliant raison et créativité pour faire progresser la société.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Raison, progrès, échange intellectuel, innovation</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '1700 - 1800' },
+                        { label: 'Lieu idéal', value: 'Salons parisiens' },
+                        { label: 'Passion', value: 'Philosophie et sciences' },
+                        { label: 'Héritage', value: 'Idées révolutionnaires' }
+                    ]
+                },
+                {
+                    id: 'bellEpoque',
+                    name: 'La Belle Époque',
+                    subtitle: 'L\'art de vivre moderne',
+                    icon: '🎭',
+                    description: `
+                        <p>Tu appartiens à <strong>la Belle Époque</strong> ! Cette période d'effervescence artistique et de modernité naissante est faite pour ton âme créative et raffinée.</p>
+                        
+                        <p>Dans le Paris de la fin du XIXe siècle, tu aurais été une artiste photographe capturant la beauté éphémère du monde moderne. Les expositions universelles, les premiers films, l'Art nouveau... Cette époque bouillonnante aurait stimulé toutes tes passions créatives.</p>
+                        
+                        <p>Cette période correspond à ton amour de la beauté, de la photographie et des arts. Tu aurais documenté cette époque de transformation avec ton œil unique, créant des œuvres mêlant tradition et modernité, comme les cartes postales artistiques que tu aimes tant.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Modernité, élégance, photographie, effervescence créative</p>
+                    `,
+                    traits: [
+                        { label: 'Période', value: '1871 - 1914' },
+                        { label: 'Lieu idéal', value: 'Paris ou Vienne' },
+                        { label: 'Passion', value: 'Arts et photographie' },
+                        { label: 'Héritage', value: 'Images d\'une époque' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
