@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton refuge personnel - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton refuge personnel"
+        const quizConfig = {
+            id: 'refuge-personnel',
+            title: 'Ton refuge personnel',
+            description: 'Découvre quel type de sanctuaire correspond à ton besoin de ressourcement !',
+            
+            questions: [
+                {
+                    text: "Le moment où tu ressens le plus le besoin d'un refuge...",
+                    answers: [
+                        { text: "Après une journée sociale intense", scores: { sanctuaire: 3, cocon: 2, observatoire: 1 } },
+                        { text: "Quand j'ai besoin de créer et m'exprimer", scores: { atelier: 3, bibliotheque: 1, jardin: 1 } },
+                        { text: "Pour me plonger dans mes livres", scores: { bibliotheque: 3, sanctuaire: 2, cocon: 1 } },
+                        { text: "Quand je veux contempler et photographier", scores: { observatoire: 3, jardin: 2, atelier: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta chambre idéale serait organisée avec...",
+                    answers: [
+                        { text: "Un coin lecture parfait avec étagères et fauteuil", scores: { bibliotheque: 3, sanctuaire: 2, cocon: 1 } },
+                        { text: "Un espace création pour Lego et projets", scores: { atelier: 3, sanctuaire: 1, bibliotheque: 1 } },
+                        { text: "Une vue magnifique pour les couchers de soleil", scores: { observatoire: 3, jardin: 2, cocon: 1 } },
+                        { text: "Un lit douillet et des rangements parfaits", scores: { sanctuaire: 3, cocon: 2, atelier: 1 } }
+                    ]
+                },
+                {
+                    text: "L'activité qui te ressource le plus...",
+                    answers: [
+                        { text: "Ranger et organiser mon espace", scores: { sanctuaire: 3, atelier: 2, cocon: 1 } },
+                        { text: "Me blottir avec un bon livre", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Créer quelque chose de mes mains", scores: { atelier: 3, jardin: 1, sanctuaire: 1 } },
+                        { text: "Observer la nature depuis ma fenêtre", scores: { observatoire: 3, jardin: 2, bibliotheque: 1 } }
+                    ]
+                },
+                {
+                    text: "Le son qui t'apaise dans ton refuge...",
+                    answers: [
+                        { text: "Le silence total pour me concentrer", scores: { sanctuaire: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Le bruissement des pages qu'on tourne", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Les bruits de la nature par la fenêtre", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "Une musique douce en fond", scores: { cocon: 3, atelier: 2, observatoire: 1 } }
+                    ]
+                },
+                {
+                    text: "L'éclairage parfait pour ton refuge...",
+                    answers: [
+                        { text: "La lumière naturelle qui change avec les heures", scores: { observatoire: 3, jardin: 2, atelier: 1 } },
+                        { text: "Des lampes douces pour une ambiance cosy", scores: { cocon: 3, bibliotheque: 2, sanctuaire: 1 } },
+                        { text: "Un éclairage modulable selon mes activités", scores: { atelier: 3, sanctuaire: 2, bibliotheque: 1 } },
+                        { text: "La lumière tamisée pour la lecture", scores: { bibliotheque: 3, cocon: 2, observatoire: 1 } }
+                    ]
+                },
+                {
+                    text: "Les objets essentiels dans ton refuge...",
+                    answers: [
+                        { text: "Mes livres préférés à portée de main", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Mes créations et projets en cours", scores: { atelier: 3, sanctuaire: 1, jardin: 1 } },
+                        { text: "Des plantes et éléments naturels", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "Mon appareil photo et mes albums", scores: { observatoire: 3, atelier: 2, bibliotheque: 1 } }
+                    ]
+                },
+                {
+                    text: "Le moment de la journée où tu aimes être dans ton refuge...",
+                    answers: [
+                        { text: "Le soir pour décompresser et ranger", scores: { sanctuaire: 3, cocon: 2, bibliotheque: 1 } },
+                        { text: "L'après-midi pour créer tranquillement", scores: { atelier: 3, jardin: 2, sanctuaire: 1 } },
+                        { text: "Au coucher du soleil pour contempler", scores: { observatoire: 3, jardin: 2, cocon: 1 } },
+                        { text: "N'importe quand pour lire", scores: { bibliotheque: 3, cocon: 2, atelier: 1 } }
+                    ]
+                },
+                {
+                    text: "La vue depuis ton refuge idéal...",
+                    answers: [
+                        { text: "Un jardin paisible avec arbres et fleurs", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "L'horizon pour les levers et couchers de soleil", scores: { observatoire: 3, jardin: 1, sanctuaire: 1 } },
+                        { text: "Peu importe, je regarde vers l'intérieur", scores: { sanctuaire: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Une vue qui change avec les saisons", scores: { cocon: 3, jardin: 2, observatoire: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton refuge quand tu étais petite...",
+                    answers: [
+                        { text: "Un coin secret pour jouer aux Playmobil", scores: { atelier: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Sous les couvertures avec une lampe et un livre", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Près d'une fenêtre pour rêver", scores: { observatoire: 3, jardin: 2, bibliotheque: 1 } },
+                        { text: "Ma chambre parfaitement organisée", scores: { sanctuaire: 3, atelier: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui rend un lieu spécial pour toi...",
+                    answers: [
+                        { text: "L'ordre et l'harmonie qui y règnent", scores: { sanctuaire: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Les souvenirs et créations qu'il contient", scores: { atelier: 3, cocon: 2, jardin: 1 } },
+                        { text: "La connexion avec la nature", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "La possibilité de m'y isoler", scores: { bibliotheque: 3, sanctuaire: 2, observatoire: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rangement idéal dans ton refuge...",
+                    answers: [
+                        { text: "Tout a sa place, rien ne traîne", scores: { sanctuaire: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Organisé par projets et activités", scores: { atelier: 3, sanctuaire: 2, bibliotheque: 1 } },
+                        { text: "Des étagères remplies de livres", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "Minimaliste avec juste l'essentiel", scores: { observatoire: 3, jardin: 2, sanctuaire: 1 } }
+                    ]
+                },
+                {
+                    text: "L'ambiance que tu recherches dans ton refuge...",
+                    answers: [
+                        { text: "Calme et propice à la concentration", scores: { bibliotheque: 3, sanctuaire: 2, atelier: 1 } },
+                        { text: "Inspirante pour la créativité", scores: { atelier: 3, jardin: 2, observatoire: 1 } },
+                        { text: "Apaisante et réconfortante", scores: { cocon: 3, sanctuaire: 2, jardin: 1 } },
+                        { text: "Connectée aux éléments naturels", scores: { jardin: 3, observatoire: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Les couleurs de ton refuge idéal...",
+                    answers: [
+                        { text: "Des tons neutres et apaisants", scores: { sanctuaire: 3, observatoire: 2, bibliotheque: 1 } },
+                        { text: "Des couleurs chaudes et accueillantes", scores: { cocon: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Des verts naturels et terreux", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "Un mélange coloré qui m'inspire", scores: { atelier: 3, jardin: 1, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce que tu fais en premier en entrant dans ton refuge...",
+                    answers: [
+                        { text: "Je range et mets tout en ordre", scores: { sanctuaire: 3, atelier: 2, bibliotheque: 1 } },
+                        { text: "Je m'installe confortablement", scores: { cocon: 3, bibliotheque: 2, observatoire: 1 } },
+                        { text: "Je regarde dehors et respire", scores: { observatoire: 3, jardin: 2, cocon: 1 } },
+                        { text: "Je reprends mon projet en cours", scores: { atelier: 3, bibliotheque: 1, sanctuaire: 1 } }
+                    ]
+                },
+                {
+                    text: "Les meubles essentiels de ton refuge...",
+                    answers: [
+                        { text: "Des étagères et rangements parfaits", scores: { sanctuaire: 3, bibliotheque: 2, atelier: 1 } },
+                        { text: "Un fauteuil de lecture ultra confortable", scores: { bibliotheque: 3, cocon: 2, observatoire: 1 } },
+                        { text: "Une grande table pour créer", scores: { atelier: 3, sanctuaire: 1, jardin: 1 } },
+                        { text: "Un siège près de la fenêtre", scores: { observatoire: 3, cocon: 2, jardin: 1 } }
+                    ]
+                },
+                {
+                    text: "L'odeur de ton refuge idéal...",
+                    answers: [
+                        { text: "Fraîche et propre, comme du linge frais", scores: { sanctuaire: 3, cocon: 2, bibliotheque: 1 } },
+                        { text: "Les vieux livres et le papier", scores: { bibliotheque: 3, atelier: 1, sanctuaire: 1 } },
+                        { text: "Les fleurs et la nature", scores: { jardin: 3, observatoire: 2, cocon: 1 } },
+                        { text: "Un mélange de mes créations", scores: { atelier: 3, cocon: 1, jardin: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton refuge est ouvert à...",
+                    answers: [
+                        { text: "Personne, c'est mon espace à moi", scores: { sanctuaire: 3, bibliotheque: 2, observatoire: 1 } },
+                        { text: "Ma famille proche seulement", scores: { cocon: 3, jardin: 2, atelier: 1 } },
+                        { text: "Ceux qui partagent mes passions", scores: { atelier: 3, bibliotheque: 2, cocon: 1 } },
+                        { text: "La nature qui entre par les fenêtres", scores: { jardin: 3, observatoire: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Le temps dans ton refuge...",
+                    answers: [
+                        { text: "S'arrête quand je lis", scores: { bibliotheque: 3, cocon: 2, sanctuaire: 1 } },
+                        { text: "File quand je crée", scores: { atelier: 3, jardin: 1, observatoire: 1 } },
+                        { text: "S'écoule paisiblement", scores: { observatoire: 3, jardin: 2, cocon: 1 } },
+                        { text: "Est rythmé par mes routines", scores: { sanctuaire: 3, bibliotheque: 1, atelier: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton refuge dans tes rêves...",
+                    answers: [
+                        { text: "Une bibliothèque infinie", scores: { bibliotheque: 3, sanctuaire: 1, cocon: 1 } },
+                        { text: "Un atelier magique sans limites", scores: { atelier: 3, jardin: 1, observatoire: 1 } },
+                        { text: "Une tour avec vue sur le monde", scores: { observatoire: 3, jardin: 2, sanctuaire: 1 } },
+                        { text: "Un jardin secret enchanteur", scores: { jardin: 3, cocon: 2, atelier: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce que ton refuge dit de toi...",
+                    answers: [
+                        { text: "Que j'aime l'ordre et la sérénité", scores: { sanctuaire: 3, bibliotheque: 2, observatoire: 1 } },
+                        { text: "Que je suis créative et imaginative", scores: { atelier: 3, jardin: 2, cocon: 1 } },
+                        { text: "Que j'ai besoin de beauté et nature", scores: { jardin: 3, observatoire: 2, bibliotheque: 1 } },
+                        { text: "Que je chéris mes moments seule", scores: { bibliotheque: 3, sanctuaire: 2, cocon: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'sanctuaire',
+                    name: 'Le Sanctuaire Ordonné',
+                    subtitle: 'L\'harmonie par l\'organisation',
+                    icon: '✨',
+                    description: `
+                        <p>Ton refuge idéal est un <strong>Sanctuaire Ordonné</strong> ! Pour toi, l'ordre extérieur crée la paix intérieure.</p>
+                        
+                        <p>Tu as besoin d'un espace où chaque chose a sa place, où règne une harmonie visuelle parfaite. Ranger ta chambre n'est pas une corvée mais un rituel apaisant. Dans cet environnement maîtrisé, ton esprit peut se détendre et ta créativité s'épanouir.</p>
+                        
+                        <p>Ton sanctuaire est un reflet de ton monde intérieur : organisé, serein, équilibré. C'est là que tu te reconnectes avec toi-même, que tu retrouves ton centre. L'ordre que tu crées est une forme de méditation active.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Organisation, sérénité, contrôle, harmonie</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Épurée et ordonnée' },
+                        { label: 'Activité', value: 'Ranger et organiser' },
+                        { label: 'Besoin', value: 'Maîtrise de l\'espace' },
+                        { label: 'Devise', value: 'L\'ordre extérieur, paix intérieure' }
+                    ]
+                },
+                {
+                    id: 'bibliotheque',
+                    name: 'La Bibliothèque Secrète',
+                    subtitle: 'L\'évasion par les mots',
+                    icon: '📚',
+                    description: `
+                        <p>Ton refuge idéal est une <strong>Bibliothèque Secrète</strong> ! Les livres sont tes portes vers mille mondes.</p>
+                        
+                        <p>Tu rêves d'un espace entouré de livres du sol au plafond, avec un fauteuil parfait où te blottir. L'odeur du papier, le bruissement des pages, le silence studieux... tout cela crée ton paradis personnel. C'est là que tu voyages sans bouger, que tu vis mille vies.</p>
+                        
+                        <p>Ta bibliothèque est plus qu'un lieu de lecture : c'est un sanctuaire de l'imagination, un refuge de l'esprit. Chaque livre est un ami, chaque étagère raconte une partie de ton histoire intellectuelle et émotionnelle.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Lecture, évasion, connaissance, imagination</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Studieuse et feutrée' },
+                        { label: 'Activité', value: 'Lire et rêver' },
+                        { label: 'Besoin', value: 'Évasion intellectuelle' },
+                        { label: 'Devise', value: 'Un livre, un voyage' }
+                    ]
+                },
+                {
+                    id: 'atelier',
+                    name: 'L\'Atelier Créatif',
+                    subtitle: 'Le laboratoire de l\'imagination',
+                    icon: '🎨',
+                    description: `
+                        <p>Ton refuge idéal est un <strong>Atelier Créatif</strong> ! C'est là que tes mains donnent vie à tes rêves.</p>
+                        
+                        <p>Tu as besoin d'un espace où tu peux créer librement : constructions Lego épiques, projets Playmobil, dessins, photos... Ton atelier est organisé par zones de création, avec tout ton matériel à portée de main. C'est un lieu vivant où les projets en cours côtoient les créations terminées.</p>
+                        
+                        <p>Dans cet espace, le temps n'existe plus. Tu entres dans un état de flow créatif où seul compte le plaisir de créer. Ton atelier est le miroir de ton imagination débordante.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Création, expression, projets, imagination</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Dynamique et inspirante' },
+                        { label: 'Activité', value: 'Créer et construire' },
+                        { label: 'Besoin', value: 'Expression créative' },
+                        { label: 'Devise', value: 'Créer c\'est vivre' }
+                    ]
+                },
+                {
+                    id: 'observatoire',
+                    name: 'L\'Observatoire Contemplatif',
+                    subtitle: 'La fenêtre sur l\'infini',
+                    icon: '🌅',
+                    description: `
+                        <p>Ton refuge idéal est un <strong>Observatoire Contemplatif</strong> ! Tu as besoin d'un lien visuel avec le monde extérieur.</p>
+                        
+                        <p>L'endroit parfait pour toi a une vue imprenable, idéale pour photographier les couchers de soleil et observer les changements de lumière. C'est un poste d'observation où tu peux contempler la beauté du monde tout en restant dans ton cocon. Ton appareil photo n'est jamais loin.</p>
+                        
+                        <p>Cet observatoire est ton point de connexion entre l'intérieur et l'extérieur, entre toi et l'univers. C'est là que tu captures la beauté éphémère, que tu médites sur le passage du temps.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Contemplation, photographie, lumière, connexion</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Lumineuse et ouverte' },
+                        { label: 'Activité', value: 'Observer et capturer' },
+                        { label: 'Besoin', value: 'Vue sur le monde' },
+                        { label: 'Devise', value: 'Voir pour comprendre' }
+                    ]
+                },
+                {
+                    id: 'jardin',
+                    name: 'Le Jardin Intérieur',
+                    subtitle: 'La nature comme refuge',
+                    icon: '🌿',
+                    description: `
+                        <p>Ton refuge idéal est un <strong>Jardin Intérieur</strong> ! Tu as besoin de nature même dans ton espace personnel.</p>
+                        
+                        <p>Tu rêves d'un lieu où l'intérieur et l'extérieur se mélangent harmonieusement. Des plantes partout, une lumière naturelle abondante, peut-être même un petit coin de jardin visible depuis ta fenêtre. C'est un écosystème personnel où tu peux respirer et te reconnecter à la nature.</p>
+                        
+                        <p>Ton jardin intérieur est un havre de paix vivant. Les plantes ne sont pas juste de la décoration : elles sont tes compagnes silencieuses, témoins de tes moments de solitude créative.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Nature, croissance, vie, harmonie naturelle</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Naturelle et vivante' },
+                        { label: 'Activité', value: 'Cultiver et contempler' },
+                        { label: 'Besoin', value: 'Connexion à la nature' },
+                        { label: 'Devise', value: 'La nature apaise l\'âme' }
+                    ]
+                },
+                {
+                    id: 'cocon',
+                    name: 'Le Cocon Douillet',
+                    subtitle: 'Le nid de douceur',
+                    icon: '🏠',
+                    description: `
+                        <p>Ton refuge idéal est un <strong>Cocon Douillet</strong> ! Tu recherches avant tout le confort et la chaleur.</p>
+                        
+                        <p>Ton espace parfait est rempli de textures douces, de coussins moelleux, de plaids dans lesquels t'enrouler. C'est un nid protecteur où tu peux te blottir avec un livre, rêver en regardant par la fenêtre, ou simplement savourer le calme. La décoration est chaleureuse et personnelle.</p>
+                        
+                        <p>Ce cocon est ton armure douce contre le monde extérieur. C'est là que tu recharges tes batteries émotionnelles, entourée d'objets qui te réconfortent et de souvenirs qui te font sourire.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Confort, chaleur, protection, douceur</p>
+                    `,
+                    traits: [
+                        { label: 'Ambiance', value: 'Chaleureuse et enveloppante' },
+                        { label: 'Activité', value: 'Se blottir et rêver' },
+                        { label: 'Besoin', value: 'Réconfort physique' },
+                        { label: 'Devise', value: 'La douceur comme refuge' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
