@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton style photographique - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton style photographique"
+        const quizConfig = {
+            id: 'style-photographique',
+            title: 'Ton style photographique',
+            description: 'Découvre quel type de photographe sommeille en toi !',
+            
+            questions: [
+                {
+                    text: "Le moment parfait pour photographier, c'est...",
+                    answers: [
+                        { text: "L'heure dorée du coucher de soleil", scores: { lumiere: 3, paysagiste: 2, poete: 1 } },
+                        { text: "Les instants spontanés en famille", scores: { memoire: 3, intimiste: 2, documentaire: 1 } },
+                        { text: "Quand je découvre un détail fascinant", scores: { explorateur: 3, architecte: 2, poete: 1 } },
+                        { text: "Les moments de calme et de solitude", scores: { contemplatif: 3, poete: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui t'attire le plus dans un paysage...",
+                    answers: [
+                        { text: "Les jeux de lumière sur l'eau ou les nuages", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "L'harmonie générale et les grandes perspectives", scores: { paysagiste: 3, architecte: 2, lumiere: 1 } },
+                        { text: "Les petits détails qui racontent une histoire", scores: { poete: 3, explorateur: 2, intimiste: 1 } },
+                        { text: "L'atmosphère qui s'en dégage", scores: { contemplatif: 3, poete: 2, paysagiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon de préparer une photo...",
+                    answers: [
+                        { text: "J'attends patiemment la lumière parfaite", scores: { lumiere: 3, contemplatif: 2, paysagiste: 1 } },
+                        { text: "Je compose soigneusement mon cadre", scores: { architecte: 3, paysagiste: 2, poete: 1 } },
+                        { text: "Je capture l'instant sans trop réfléchir", scores: { memoire: 3, documentaire: 2, intimiste: 1 } },
+                        { text: "Je cherche l'angle qui révèle l'invisible", scores: { explorateur: 3, poete: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Les photos de famille que tu préfères faire...",
+                    answers: [
+                        { text: "Les moments naturels et spontanés", scores: { memoire: 3, intimiste: 2, documentaire: 1 } },
+                        { text: "Les portraits posés mais authentiques", scores: { intimiste: 3, memoire: 2, architecte: 1 } },
+                        { text: "Les scènes qui racontent notre histoire", scores: { documentaire: 3, memoire: 2, poete: 1 } },
+                        { text: "Les détails qui capturent l'essence de chacun", scores: { poete: 3, intimiste: 2, explorateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton sujet de prédilection en nature...",
+                    answers: [
+                        { text: "Les ciels flamboyants et leurs reflets", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Les vastes panoramas qui coupent le souffle", scores: { paysagiste: 3, lumiere: 2, architecte: 1 } },
+                        { text: "Les textures et formes naturelles", scores: { explorateur: 3, architecte: 2, poete: 1 } },
+                        { text: "Les ambiances mystérieuses et changeantes", scores: { contemplatif: 3, poete: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "L'émotion que tu cherches à transmettre...",
+                    answers: [
+                        { text: "L'émerveillement face à la beauté", scores: { lumiere: 3, paysagiste: 2, poete: 1 } },
+                        { text: "La tendresse et la connexion humaine", scores: { intimiste: 3, memoire: 2, documentaire: 1 } },
+                        { text: "La sérénité et la contemplation", scores: { contemplatif: 3, poete: 2, paysagiste: 1 } },
+                        { text: "La curiosité et la découverte", scores: { explorateur: 3, documentaire: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon de voir l'architecture en photo...",
+                    answers: [
+                        { text: "Les lignes et géométries parfaites", scores: { architecte: 3, explorateur: 2, paysagiste: 1 } },
+                        { text: "L'interaction avec la lumière naturelle", scores: { lumiere: 3, architecte: 2, contemplatif: 1 } },
+                        { text: "L'histoire qu'elle raconte", scores: { documentaire: 3, poete: 2, memoire: 1 } },
+                        { text: "Son intégration dans l'environnement", scores: { paysagiste: 3, contemplatif: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Le défi photographique qui t'attire...",
+                    answers: [
+                        { text: "Capturer LE coucher de soleil parfait", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Révéler la beauté cachée du quotidien", scores: { poete: 3, explorateur: 2, intimiste: 1 } },
+                        { text: "Documenter une journée complète en famille", scores: { documentaire: 3, memoire: 2, intimiste: 1 } },
+                        { text: "Créer une série cohérente sur un thème", scores: { architecte: 3, contemplatif: 2, explorateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rapport au temps en photographie...",
+                    answers: [
+                        { text: "J'attends des heures pour la bonne lumière", scores: { lumiere: 3, contemplatif: 2, paysagiste: 1 } },
+                        { text: "Je saisis l'instant décisif", scores: { memoire: 3, documentaire: 2, intimiste: 1 } },
+                        { text: "Je prends le temps d'explorer chaque angle", scores: { explorateur: 3, architecte: 2, poete: 1 } },
+                        { text: "Je laisse la scène se révéler à moi", scores: { contemplatif: 3, poete: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce que tu fais de tes photos préférées...",
+                    answers: [
+                        { text: "Je les imprime pour décorer ma chambre", scores: { paysagiste: 3, lumiere: 2, architecte: 1 } },
+                        { text: "Je crée des albums souvenirs organisés", scores: { memoire: 3, documentaire: 2, intimiste: 1 } },
+                        { text: "Je les partage sur des cartes postales", scores: { poete: 3, intimiste: 2, memoire: 1 } },
+                        { text: "Je les garde comme trésors personnels", scores: { contemplatif: 3, explorateur: 2, poete: 1 } }
+                    ]
+                },
+                {
+                    text: "La lumière que tu préfères photographier...",
+                    answers: [
+                        { text: "Les ors et rouges du soleil couchant", scores: { lumiere: 3, paysagiste: 2, poete: 1 } },
+                        { text: "La douceur du matin brumeux", scores: { contemplatif: 3, poete: 2, lumiere: 1 } },
+                        { text: "Les contrastes forts qui sculptent", scores: { architecte: 3, explorateur: 2, lumiere: 1 } },
+                        { text: "La lumière douce et diffuse des intérieurs", scores: { intimiste: 3, memoire: 2, documentaire: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton type de composition préféré...",
+                    answers: [
+                        { text: "Les grandes scènes équilibrées", scores: { paysagiste: 3, architecte: 2, lumiere: 1 } },
+                        { text: "Les cadrages intimes et serrés", scores: { intimiste: 3, poete: 2, memoire: 1 } },
+                        { text: "Les angles inattendus qui surprennent", scores: { explorateur: 3, architecte: 2, poete: 1 } },
+                        { text: "Les compositions minimalistes épurées", scores: { contemplatif: 3, architecte: 2, paysagiste: 1 } }
+                    ]
+                },
+                {
+                    text: "La photo dont tu es la plus fière serait...",
+                    answers: [
+                        { text: "Un coucher de soleil spectaculaire sur la mer", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Un moment familial parfaitement capturé", scores: { memoire: 3, intimiste: 2, documentaire: 1 } },
+                        { text: "Une composition architecturale parfaite", scores: { architecte: 3, explorateur: 2, paysagiste: 1 } },
+                        { text: "Une image poétique qui touche l'âme", scores: { poete: 3, contemplatif: 2, intimiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon d'apprendre la photographie...",
+                    answers: [
+                        { text: "En observant la lumière chaque jour", scores: { lumiere: 3, contemplatif: 2, paysagiste: 1 } },
+                        { text: "En photographiant ma famille constamment", scores: { memoire: 3, intimiste: 2, documentaire: 1 } },
+                        { text: "En étudiant les grands maîtres", scores: { architecte: 3, paysagiste: 2, poete: 1 } },
+                        { text: "En expérimentant sans cesse", scores: { explorateur: 3, poete: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Le projet photo qui te fait rêver...",
+                    answers: [
+                        { text: "365 couchers de soleil différents", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "L'histoire visuelle de ma famille", scores: { documentaire: 3, memoire: 2, intimiste: 1 } },
+                        { text: "Une série sur les détails invisibles", scores: { explorateur: 3, poete: 2, architecte: 1 } },
+                        { text: "Un livre de mes plus belles images", scores: { paysagiste: 3, poete: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui te frustre en photographie...",
+                    answers: [
+                        { text: "Manquer la lumière parfaite", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Rater un moment important", scores: { memoire: 3, documentaire: 2, intimiste: 1 } },
+                        { text: "Ne pas réussir ma composition", scores: { architecte: 3, explorateur: 2, paysagiste: 1 } },
+                        { text: "Ne pas transmettre l'émotion ressentie", scores: { poete: 3, intimiste: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta définition d'une photo réussie...",
+                    answers: [
+                        { text: "Elle capture la magie de la lumière", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Elle raconte une histoire vraie", scores: { documentaire: 3, memoire: 2, intimiste: 1 } },
+                        { text: "Elle révèle l'invisible", scores: { poete: 3, explorateur: 2, contemplatif: 1 } },
+                        { text: "Elle est techniquement parfaite", scores: { architecte: 3, paysagiste: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "L'équipement photo de tes rêves...",
+                    answers: [
+                        { text: "Des filtres pour sublimer les couchers de soleil", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "Un appareil discret pour les moments intimes", scores: { intimiste: 3, memoire: 2, documentaire: 1 } },
+                        { text: "Des objectifs pour tous les angles", scores: { explorateur: 3, architecte: 2, paysagiste: 1 } },
+                        { text: "Un trépied pour la contemplation", scores: { contemplatif: 3, architecte: 2, lumiere: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta philosophie photographique...",
+                    answers: [
+                        { text: "La lumière est tout", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "L'émotion prime sur la technique", scores: { intimiste: 3, memoire: 2, poete: 1 } },
+                        { text: "Voir différemment le monde", scores: { explorateur: 3, poete: 2, architecte: 1 } },
+                        { text: "La patience révèle la beauté", scores: { contemplatif: 3, lumiere: 2, paysagiste: 1 } }
+                    ]
+                },
+                {
+                    text: "L'héritage photographique que tu veux laisser...",
+                    answers: [
+                        { text: "La beauté des lumières naturelles capturées", scores: { lumiere: 3, paysagiste: 2, contemplatif: 1 } },
+                        { text: "La mémoire visuelle de ceux que j'aime", scores: { memoire: 3, intimiste: 2, documentaire: 1 } },
+                        { text: "Un regard unique sur le monde", scores: { poete: 3, explorateur: 2, contemplatif: 1 } },
+                        { text: "Des images intemporelles et parfaites", scores: { architecte: 3, paysagiste: 2, lumiere: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'lumiere',
+                    name: 'La Chasseuse de Lumière',
+                    subtitle: 'Magicienne des heures dorées',
+                    icon: '🌅',
+                    description: `
+                        <p>Tu es une <strong>Chasseuse de Lumière</strong> ! Pour toi, la photographie est avant tout l'art de capturer la magie lumineuse du monde.</p>
+                        
+                        <p>Les couchers de soleil n'ont plus de secrets pour toi. Tu connais exactement l'heure où le ciel s'embrase, où les nuages deviennent or et pourpre. Tu es capable d'attendre patiemment que la lumière soit parfaite, parce que tu sais que ces moments magiques ne durent que quelques minutes.</p>
+                        
+                        <p>Ton œil est entraîné à voir les subtilités lumineuses que les autres manquent : la façon dont la lumière dorée transforme un paysage ordinaire, les reflets sur l'eau, les rayons qui percent les nuages. Chaque photo est une célébration de la lumière naturelle dans toute sa splendeur.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Lumière dorée, patience, magie naturelle, instants fugaces</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Couchers de soleil' },
+                        { label: 'Force', value: 'Patience infinie' },
+                        { label: 'Moment préféré', value: 'L\'heure dorée' },
+                        { label: 'Devise', value: 'La lumière fait tout' }
+                    ]
+                },
+                {
+                    id: 'paysagiste',
+                    name: 'La Paysagiste Contemplative',
+                    subtitle: 'Peintre de grands espaces',
+                    icon: '🏞️',
+                    description: `
+                        <p>Tu es une <strong>Paysagiste Contemplative</strong> ! Ton regard embrasse les vastes horizons et capture la grandeur de la nature.</p>
+                        
+                        <p>Tu excelles dans l'art de composer des images équilibrées où chaque élément a sa place. Montagnes, mer, ciel... tu sais comment les faire dialoguer dans une harmonie parfaite. Tes photos donnent envie de respirer profondément, de s'évader dans ces espaces infinis.</p>
+                        
+                        <p>Tu as le don de transmettre la sensation d'immensité, de faire ressentir le vent sur la peau et l'odeur de la mer. Tes paysages ne sont pas juste beaux, ils sont vivants. Chaque image est une invitation au voyage et à la contemplation.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Grands espaces, harmonie, composition, évasion</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Panoramas grandioses' },
+                        { label: 'Force', value: 'Vision d\'ensemble' },
+                        { label: 'Passion', value: 'La nature majestueuse' },
+                        { label: 'Devise', value: 'Capturer l\'infini' }
+                    ]
+                },
+                {
+                    id: 'intimiste',
+                    name: 'La Portraitiste Intimiste',
+                    subtitle: 'Captrice d\'âmes et d\'émotions',
+                    icon: '👥',
+                    description: `
+                        <p>Tu es une <strong>Portraitiste Intimiste</strong> ! Ton appareil photo devient un pont entre les cœurs, capturant l'essence des personnes que tu aimes.</p>
+                        
+                        <p>Les moments tendres en famille, les regards complices, les gestes spontanés... voilà ce qui fait battre ton cœur de photographe. Tu as le don de mettre les gens à l'aise, de les faire oublier l'appareil pour révéler leur vraie nature.</p>
+                        
+                        <p>Tes photos ne sont pas juste des images, ce sont des fragments d'amour cristallisés. Tu sais capturer ces micro-expressions qui disent tout, ces instants de connexion pure. Dans tes portraits, on lit les histoires non dites et les liens invisibles.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Émotion, connexion, authenticité, tendresse</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Portraits émotionnels' },
+                        { label: 'Force', value: 'Empathie naturelle' },
+                        { label: 'Approche', value: 'Discrète et bienveillante' },
+                        { label: 'Devise', value: 'Révéler l\'âme' }
+                    ]
+                },
+                {
+                    id: 'memoire',
+                    name: 'La Gardienne de Mémoires',
+                    subtitle: 'Chroniqueuse visuelle du quotidien',
+                    icon: '📷',
+                    description: `
+                        <p>Tu es une <strong>Gardienne de Mémoires</strong> ! Pour toi, chaque photo est un trésor pour le futur, une capsule temporelle d'amour.</p>
+                        
+                        <p>Tu documentes la vie avec tendresse : les repas en famille, les jeux, les câlins du matin, les rires partagés. Rien n'est trop banal pour ton œil aimant. Tu sais que ce sont ces moments ordinaires qui deviennent extraordinaires avec le temps.</p>
+                        
+                        <p>Tes albums photos sont des livres d'histoire familiale, organisés avec soin et amour. Tu es celle qui préserve les souvenirs, qui permet à ta famille de revivre les moments heureux. Chaque image est un cadeau pour le futur.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Souvenirs, famille, quotidien précieux, transmission</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Chronique familiale' },
+                        { label: 'Force', value: 'Constance et organisation' },
+                        { label: 'Mission', value: 'Préserver les moments' },
+                        { label: 'Devise', value: 'Chaque instant compte' }
+                    ]
+                },
+                {
+                    id: 'poete',
+                    name: 'La Poétesse Visuelle',
+                    subtitle: 'Révélatrice de beauté cachée',
+                    icon: '🌹',
+                    description: `
+                        <p>Tu es une <strong>Poétesse Visuelle</strong> ! Ton appareil photo est une plume qui écrit des poèmes visuels sur le monde.</p>
+                        
+                        <p>Tu vois la beauté là où d'autres ne voient rien : dans une goutte de rosée, dans l'ombre d'une feuille, dans la courbe d'un sourire. Tes photos sont des haïkus visuels, des métaphores capturées. Tu transformes le banal en sublime par ton regard unique.</p>
+                        
+                        <p>Chaque image raconte une histoire au-delà de ce qu'elle montre. Tu joues avec les symboles, les atmosphères, les émotions suggérées. Tes photos invitent à la rêverie, à l'interprétation, à la contemplation poétique du monde.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Métaphore, subtilité, émotion suggérée, beauté cachée</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Images métaphoriques' },
+                        { label: 'Force', value: 'Regard poétique' },
+                        { label: 'Style', value: 'Évocateur et symbolique' },
+                        { label: 'Devise', value: 'Voir l\'invisible' }
+                    ]
+                },
+                {
+                    id: 'architecte',
+                    name: 'L\'Architecte de l\'Image',
+                    subtitle: 'Maîtresse de la composition parfaite',
+                    icon: '📐',
+                    description: `
+                        <p>Tu es une <strong>Architecte de l'Image</strong> ! Pour toi, la photographie est l'art de construire des images avec une précision géométrique.</p>
+                        
+                        <p>Lignes, formes, proportions... tu vois le monde comme une architecture à révéler. Tes compositions sont étudiées, équilibrées, harmonieuses. Tu as l'œil pour les symétries cachées, les motifs répétitifs, les géométries naturelles ou construites.</p>
+                        
+                        <p>Ta force est de créer des images où chaque élément est exactement à sa place. Rien n'est laissé au hasard dans tes cadrages. Tu transformes le chaos visuel en ordre esthétique, créant des photos qui apaisent par leur perfection structurelle.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Composition, géométrie, équilibre, structure</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Compositions géométriques' },
+                        { label: 'Force', value: 'Œil architectural' },
+                        { label: 'Approche', value: 'Méthodique et précise' },
+                        { label: 'Devise', value: 'L\'ordre crée la beauté' }
+                    ]
+                },
+                {
+                    id: 'explorateur',
+                    name: 'L\'Exploratrice Curieuse',
+                    subtitle: 'Découvreuse d\'angles nouveaux',
+                    icon: '🔍',
+                    description: `
+                        <p>Tu es une <strong>Exploratrice Curieuse</strong> ! Ton appareil photo est une loupe pour découvrir le monde sous tous ses angles.</p>
+                        
+                        <p>Tu n'as pas peur de te mettre à genoux, de grimper, de te contorsionner pour trouver LE point de vue unique. Les détails que personne ne remarque, les textures fascinantes, les perspectives inhabituelles... voilà ton terrain de jeu. Tu transformes le familier en extraordinaire.</p>
+                        
+                        <p>Chaque sortie photo est une aventure de découverte. Tu explores le monde comme une scientifique-artiste, révélant les merveilles cachées du quotidien. Tes images surprennent et émerveillent par leur originalité.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Découverte, originalité, détails, perspectives uniques</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Angles inédits' },
+                        { label: 'Force', value: 'Curiosité infinie' },
+                        { label: 'Approche', value: 'Expérimentale' },
+                        { label: 'Devise', value: 'Voir autrement' }
+                    ]
+                },
+                {
+                    id: 'contemplatif',
+                    name: 'La Contemplative Zen',
+                    subtitle: 'Méditative de l\'instant présent',
+                    icon: '🧘',
+                    description: `
+                        <p>Tu es une <strong>Contemplative Zen</strong> ! Pour toi, la photographie est une forme de méditation visuelle.</p>
+                        
+                        <p>Tu prends le temps. Le temps d'observer, de ressentir, d'attendre que la scène se révèle. Tes photos respirent le calme et invitent à la pause. Minimalistes et épurées, elles capturent l'essence plutôt que l'apparence, le silence plutôt que le bruit.</p>
+                        
+                        <p>Tu excelles dans l'art de la suggestion, du moins qui dit plus. Un reflet sur l'eau, une ombre douce, un espace vide qui parle... Tes images sont des invitations à la contemplation, des moments de paix visuelle dans un monde agité.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Sérénité, minimalisme, essence, méditation visuelle</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Images méditatives' },
+                        { label: 'Force', value: 'Patience contemplative' },
+                        { label: 'Style', value: 'Épuré et apaisant' },
+                        { label: 'Devise', value: 'Le silence parle' }
+                    ]
+                },
+                {
+                    id: 'documentaire',
+                    name: 'La Documentariste du Réel',
+                    subtitle: 'Témoin authentique de la vie',
+                    icon: '📸',
+                    description: `
+                        <p>Tu es une <strong>Documentariste du Réel</strong> ! Ton appareil photo est un outil pour raconter la vérité des moments vécus.</p>
+                        
+                        <p>Tu captures la vie telle qu'elle est, sans artifice. Les joies, les défis, les transitions, les célébrations... Tu documentes l'histoire de ta famille et de ton monde avec honnêteté et sensibilité. Chaque photo est un témoignage, un fragment de vérité préservé.</p>
+                        
+                        <p>Tes séries photographiques racontent des histoires complètes. Tu as le sens du récit visuel, sachant quels moments capturer pour créer une narration cohérente. Tes archives seront un trésor pour les générations futures.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Authenticité, témoignage, récit visuel, vérité</p>
+                    `,
+                    traits: [
+                        { label: 'Spécialité', value: 'Récits visuels' },
+                        { label: 'Force', value: 'Sens de l\'histoire' },
+                        { label: 'Mission', value: 'Témoigner du réel' },
+                        { label: 'Devise', value: 'La vérité en images' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
