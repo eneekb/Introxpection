@@ -1,1 +1,250 @@
+# Introxpection - Contexte Projet Complet
 
+## 🎯 Vue d'ensemble du projet
+
+**Nom du projet :** Introxpection (jeu de mots "Introspection" + "Rox" pour Roxanne)  
+**Objectif :** Créer un site de tests de personnalité personnalisés pour Roxanne, 14 ans  
+**Hébergement :** GitHub Pages  
+**Statut actuel :** 4 tests fonctionnels, infrastructure complète  
+
+## 👤 Profil de Roxanne (14 ans)
+
+### Centres d'intérêt principaux :
+- **Littérature et théâtre** (passion principale)
+- **Architecture et décoration** d'intérieur
+- **Nature et photographie** (spécialité : couchers/levers de soleil, mer)
+- **Famille** : père, mère, un frère (relations très proches)
+- **Créativité** : Playmobil, Lego, chant, danse
+- **Jeux** : Minecraft, Les Sims
+- **Organisation** : aime faire le ménage et ranger sa chambre
+- **Communication** : câlins avec maman, discussions avec papa, cartes postales
+
+### Traits de personnalité :
+- Solitaire et calme
+- Affectueuse et communicative en famille
+- Créative et organisée
+- Longs cheveux
+- Apprécie les moments contemplatifs
+
+## 🏗️ Architecture Technique
+
+### Structure des fichiers :
+```
+introxpection/
+├── index.html (page d'accueil)
+├── css/
+│   ├── style.css (styles généraux - page d'accueil)
+│   └── quiz.css (styles spécifiques aux tests)
+├── js/
+│   ├── quiz-engine.js (moteur de quiz réutilisable)
+│   └── animations.js (animations et interactions)
+├── tests/
+│   ├── test-heroine-litteraire.html (test 1 - fonctionnel)
+│   ├── test-style-deco.html (test 2 - fonctionnel)
+│   ├── test-element-naturel.html (test 3 - fonctionnel)
+│   ├── test-personnalite-creative.html (test 4 - fonctionnel)
+│   ├── test-debug.html (version de test simple)
+│   └── [futurs tests: t5.html, t6.html, t7.html...]
+└── PROJECT_CONTEXT.md (ce fichier)
+```
+
+**Note nomenclature :** Les 4 premiers tests utilisent des noms descriptifs. À partir du test 5, nouvelle nomenclature numérotée (t5.html, t6.html...) pour simplifier la gestion.
+
+### Charte graphique :
+- **Primaire :** Bleu doux (#6B73FF)
+- **Secondaire :** Rose poudré (#FFB3BA)  
+- **Accent :** Vert menthe (#BAFFC9)
+- **Neutres :** Gris perle (#F5F5F5), Anthracite (#2D3436)
+- **Police :** Poppins (Google Fonts)
+- **Style :** Moderne, cartes, gradients, animations fluides
+
+## 🎮 Spécifications des Tests
+
+### Format standard :
+- **20 questions** exactement par test
+- **4 choix (A, B, C, D)** par question
+- **4-6 profils** de résultats possibles
+- **Système de scoring** : chaque réponse attribue des points à différents profils
+- **Navigation mobile-first** : clic sur réponse = passage automatique à la question suivante
+- **Durée estimée :** 5-7 minutes par test
+
+### Interface optimisée mobile :
+- Header ultra-compact (24px sur mobile)
+- Questions en font-size-2xl (desktop) / font-size-lg (mobile)
+- Réponses en font-size-lg (desktop) / font-size-base (mobile)
+- Cartes de réponses avec espacement minimal (4px entre cartes sur mobile)
+- Barre de progression simple format "1/20"
+- Bouton retour discret
+- Hint : "💡 Clique sur ta réponse pour continuer"
+
+## 📱 Tests Créés et Fonctionnels
+
+### Test 1 : "Quelle héroïne littéraire es-tu ?" ✅
+**Fichier :** `tests/test-heroine-litteraire.html`  
+**Profils :** 6 héroïnes adaptées à ses goûts
+- **Anne Shirley** (rêveuse passionnée - nature, imagination)
+- **Hermione Granger** (brillante studieuse - intelligence, organisation)
+- **Elizabeth Bennet** (indépendante spirituelle - discussions avec papa)
+- **Matilda** (petite génie - lecture, rangement, solitude)
+- **Jo March** (écrivaine passionnée - théâtre, écriture, famille)
+- **Luna Lovegood** (originale visionnaire - photographie, déco, originalité)
+
+### Test 2 : "Ton style déco idéal" ✅
+**Fichier :** `tests/test-style-deco.html`  
+**Profils :** 6 styles déco personnalisés
+- **Bohème Naturel** 🌿 (nature, couchers de soleil, créativité)
+- **Scandinave Cosy** 🏠 (famille, rangement, confort)
+- **Vintage Littéraire** 📚 (livres, théâtre, objets à histoire)
+- **Moderne Épuré** ▫️ (organisation, minimalisme)
+- **Classique Raffiné** 👑 (élégance, qualité)
+- **Artistique Créatif** 🎨 (Lego, photos, créations)
+
+### Test 3 : "Quel élément naturel te correspond ?" ✅
+**Fichier :** `tests/test-element-naturel.html`  
+**Thématique :** Nature, paysages, couchers de soleil, mer
+**Note :** Test créé et mis en ligne (détails des profils non documentés dans ce contexte)
+
+### Test 4 : "Ta personnalité créative" ✅
+**Fichier :** `tests/test-personnalite-creative.html`  
+**Thématique :** Arts, construction, photographie, créativité
+**Note :** Test créé et mis en ligne (détails des profils non documentés dans ce contexte)
+
+## ⚙️ Fonctionnalités Techniques
+
+### Moteur de quiz (`quiz-engine.js`) :
+- **Classe QuizEngine** réutilisable
+- **Navigation fluide** avec animations
+- **Système de scoring** intelligent et équilibré
+- **Sauvegarde temporaire** des réponses (navigation arrière possible)
+- **Raccourcis clavier** : A/B/C/D pour répondre, ← pour retour, Echap pour quitter
+- **Partage des résultats** (native share API + fallback)
+- **Statistiques locales** (localStorage)
+- **Feedback tactile** (vibration mobile)
+
+### Page d'accueil (`index.html`) :
+- **Hero section** avec statistiques (4 tests disponibles, 20 questions, 6 profils)
+- **Grille de tests** sans catégories (simplifiée)
+- **Section "Bientôt disponibles"** avec mini-cartes des futurs tests
+- **Design responsive** avec animations
+
+## 🎨 Choix de Design Importants
+
+### Interface des tests :
+- **Header compact** : Juste "Introxpection" + bouton retour
+- **Cartes de réponses** : Vraies cartes avec ombres, effets au survol
+- **Lettres circulaires** : 50px (desktop) / 35px (mobile) avec gradients
+- **Animations** : Élévation au survol, pulse à la sélection
+- **Couleurs cohérentes** : Respect total de la charte graphique
+
+### Optimisations UX :
+- **Passage automatique** : Clic sur réponse → attente 800ms → question suivante
+- **Pas de bouton "Suivant"** : Navigation fluide
+- **Interface sans scroll** : Tout visible sur un écran smartphone
+- **Textes lisibles** : Tailles optimisées pour confort de lecture
+
+## 📋 Tests Planifiés (Phase Future)
+
+### Phase 2 - Prochain test (Test 5) :
+1. **"Ton type de relation familiale"** 👨‍👩‍👧‍👦 - liens familiaux
+**Fichier prévu :** `tests/t5.html`
+
+### Phase 3 - Tests suivants (nomenclature numérotée) :
+- **t6.html** : Quelle saison es-tu ? 🍃
+- **t7.html** : Ton monde virtuel idéal 🏗️ (Minecraft/Sims)
+- **t8.html** : Ta façon de communiquer 💌 (cartes postales)
+- **t9.html** : Ton refuge personnel 🏠
+- **t10.html** : Ton super-pouvoir créatif ⚡
+- **t11.html** : Ton époque historique 🏛️
+- **t12.html** : Ton style photographique 📸
+- **t13.html** : Ta personnalité d'architecte 🏗️
+- **t14.html** : Ton amitié idéale 👥
+- **t15.html** : Ta mission créative 🎯
+
+### 📝 Nouvelle nomenclature (à partir du test 5) :
+- **Anciens tests :** Noms descriptifs (test-heroine-litteraire.html, etc.)
+- **Nouveaux tests :** Numérotation simple (t5.html, t6.html, t7.html...)
+- **Avantage :** Simplicité de gestion et référencement
+
+## 🚀 État Technique Actuel
+
+### Fonctionnel ✅ :
+- Page d'accueil responsive et animée
+- 4 tests complets avec 20 questions chacun
+- Moteur de quiz robuste et réutilisable
+- Interface mobile optimisée
+- Système de scoring intelligent
+- Partage des résultats
+- Navigation fluide
+
+### Testé et validé ✅ :
+- Interface sans scroll sur smartphone
+- Lisibilité des textes optimisée
+- Boutons et interactions cohérents
+- Couleurs et animations harmonieuses
+- Navigation par raccourcis clavier
+- Compatibilité mobile (vibration, responsive)
+
+## 🔧 Instructions Techniques Importantes
+
+### Pour créer un nouveau test :
+1. **Copier** `test-style-deco.html` comme modèle
+2. **Renommer** avec la nouvelle nomenclature (t5.html, t6.html, etc.)
+3. **Modifier** l'ID du quiz dans `quizConfig`
+4. **Créer 20 questions** avec 4 réponses chacune
+5. **Définir 4-6 profils** avec descriptions détaillées
+6. **Équilibrer le scoring** (chaque réponse donne des points à 2-3 profils)
+7. **Mettre à jour** `index.html` pour rendre le test disponible
+
+### Scoring system :
+```javascript
+{ text: "Réponse exemple", scores: { profil1: 3, profil2: 2, profil3: 1 } }
+```
+- **3 points** = correspond très bien au profil
+- **2 points** = correspond partiellement  
+- **1 point** = correspond un peu
+- **0 point** = ne correspond pas (pas mentionné)
+
+### Contraintes respectées :
+- **JAMAIS** de localStorage/sessionStorage (non supporté dans l'environnement)
+- **React state uniquement** pour le stockage temporaire
+- **Chemins relatifs** corrects (`../` depuis dossier tests/)
+- **Console.log** pour debug pendant développement
+
+## 🎯 Philosophie du Projet
+
+### Approche personnalisée :
+- Chaque test **créé spécifiquement** pour les goûts de Roxanne
+- Questions qui **intègrent ses passions** (nature, famille, créativité, organisation)
+- Profils **100% positifs** et encourageants
+- Résultats qui **valorisent** sa personnalité unique
+
+### Qualité technique :
+- Code **modulaire et réutilisable**
+- Interface **moderne et professionnelle**
+- **Performance optimisée** (temps de chargement, animations fluides)
+- **Accessibilité** respectée (clavier, contrastes, responsive)
+
+### Évolution prévue :
+- **Ajout progressif** de nouveaux tests
+- **Amélioration continue** de l'interface
+- **Fonctionnalités bonus** possibles (statistiques, comparaisons, partage avancé)
+
+## 💡 Notes pour la Suite
+
+### Priorités immédiates :
+1. **Test 5** : "Ton type de relation familiale" (fichier: t5.html)
+2. **Optimisations mineures** si feedback de Roxanne
+3. **Tests supplémentaires** selon intérêt (t6.html, t7.html...)
+
+### Considérations importantes :
+- **Garder l'aspect personnel** : chaque test doit refléter ses goûts
+- **Maintenir la qualité** : 20 questions réfléchies, profils nuancés
+- **Interface cohérente** : même look & feel pour tous les tests
+- **Mobile-first** : toujours tester sur smartphone en priorité
+- **Nomenclature** : utiliser t5.html, t6.html... pour les nouveaux tests
+
+---
+
+**Créé le :** Août 2025  
+**Version :** 4.0 (4 tests fonctionnels)  
+**Prochaine étape :** Test 5 - Relation familiale (t5.html)
