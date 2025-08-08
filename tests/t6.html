@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quelle saison es-tu ? - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Quelle saison es-tu ?"
+        const quizConfig = {
+            id: 'quelle-saison',
+            title: 'Quelle saison es-tu ?',
+            description: 'Découvre quelle saison reflète le mieux ta personnalité !',
+            
+            questions: [
+                {
+                    text: "Le moment de la journée où tu te sens le plus inspirée...",
+                    answers: [
+                        { text: "Le matin frais quand tout commence", scores: { printemps: 3, ete: 1 } },
+                        { text: "L'après-midi ensoleillé plein d'énergie", scores: { ete: 3, printemps: 1 } },
+                        { text: "Le coucher de soleil doré et mélancolique", scores: { automne: 3, hiver: 1 } },
+                        { text: "Le soir calme propice à la lecture", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de passer du temps en famille...",
+                    answers: [
+                        { text: "Des pique-niques dans le jardin fleuri", scores: { printemps: 3, ete: 2 } },
+                        { text: "Des journées à la mer ou en plein air", scores: { ete: 3, printemps: 1 } },
+                        { text: "Des balades en forêt pour photographier la nature", scores: { automne: 3, hiver: 1 } },
+                        { text: "Des soirées cocooning tous ensemble", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "L'ambiance qui t'inspire le plus pour créer...",
+                    answers: [
+                        { text: "La fraîcheur du renouveau et des débuts", scores: { printemps: 3, ete: 1 } },
+                        { text: "La luminosité intense et l'énergie vibrante", scores: { ete: 3, printemps: 2 } },
+                        { text: "La nostalgie douce et les couleurs chaudes", scores: { automne: 3, hiver: 1 } },
+                        { text: "Le calme profond et la contemplation", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton activité nature préférée...",
+                    answers: [
+                        { text: "Observer les premières fleurs et bourgeons", scores: { printemps: 3, ete: 1 } },
+                        { text: "Photographier les levers de soleil sur la mer", scores: { ete: 3, printemps: 1 } },
+                        { text: "Capturer les feuilles dorées et les brumes", scores: { automne: 3, hiver: 1 } },
+                        { text: "Admirer les paysages givrés depuis la fenêtre", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Le livre que tu choisirais de lire...",
+                    answers: [
+                        { text: "Une histoire de renouveau et d'espoir", scores: { printemps: 3, ete: 2 } },
+                        { text: "Une aventure ensoleillée pleine de vie", scores: { ete: 3, printemps: 1 } },
+                        { text: "Un roman nostalgique aux tons mélancoliques", scores: { automne: 3, hiver: 2 } },
+                        { text: "Un conte intimiste près de la cheminée", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta palette de couleurs préférée...",
+                    answers: [
+                        { text: "Verts tendres, roses pâles et jaunes doux", scores: { printemps: 3, ete: 1 } },
+                        { text: "Bleus éclatants, dorés et blancs lumineux", scores: { ete: 3, printemps: 1 } },
+                        { text: "Orangés, rouges profonds et bruns chauds", scores: { automne: 3, hiver: 1 } },
+                        { text: "Gris perle, blancs purs et bleus glacés", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "L'énergie que tu ressens le plus souvent...",
+                    answers: [
+                        { text: "L'excitation des nouveaux projets qui bourgeonnent", scores: { printemps: 3, ete: 2 } },
+                        { text: "La joie rayonnante et l'envie de bouger", scores: { ete: 3, printemps: 1 } },
+                        { text: "La contemplation douce et la créativité profonde", scores: { automne: 3, hiver: 2 } },
+                        { text: "Le calme intérieur et le besoin de cocooning", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon d'organiser ta chambre...",
+                    answers: [
+                        { text: "Grand ménage de printemps et renouveau déco", scores: { printemps: 3, ete: 1 } },
+                        { text: "Lumineuse et aérée avec peu d'encombrement", scores: { ete: 3, printemps: 2 } },
+                        { text: "Chaleureuse avec des souvenirs et créations", scores: { automne: 3, hiver: 1 } },
+                        { text: "Douillette avec plaids et espaces de lecture", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Le type de projet créatif qui t'attire...",
+                    answers: [
+                        { text: "Créer quelque chose de totalement nouveau", scores: { printemps: 3, ete: 1 } },
+                        { text: "Un projet coloré et plein de vie", scores: { ete: 3, printemps: 2 } },
+                        { text: "Transformer et réinventer l'existant", scores: { automne: 3, hiver: 1 } },
+                        { text: "Perfectionner patiemment une création", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton rapport au temps qui passe...",
+                    answers: [
+                        { text: "J'aime les commencements et les premières fois", scores: { printemps: 3, ete: 1 } },
+                        { text: "Je vis intensément le moment présent", scores: { ete: 3, printemps: 1 } },
+                        { text: "J'apprécie la beauté de la transformation", scores: { automne: 3, hiver: 1 } },
+                        { text: "Je savoure la lenteur et la profondeur", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Les moments en famille que tu préfères...",
+                    answers: [
+                        { text: "Les projets nouveaux qu'on lance ensemble", scores: { printemps: 3, ete: 2 } },
+                        { text: "Les grandes sorties et activités dynamiques", scores: { ete: 3, printemps: 1 } },
+                        { text: "Les traditions réconfortantes qu'on perpétue", scores: { automne: 3, hiver: 2 } },
+                        { text: "Les soirées calmes blottis les uns contre les autres", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta relation avec la nature...",
+                    answers: [
+                        { text: "J'aime voir la vie qui renaît et s'éveille", scores: { printemps: 3, ete: 1 } },
+                        { text: "Je recherche la lumière et la chaleur du soleil", scores: { ete: 3, printemps: 1 } },
+                        { text: "Je suis touchée par la beauté qui se transforme", scores: { automne: 3, hiver: 1 } },
+                        { text: "J'apprécie le repos et le silence de la nature", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "L'atmosphère de ta pièce de théâtre idéale...",
+                    answers: [
+                        { text: "Légère et pleine d'espoir comme une comédie", scores: { printemps: 3, ete: 2 } },
+                        { text: "Vibrante et passionnée comme un drame solaire", scores: { ete: 3, printemps: 1 } },
+                        { text: "Nostalgique et poétique avec de la profondeur", scores: { automne: 3, hiver: 2 } },
+                        { text: "Intimiste et contemplative comme un huis clos", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce qui te motive le plus dans tes projets...",
+                    answers: [
+                        { text: "L'excitation de commencer quelque chose", scores: { printemps: 3, ete: 1 } },
+                        { text: "L'énergie de créer et de m'exprimer", scores: { ete: 3, printemps: 2 } },
+                        { text: "La satisfaction de voir l'évolution", scores: { automne: 3, hiver: 1 } },
+                        { text: "Le plaisir de perfectionner chaque détail", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton type de photographie préféré...",
+                    answers: [
+                        { text: "Les premiers rayons du matin sur la rosée", scores: { printemps: 3, ete: 1 } },
+                        { text: "Les ciels bleus éclatants et la mer brillante", scores: { ete: 3, printemps: 1 } },
+                        { text: "Les couchers de soleil dorés et mélancoliques", scores: { automne: 3, hiver: 1 } },
+                        { text: "Les ambiances feutrées et les lumières douces", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ta façon de décorer pour les fêtes...",
+                    answers: [
+                        { text: "Avec des fleurs fraîches et des couleurs pastel", scores: { printemps: 3, ete: 1 } },
+                        { text: "Simple et lumineux, laissant entrer le soleil", scores: { ete: 3, printemps: 2 } },
+                        { text: "Chaleureuse avec des éléments naturels récoltés", scores: { automne: 3, hiver: 1 } },
+                        { text: "Cosy avec des lumières douces et des textiles", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "L'humeur qui te caractérise le mieux...",
+                    answers: [
+                        { text: "Optimiste et pleine d'espoir", scores: { printemps: 3, ete: 2 } },
+                        { text: "Joyeuse et rayonnante", scores: { ete: 3, printemps: 1 } },
+                        { text: "Rêveuse et contemplative", scores: { automne: 3, hiver: 1 } },
+                        { text: "Sereine et introspective", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ton moment créatif avec les Lego/Playmobil...",
+                    answers: [
+                        { text: "Créer de nouveaux mondes pleins de possibilités", scores: { printemps: 3, ete: 1 } },
+                        { text: "Construire des scènes vivantes et colorées", scores: { ete: 3, printemps: 2 } },
+                        { text: "Réarranger et transformer les anciennes créations", scores: { automne: 3, hiver: 1 } },
+                        { text: "Perfectionner minutieusement chaque détail", scores: { hiver: 3, automne: 1 } }
+                    ]
+                },
+                {
+                    text: "Le son qui t'apaise le plus...",
+                    answers: [
+                        { text: "Le chant des oiseaux au réveil", scores: { printemps: 3, ete: 1 } },
+                        { text: "Les vagues de la mer sous le soleil", scores: { ete: 3, printemps: 1 } },
+                        { text: "Le vent dans les feuilles qui tombent", scores: { automne: 3, hiver: 1 } },
+                        { text: "Le silence feutré d'un soir d'hiver", scores: { hiver: 3, automne: 2 } }
+                    ]
+                },
+                {
+                    text: "Ta vision du changement...",
+                    answers: [
+                        { text: "J'adore les nouveaux départs et les premières fois", scores: { printemps: 3, ete: 1 } },
+                        { text: "Je vis chaque moment avec intensité", scores: { ete: 3, printemps: 1 } },
+                        { text: "J'accepte les cycles avec mélancolie et beauté", scores: { automne: 3, hiver: 2 } },
+                        { text: "J'apprécie la constance et la stabilité", scores: { hiver: 3, automne: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'printemps',
+                    name: 'Printemps',
+                    subtitle: 'L\'éternel renouveau',
+                    icon: '🌸',
+                    description: `
+                        <p>Tu es un <strong>Printemps lumineux</strong> ! Comme cette saison du renouveau, tu portes en toi l'espoir, la fraîcheur et l'enthousiasme des commencements.</p>
+                        
+                        <p>Ta personnalité rayonne d'optimisme et de créativité bourgeonnante. Tu aimes initier de nouveaux projets, que ce soit en famille, dans tes créations ou dans ta chambre que tu réorganises avec joie. Comme les premières fleurs, tu apportes de la couleur et de la vie partout où tu passes.</p>
+                        
+                        <p>Tu es celle qui voit toujours le potentiel dans chaque situation, qui croit aux nouveaux départs. Ton énergie douce mais constante inspire ta famille et tes amis. Tu sais que chaque fin cache un nouveau commencement plein de promesses.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Renouveau, espoir, créativité, fraîcheur</p>
+                    `,
+                    traits: [
+                        { label: 'Énergie', value: 'Douce et optimiste' },
+                        { label: 'Couleurs', value: 'Pastels et verts tendres' },
+                        { label: 'Moment préféré', value: 'Les matins frais' },
+                        { label: 'Force', value: 'Voir le potentiel en tout' }
+                    ]
+                },
+                {
+                    id: 'ete',
+                    name: 'Été',
+                    subtitle: 'La lumière éclatante',
+                    icon: '☀️',
+                    description: `
+                        <p>Tu es un <strong>Été radieux</strong> ! Comme cette saison lumineuse, tu rayonnes de joie, d'énergie et de chaleur humaine.</p>
+                        
+                        <p>Ta personnalité solaire illumine ton entourage. Tu vis chaque moment avec intensité, que ce soit lors des sorties en famille, en photographiant les levers de soleil sur la mer, ou en créant des mondes colorés avec tes Lego. Tu es la lumière qui réchauffe les cœurs.</p>
+                        
+                        <p>Ton énergie communicative et ta joie de vivre sont contagieuses. Tu sais profiter pleinement du présent et transformer les moments ordinaires en souvenirs extraordinaires. Comme le soleil d'été, tu es une source de vie et de bonheur.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Joie, énergie, lumière, intensité</p>
+                    `,
+                    traits: [
+                        { label: 'Énergie', value: 'Vibrante et joyeuse' },
+                        { label: 'Couleurs', value: 'Bleus éclatants et dorés' },
+                        { label: 'Moment préféré', value: 'Plein soleil' },
+                        { label: 'Force', value: 'Illuminer le quotidien' }
+                    ]
+                },
+                {
+                    id: 'automne',
+                    name: 'Automne',
+                    subtitle: 'La mélancolie dorée',
+                    icon: '🍂',
+                    description: `
+                        <p>Tu es un <strong>Automne poétique</strong> ! Comme cette saison de transition, tu possèdes une profondeur contemplative et une beauté mélancolique unique.</p>
+                        
+                        <p>Ta personnalité est riche en nuances, comme les couleurs automnales. Tu apprécies la beauté dans la transformation, que ce soit en photographiant les couchers de soleil dorés, en réarrangeant tes créations, ou en savourant les traditions familiales. Tu vois la poésie dans chaque changement.</p>
+                        
+                        <p>Ton âme d'artiste sait capturer l'éphémère et le sublimer. Tu transformes la nostalgie en création, la mélancolie en beauté. Comme l'automne qui prépare doucement l'hiver, tu sais que chaque fin est aussi une promesse.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Contemplation, transformation, nostalgie, beauté</p>
+                    `,
+                    traits: [
+                        { label: 'Énergie', value: 'Douce et contemplative' },
+                        { label: 'Couleurs', value: 'Orangés et rouges profonds' },
+                        { label: 'Moment préféré', value: 'Coucher de soleil' },
+                        { label: 'Force', value: 'Voir la beauté du changement' }
+                    ]
+                },
+                {
+                    id: 'hiver',
+                    name: 'Hiver',
+                    subtitle: 'Le calme profond',
+                    icon: '❄️',
+                    description: `
+                        <p>Tu es un <strong>Hiver serein</strong> ! Comme cette saison de repos, tu incarnes le calme, la profondeur et la contemplation paisible.</p>
+                        
+                        <p>Ta personnalité est comme un cocon douillet : chaleureuse à l'intérieur, paisible à l'extérieur. Tu apprécies les moments de calme en famille, les soirées lecture, les créations minutieuses. Dans le silence de l'hiver, tu trouves ta force et ta créativité.</p>
+                        
+                        <p>Tu sais que le repos n'est pas l'inaction, mais la préparation. Comme l'hiver qui protège les graines du printemps, tu cultives en toi des trésors qui s'épanouiront au bon moment. Ta sérénité est une force qui apaise ton entourage.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Sérénité, profondeur, repos, contemplation</p>
+                    `,
+                    traits: [
+                        { label: 'Énergie', value: 'Calme et profonde' },
+                        { label: 'Couleurs', value: 'Blancs purs et bleus glacés' },
+                        { label: 'Moment préféré', value: 'Soirées cocooning' },
+                        { label: 'Force', value: 'La paix intérieure' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
