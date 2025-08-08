@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta façon de communiquer - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ta façon de communiquer"
+        const quizConfig = {
+            id: 'facon-communiquer',
+            title: 'Ta façon de communiquer',
+            description: 'Découvre ton style unique d\'expression et de connexion !',
+            
+            questions: [
+                {
+                    text: "Pour dire 'je pense à toi' à quelqu'un...",
+                    answers: [
+                        { text: "J'envoie une carte postale avec un message personnel", scores: { epistolaire: 3, visuel: 2, authentique: 1 } },
+                        { text: "Je fais un câlin spontané qui dit tout", scores: { tactile: 3, intuitif: 2, authentique: 1 } },
+                        { text: "J'envoie une photo d'un coucher de soleil", scores: { visuel: 3, poetique: 2, epistolaire: 1 } },
+                        { text: "J'écris un long message avec tous mes sentiments", scores: { profond: 3, epistolaire: 2, poetique: 1 } }
+                    ]
+                },
+                {
+                    text: "Les cartes postales que tu choisis sont plutôt...",
+                    answers: [
+                        { text: "Des paysages magnifiques qui m'ont touchée", scores: { visuel: 3, poetique: 2, epistolaire: 1 } },
+                        { text: "Des cartes avec des citations ou poèmes", scores: { poetique: 3, profond: 2, epistolaire: 1 } },
+                        { text: "Des images qui rappellent des souvenirs partagés", scores: { authentique: 3, tactile: 1, visuel: 1 } },
+                        { text: "Des cartes originales qui sortent de l'ordinaire", scores: { intuitif: 3, visuel: 2, poetique: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu écris un message important...",
+                    answers: [
+                        { text: "Je prends mon temps pour bien choisir chaque mot", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "J'écris spontanément ce que je ressens", scores: { intuitif: 3, authentique: 2, tactile: 1 } },
+                        { text: "J'ajoute des dessins ou décorations", scores: { visuel: 3, poetique: 2, epistolaire: 1 } },
+                        { text: "Je raconte une histoire pour exprimer mes sentiments", scores: { profond: 3, poetique: 2, authentique: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec papa, tu préfères communiquer par...",
+                    answers: [
+                        { text: "De longues discussions sur des sujets variés", scores: { profond: 3, authentique: 2, intuitif: 1 } },
+                        { text: "Des moments de complicité silencieuse", scores: { intuitif: 3, tactile: 2, authentique: 1 } },
+                        { text: "Le partage d'articles ou livres intéressants", scores: { epistolaire: 3, profond: 2, visuel: 1 } },
+                        { text: "Des activités ensemble qui créent des souvenirs", scores: { tactile: 3, authentique: 2, visuel: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec maman, ton mode de communication favori c'est...",
+                    answers: [
+                        { text: "Les câlins qui disent tout sans mots", scores: { tactile: 3, intuitif: 2, authentique: 1 } },
+                        { text: "Les confidences et discussions à cœur ouvert", scores: { profond: 3, authentique: 2, tactile: 1 } },
+                        { text: "Les petits mots doux laissés çà et là", scores: { epistolaire: 3, poetique: 2, visuel: 1 } },
+                        { text: "Les moments partagés dans le quotidien", scores: { authentique: 3, tactile: 2, intuitif: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour remercier quelqu'un, tu préfères...",
+                    answers: [
+                        { text: "Écrire une belle carte avec un message personnel", scores: { epistolaire: 3, poetique: 2, profond: 1 } },
+                        { text: "Créer quelque chose de spécial pour la personne", scores: { visuel: 3, tactile: 2, authentique: 1 } },
+                        { text: "Dire merci avec sincérité en regardant dans les yeux", scores: { authentique: 3, profond: 2, intuitif: 1 } },
+                        { text: "Faire un geste qui montre ma gratitude", scores: { tactile: 3, intuitif: 2, visuel: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu veux partager une émotion forte...",
+                    answers: [
+                        { text: "Je prends une photo qui capture ce sentiment", scores: { visuel: 3, poetique: 2, intuitif: 1 } },
+                        { text: "J'écris dans mon journal ou une lettre", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "Je cherche quelqu'un pour un câlin", scores: { tactile: 3, authentique: 2, intuitif: 1 } },
+                        { text: "J'attends le bon moment pour en parler", scores: { profond: 3, authentique: 2, epistolaire: 1 } }
+                    ]
+                },
+                {
+                    text: "Les mots que tu utilises sont plutôt...",
+                    answers: [
+                        { text: "Poétiques et imagés, comme dans les livres", scores: { poetique: 3, epistolaire: 2, profond: 1 } },
+                        { text: "Simples mais sincères, droit au cœur", scores: { authentique: 3, intuitif: 2, tactile: 1 } },
+                        { text: "Choisis avec soin pour bien exprimer", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "Accompagnés de gestes et d'expressions", scores: { tactile: 3, visuel: 2, authentique: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour garder le contact avec quelqu'un loin...",
+                    answers: [
+                        { text: "J'envoie régulièrement des cartes postales", scores: { epistolaire: 3, visuel: 2, authentique: 1 } },
+                        { text: "Je partage des photos de mes journées", scores: { visuel: 3, authentique: 2, intuitif: 1 } },
+                        { text: "J'écris de longues lettres détaillées", scores: { profond: 3, epistolaire: 2, poetique: 1 } },
+                        { text: "J'envoie des petits messages spontanés", scores: { intuitif: 3, authentique: 2, tactile: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans un groupe, tu communiques plutôt en...",
+                    answers: [
+                        { text: "Écoutant d'abord avant de parler", scores: { profond: 3, intuitif: 2, authentique: 1 } },
+                        { text: "Partageant tes idées avec enthousiasme", scores: { authentique: 3, visuel: 2, epistolaire: 1 } },
+                        { text: "Créant une atmosphère chaleureuse", scores: { tactile: 3, intuitif: 2, poetique: 1 } },
+                        { text: "Observant et captant l'ambiance", scores: { intuitif: 3, visuel: 2, profond: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton journal intime ou carnet, c'est...",
+                    answers: [
+                        { text: "Un mélange de mots, dessins et souvenirs collés", scores: { visuel: 3, epistolaire: 2, poetique: 1 } },
+                        { text: "Des pages remplies de réflexions profondes", scores: { profond: 3, epistolaire: 2, authentique: 1 } },
+                        { text: "Des poèmes et textes inspirés de mes lectures", scores: { poetique: 3, epistolaire: 2, profond: 1 } },
+                        { text: "Des moments capturés spontanément", scores: { intuitif: 3, authentique: 2, visuel: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour consoler quelqu'un de triste...",
+                    answers: [
+                        { text: "Je lui fais un gros câlin réconfortant", scores: { tactile: 3, authentique: 2, intuitif: 1 } },
+                        { text: "J'écoute et je trouve les mots justes", scores: { profond: 3, authentique: 2, epistolaire: 1 } },
+                        { text: "Je lui écris un message touchant", scores: { epistolaire: 3, poetique: 2, profond: 1 } },
+                        { text: "Je crée quelque chose pour lui remonter le moral", scores: { visuel: 3, tactile: 2, intuitif: 1 } }
+                    ]
+                },
+                {
+                    text: "Les messages que tu préfères recevoir...",
+                    answers: [
+                        { text: "Des lettres manuscrites pleines d'attention", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "Des photos qui me font sourire", scores: { visuel: 3, intuitif: 2, authentique: 1 } },
+                        { text: "Des mots simples mais sincères", scores: { authentique: 3, tactile: 2, intuitif: 1 } },
+                        { text: "Des citations ou textes qui font réfléchir", scores: { poetique: 3, profond: 2, epistolaire: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu racontes une histoire...",
+                    answers: [
+                        { text: "Je décris les ambiances et émotions en détail", scores: { poetique: 3, profond: 2, visuel: 1 } },
+                        { text: "J'utilise mes mains et tout mon corps", scores: { tactile: 3, visuel: 2, authentique: 1 } },
+                        { text: "Je choisis mes mots pour captiver", scores: { epistolaire: 3, poetique: 2, profond: 1 } },
+                        { text: "Je laisse parler mon cœur spontanément", scores: { intuitif: 3, authentique: 2, tactile: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour exprimer ta créativité par la communication...",
+                    answers: [
+                        { text: "Je crée des cartes personnalisées avec dessins", scores: { visuel: 3, epistolaire: 2, poetique: 1 } },
+                        { text: "J'écris des histoires ou des poèmes", scores: { poetique: 3, epistolaire: 2, profond: 1 } },
+                        { text: "Je fais des montages photos avec messages", scores: { visuel: 3, intuitif: 2, authentique: 1 } },
+                        { text: "J'invente des jeux de mots et expressions", scores: { intuitif: 3, poetique: 2, authentique: 1 } }
+                    ]
+                },
+                {
+                    text: "Le silence pour toi, c'est...",
+                    answers: [
+                        { text: "Une autre façon de communiquer", scores: { intuitif: 3, profond: 2, tactile: 1 } },
+                        { text: "Un moment pour réfléchir avant de parler", scores: { profond: 3, epistolaire: 2, poetique: 1 } },
+                        { text: "Parfois plus expressif que les mots", scores: { tactile: 3, intuitif: 2, authentique: 1 } },
+                        { text: "L'occasion d'observer et comprendre", scores: { visuel: 3, intuitif: 2, profond: 1 } }
+                    ]
+                },
+                {
+                    text: "Tes souvenirs de communication préférés...",
+                    answers: [
+                        { text: "Les cartes postales reçues et envoyées", scores: { epistolaire: 3, visuel: 2, authentique: 1 } },
+                        { text: "Les grandes discussions qui ont tout changé", scores: { profond: 3, authentique: 2, intuitif: 1 } },
+                        { text: "Les moments de tendresse sans mots", scores: { tactile: 3, intuitif: 2, authentique: 1 } },
+                        { text: "Les créations partagées avec ceux qu'on aime", scores: { visuel: 3, poetique: 2, tactile: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour dire au revoir à quelqu'un...",
+                    answers: [
+                        { text: "Un long câlin qui dit 'à bientôt'", scores: { tactile: 3, authentique: 2, intuitif: 1 } },
+                        { text: "Une carte avec un message personnel", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "Des mots choisis et un regard sincère", scores: { authentique: 3, profond: 2, tactile: 1 } },
+                        { text: "Une photo souvenir du moment", scores: { visuel: 3, intuitif: 2, epistolaire: 1 } }
+                    ]
+                },
+                {
+                    text: "La communication idéale pour toi...",
+                    answers: [
+                        { text: "Prend le temps de la réflexion et du beau", scores: { epistolaire: 3, poetique: 2, profond: 1 } },
+                        { text: "Vient du cœur sans filtre", scores: { authentique: 3, intuitif: 2, tactile: 1 } },
+                        { text: "Mélange mots, images et émotions", scores: { visuel: 3, poetique: 2, epistolaire: 1 } },
+                        { text: "Se fait autant par les gestes que les mots", scores: { tactile: 3, intuitif: 2, authentique: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce que tu aimerais qu'on retienne de ta façon de communiquer...",
+                    answers: [
+                        { text: "Que chaque message était pensé avec amour", scores: { epistolaire: 3, profond: 2, poetique: 1 } },
+                        { text: "Que j'étais toujours sincère et vraie", scores: { authentique: 3, tactile: 2, intuitif: 1 } },
+                        { text: "Que je savais voir et montrer la beauté", scores: { visuel: 3, poetique: 2, intuitif: 1 } },
+                        { text: "Que mes câlins valaient mille mots", scores: { tactile: 3, authentique: 2, intuitif: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'epistolaire',
+                    name: 'L\'Épistolière Romantique',
+                    subtitle: 'Les mots comme messagers du cœur',
+                    icon: '💌',
+                    description: `
+                        <p>Tu es une <strong>Épistolière Romantique</strong> ! Pour toi, les cartes postales et les lettres sont bien plus que du papier : ce sont des morceaux d'âme voyageurs.</p>
+                        
+                        <p>Tu aimes prendre le temps de choisir les mots justes, de créer de beaux messages qui toucheront le cœur de ceux que tu aimes. Tes cartes postales sont soigneusement sélectionnées, tes messages réfléchis et personnels. Tu sais que dans notre monde rapide, prendre le temps d'écrire est un acte d'amour.</p>
+                        
+                        <p>Pour toi, l'écriture est une forme d'art et de connexion profonde. Chaque lettre envoyée est un cadeau, chaque carte reçue un trésor. Tu perpétues la belle tradition de la correspondance avec grâce et authenticité.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Lettres, tradition, réflexion, beauté écrite</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Réfléchi et soigné' },
+                        { label: 'Force', value: 'L\'art de la correspondance' },
+                        { label: 'Expression', value: 'Mots choisis avec amour' },
+                        { label: 'Devise', value: 'Une lettre vaut mille messages' }
+                    ]
+                },
+                {
+                    id: 'tactile',
+                    name: 'La Communicante Tactile',
+                    subtitle: 'L\'amour par les gestes tendres',
+                    icon: '🤗',
+                    description: `
+                        <p>Tu es une <strong>Communicante Tactile</strong> ! Pour toi, un câlin vaut effectivement mille mots et les gestes tendres sont ton langage principal.</p>
+                        
+                        <p>Tu exprimes tes sentiments par le toucher : les câlins avec maman, les moments de proximité physique avec ta famille. Tu sais que certaines émotions sont trop grandes pour les mots et que seul un contact chaleureux peut vraiment les transmettre.</p>
+                        
+                        <p>Ta communication est directe, chaleureuse et réconfortante. Tu crées des bulles de tendresse où les gens se sentent aimés et en sécurité. Ton langage corporel est aussi expressif que tes paroles.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Câlins, chaleur, contact, tendresse</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Chaleureux et direct' },
+                        { label: 'Force', value: 'La tendresse physique' },
+                        { label: 'Expression', value: 'Gestes qui réconfortent' },
+                        { label: 'Devise', value: 'Un câlin dit tout' }
+                    ]
+                },
+                {
+                    id: 'visuel',
+                    name: 'La Photographe des Émotions',
+                    subtitle: 'Des images qui parlent au cœur',
+                    icon: '📸',
+                    description: `
+                        <p>Tu es une <strong>Photographe des Émotions</strong> ! Tu communiques à travers les images, capturant des moments qui expriment ce que les mots ne peuvent dire.</p>
+                        
+                        <p>Tes photos de couchers de soleil, tes images soigneusement choisies, tes créations visuelles... tout cela fait partie de ton langage unique. Tu sais qu'une image peut transmettre une émotion, un souvenir, un message d'amour plus puissamment que de longs discours.</p>
+                        
+                        <p>Tu as l'œil pour capturer la beauté et la partager. Tes communications visuelles créent des ponts émotionnels instantanés. Pour toi, montrer c'est dire "je pense à toi" d'une façon unique et personnelle.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Images, beauté, capture, partage visuel</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Visuel et évocateur' },
+                        { label: 'Force', value: 'L\'œil qui capture l\'émotion' },
+                        { label: 'Expression', value: 'Images parlantes' },
+                        { label: 'Devise', value: 'Une image, mille émotions' }
+                    ]
+                },
+                {
+                    id: 'profond',
+                    name: 'La Philosophe du Dialogue',
+                    subtitle: 'Les conversations qui transforment',
+                    icon: '💭',
+                    description: `
+                        <p>Tu es une <strong>Philosophe du Dialogue</strong> ! Pour toi, la communication est un art de la profondeur et de la connexion intellectuelle.</p>
+                        
+                        <p>Comme dans tes discussions avec papa, tu aimes les échanges qui font réfléchir, qui ouvrent de nouvelles perspectives. Tu ne te contentes pas de parler de la pluie et du beau temps : tu cherches le sens, la compréhension mutuelle, la croissance à travers le dialogue.</p>
+                        
+                        <p>Tu sais écouter vraiment et répondre avec substance. Tes conversations laissent une empreinte durable. Pour toi, communiquer c'est créer des ponts entre les esprits et les cœurs.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Profondeur, écoute, réflexion, connexion</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Profond et réfléchi' },
+                        { label: 'Force', value: 'L\'art du vrai dialogue' },
+                        { label: 'Expression', value: 'Mots qui font réfléchir' },
+                        { label: 'Devise', value: 'Parler pour comprendre' }
+                    ]
+                },
+                {
+                    id: 'poetique',
+                    name: 'La Poétesse des Sentiments',
+                    subtitle: 'Quand les mots deviennent art',
+                    icon: '🌹',
+                    description: `
+                        <p>Tu es une <strong>Poétesse des Sentiments</strong> ! Ta communication est teintée de la beauté littéraire que tu aimes tant.</p>
+                        
+                        <p>Influencée par tes lectures et ton amour du théâtre, tu transformes les mots ordinaires en expressions poétiques. Tu sais trouver les métaphores justes, les images qui touchent. Ta façon de t'exprimer transforme le quotidien en quelque chose de plus beau.</p>
+                        
+                        <p>Pour toi, communiquer c'est créer. Chaque message est une petite œuvre, chaque conversation une pièce de théâtre improvisée. Tu apportes de la magie dans les échanges les plus simples.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Poésie, beauté, métaphores, créativité verbale</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Lyrique et imagé' },
+                        { label: 'Force', value: 'La beauté des mots' },
+                        { label: 'Expression', value: 'Langage poétique' },
+                        { label: 'Devise', value: 'Les mots sont des pinceaux' }
+                    ]
+                },
+                {
+                    id: 'authentique',
+                    name: 'La Messagère Authentique',
+                    subtitle: 'La sincérité comme langage',
+                    icon: '💝',
+                    description: `
+                        <p>Tu es une <strong>Messagère Authentique</strong> ! Ta plus grande force communicative est ta sincérité naturelle et désarmante.</p>
+                        
+                        <p>Tu n'as pas besoin de grands effets ou de mots compliqués. Ta communication vient directement du cœur, simple mais puissante. Les gens sentent que tes mots, tes gestes, tes silences même, sont vrais. Cette authenticité crée des connexions profondes et durables.</p>
+                        
+                        <p>Tu sais que la meilleure communication est celle qui est vraie. Pas de masques, pas de détours : juste toi, avec toute ta sincérité. C'est ce qui rend tes messages si précieux pour ceux qui les reçoivent.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Sincérité, simplicité, vérité, cœur</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Direct et sincère' },
+                        { label: 'Force', value: 'L\'authenticité touchante' },
+                        { label: 'Expression', value: 'Mots vrais du cœur' },
+                        { label: 'Devise', value: 'La vérité touche toujours' }
+                    ]
+                },
+                {
+                    id: 'intuitif',
+                    name: 'La Communicante Intuitive',
+                    subtitle: 'L\'art de comprendre sans mots',
+                    icon: '✨',
+                    description: `
+                        <p>Tu es une <strong>Communicante Intuitive</strong> ! Tu possèdes ce don rare de comprendre et de te faire comprendre au-delà des mots.</p>
+                        
+                        <p>Tu captes les ambiances, les non-dits, les émotions subtiles. Ta communication s'adapte naturellement à chaque personne, chaque situation. Tu sais quand parler, quand te taire, quand un simple regard suffit. Cette sensibilité fait de toi une communicante exceptionnelle.</p>
+                        
+                        <p>Pour toi, communiquer c'est danser avec l'autre, sentir le rythme de l'échange. Tu navigues avec grâce entre les mots, les silences et les gestes, créant toujours la connexion parfaite.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Intuition, adaptation, sensibilité, fluidité</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Fluide et adaptatif' },
+                        { label: 'Force', value: 'L\'intuition relationnelle' },
+                        { label: 'Expression', value: 'Communication subtile' },
+                        { label: 'Devise', value: 'Sentir pour mieux dire' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
