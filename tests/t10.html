@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton super-pouvoir créatif - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton super-pouvoir créatif"
+        const quizConfig = {
+            id: 'super-pouvoir-creatif',
+            title: 'Ton super-pouvoir créatif',
+            description: 'Découvre quelle force créative unique sommeille en toi !',
+            
+            questions: [
+                {
+                    text: "Si tu avais une baguette magique créative, tu l'utiliserais pour...",
+                    answers: [
+                        { text: "Construire des mondes entiers en un instant", scores: { architecte: 3, visionnaire: 2, conteur: 1 } },
+                        { text: "Capturer la beauté éphémère pour toujours", scores: { capteur: 3, harmonisateur: 2, enchanteur: 1 } },
+                        { text: "Donner vie à des histoires extraordinaires", scores: { conteur: 3, enchanteur: 2, architecte: 1 } },
+                        { text: "Transformer le chaos en harmonie parfaite", scores: { harmonisateur: 3, architecte: 2, alchimiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton moment créatif le plus magique, c'est quand...",
+                    answers: [
+                        { text: "Mes constructions Lego prennent vie sous mes doigts", scores: { architecte: 3, alchimiste: 2, visionnaire: 1 } },
+                        { text: "Je capture LE coucher de soleil parfait", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Je me perds dans un livre et deviens le personnage", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Je transforme ma chambre en œuvre d'art", scores: { alchimiste: 3, harmonisateur: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu pouvais voir le monde différemment...",
+                    answers: [
+                        { text: "Je verrais les structures cachées dans tout", scores: { architecte: 3, visionnaire: 2, harmonisateur: 1 } },
+                        { text: "Je verrais la lumière magique dans chaque instant", scores: { capteur: 3, enchanteur: 2, alchimiste: 1 } },
+                        { text: "Je verrais les histoires secrètes de chaque objet", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Je verrais comment tout peut être plus beau", scores: { harmonisateur: 3, alchimiste: 2, capteur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton super-pouvoir secret actuel, c'est...",
+                    answers: [
+                        { text: "Créer des univers complets avec des Playmobil", scores: { visionnaire: 3, architecte: 2, conteur: 1 } },
+                        { text: "Voir la beauté là où personne ne la remarque", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Transformer n'importe quoi en projet créatif", scores: { alchimiste: 3, architecte: 2, visionnaire: 1 } },
+                        { text: "Organiser le chaos en quelque chose de magnifique", scores: { harmonisateur: 3, alchimiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans ton atelier de super-héros créatif, on trouverait...",
+                    answers: [
+                        { text: "Des plans de mondes imaginaires et constructions", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Des milliers de photos de moments magiques", scores: { capteur: 3, enchanteur: 2, conteur: 1 } },
+                        { text: "Des manuscrits et costumes de théâtre", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Des projets de transformation en cours", scores: { alchimiste: 3, harmonisateur: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta kryptonite créative (ce qui te bloque), c'est...",
+                    answers: [
+                        { text: "Le manque d'espace pour construire en grand", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Les moments trop rapides pour être capturés", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "L'interruption quand je suis plongée dans une histoire", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Le désordre qui perturbe mon harmonie", scores: { harmonisateur: 3, alchimiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu devais sauver le monde avec ta créativité...",
+                    answers: [
+                        { text: "Je construirais des refuges magnifiques pour tous", scores: { architecte: 3, harmonisateur: 2, visionnaire: 1 } },
+                        { text: "Je montrerais la beauté cachée pour redonner espoir", scores: { capteur: 3, enchanteur: 2, alchimiste: 1 } },
+                        { text: "Je raconterais des histoires qui unissent les gens", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Je transformerais les problèmes en solutions créatives", scores: { alchimiste: 3, visionnaire: 2, harmonisateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton énergie créative est à son maximum quand...",
+                    answers: [
+                        { text: "J'ai tous mes matériaux de construction devant moi", scores: { architecte: 3, alchimiste: 2, visionnaire: 1 } },
+                        { text: "La lumière est parfaite pour photographier", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Je découvre un nouveau livre ou rôle à jouer", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Mon espace est parfaitement organisé", scores: { harmonisateur: 3, architecte: 2, alchimiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta signature créative unique, c'est...",
+                    answers: [
+                        { text: "L'attention aux détails dans mes constructions", scores: { architecte: 3, harmonisateur: 2, alchimiste: 1 } },
+                        { text: "L'œil pour capturer l'instant magique", scores: { capteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "La capacité à m'immerger totalement", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Le don de voir le potentiel en tout", scores: { alchimiste: 3, visionnaire: 2, capteur: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans une équipe de super-héros créatifs, tu serais...",
+                    answers: [
+                        { text: "Celle qui conçoit la base secrète", scores: { architecte: 3, harmonisateur: 2, visionnaire: 1 } },
+                        { text: "Celle qui documente les aventures", scores: { capteur: 3, conteur: 2, enchanteur: 1 } },
+                        { text: "Celle qui imagine les missions", scores: { visionnaire: 3, conteur: 2, alchimiste: 1 } },
+                        { text: "Celle qui transforme l'ordinaire en extraordinaire", scores: { enchanteur: 3, alchimiste: 2, capteur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton terrain d'entraînement créatif préféré...",
+                    answers: [
+                        { text: "Ma table de construction avec tous mes projets", scores: { architecte: 3, alchimiste: 2, visionnaire: 1 } },
+                        { text: "La nature avec ses merveilles à photographier", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "La scène de théâtre ou mon coin lecture", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Ma chambre que je réorganise constamment", scores: { harmonisateur: 3, alchimiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton super-pouvoir évolue quand...",
+                    answers: [
+                        { text: "Je découvre de nouvelles techniques de construction", scores: { architecte: 3, alchimiste: 2, visionnaire: 1 } },
+                        { text: "Je trouve de nouveaux angles et lumières", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Je lis un livre qui change ma vision", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Je combine différentes passions ensemble", scores: { alchimiste: 3, visionnaire: 2, harmonisateur: 1 } }
+                    ]
+                },
+                {
+                    text: "L'impact de ton super-pouvoir sur les autres...",
+                    answers: [
+                        { text: "Ils sont émerveillés par mes créations complexes", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Ils voient la beauté à travers mes yeux", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Ils sont transportés dans mes histoires", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Ils trouvent la paix dans mes espaces harmonieux", scores: { harmonisateur: 3, alchimiste: 2, capteur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta mission créative ultime...",
+                    answers: [
+                        { text: "Créer un monde entier, détail par détail", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Capturer tous les couchers de soleil du monde", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Écrire et jouer l'histoire parfaite", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Transformer chaque espace en œuvre d'art", scores: { alchimiste: 3, harmonisateur: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton costume de super-héros créatif aurait...",
+                    answers: [
+                        { text: "Des poches infinies pour mes matériaux", scores: { architecte: 3, alchimiste: 2, visionnaire: 1 } },
+                        { text: "Un appareil photo intégré qui capture l'invisible", scores: { capteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Une cape qui se transforme en décor de théâtre", scores: { conteur: 3, enchanteur: 2, alchimiste: 1 } },
+                        { text: "Le pouvoir de ranger instantanément", scores: { harmonisateur: 3, alchimiste: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton sidekick créatif idéal serait...",
+                    answers: [
+                        { text: "Un assistant qui trie mes pièces de construction", scores: { architecte: 3, harmonisateur: 2, alchimiste: 1 } },
+                        { text: "Un compagnon qui repère les moments magiques", scores: { capteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Un partenaire pour jouer tous les rôles", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Un génie de la transformation créative", scores: { alchimiste: 3, visionnaire: 2, harmonisateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta devise de super-héros créatif...",
+                    answers: [
+                        { text: "Un bloc à la fois, je construis des merveilles", scores: { architecte: 3, harmonisateur: 2, visionnaire: 1 } },
+                        { text: "Je capture l'invisible beauté du monde", scores: { capteur: 3, enchanteur: 2, alchimiste: 1 } },
+                        { text: "Chaque histoire a le pouvoir de changer le monde", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "Je transforme l'ordinaire en extraordinaire", scores: { alchimiste: 3, enchanteur: 2, harmonisateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton héritage créatif sera...",
+                    answers: [
+                        { text: "Des mondes construits qui inspirent", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Des images qui touchent les âmes", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Des histoires qui traversent le temps", scores: { conteur: 3, visionnaire: 2, enchanteur: 1 } },
+                        { text: "La beauté trouvée dans l'harmonie", scores: { harmonisateur: 3, alchimiste: 2, capteur: 1 } }
+                    ]
+                },
+                {
+                    text: "Si tu enseignais ton super-pouvoir...",
+                    answers: [
+                        { text: "J'apprendrais l'art de la construction parfaite", scores: { architecte: 3, harmonisateur: 2, alchimiste: 1 } },
+                        { text: "Je montrerais comment voir la beauté cachée", scores: { capteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "J'enseignerais l'immersion totale dans l'imaginaire", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Je révélerais l'art de la transformation créative", scores: { alchimiste: 3, visionnaire: 2, harmonisateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton super-pouvoir au quotidien, c'est...",
+                    answers: [
+                        { text: "Voir des possibilités de construction partout", scores: { architecte: 3, visionnaire: 2, alchimiste: 1 } },
+                        { text: "Remarquer la beauté que les autres manquent", scores: { capteur: 3, enchanteur: 2, harmonisateur: 1 } },
+                        { text: "Transformer chaque moment en histoire", scores: { conteur: 3, enchanteur: 2, visionnaire: 1 } },
+                        { text: "Créer l'ordre et la beauté autour de moi", scores: { harmonisateur: 3, alchimiste: 2, architecte: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'architecte',
+                    name: 'L\'Architecte des Mondes',
+                    subtitle: 'Bâtisseuse d\'univers',
+                    icon: '🏰',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>l'Architecte des Mondes</strong> ! Tu possèdes le don rare de visualiser et construire des univers entiers, bloc par bloc.</p>
+                        
+                        <p>Avec tes Lego et Playmobil, tu ne fais pas que jouer : tu donnes vie à des visions architecturales complexes. Chaque construction est pensée, chaque détail a sa raison d'être. Tu vois les structures invisibles du monde et tu sais les recréer avec une précision impressionnante.</p>
+                        
+                        <p>Ton super-pouvoir te permet de transformer une simple table en métropole futuriste, une chambre en royaume fantastique. Tu es celle qui construit les rêves, qui donne forme à l'imagination. Dans tes mains, les petites pièces deviennent de grandes œuvres.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Construction, vision, précision, création monumentale</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Construction visionnaire' },
+                        { label: 'Outil', value: 'Lego et imagination' },
+                        { label: 'Force', value: 'Patience et précision' },
+                        { label: 'Mission', value: 'Bâtir des mondes' }
+                    ]
+                },
+                {
+                    id: 'capteur',
+                    name: 'La Captrice de Lumière',
+                    subtitle: 'Chasseuse de beauté éphémère',
+                    icon: '📸',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>la Captrice de Lumière</strong> ! Tu possèdes le don unique de voir et capturer la beauté invisible du monde.</p>
+                        
+                        <p>Ton œil est un instrument magique qui repère la lumière parfaite, l'instant fugace, la beauté que les autres manquent. Les couchers de soleil n'ont pas de secrets pour toi, tu sais exactement quand et comment capturer leur magie. Chaque photo est un morceau d'éternité volé au temps.</p>
+                        
+                        <p>Ton super-pouvoir transforme l'éphémère en permanent, l'instant en souvenir éternel. Tu es la gardienne de la beauté du monde, celle qui montre aux autres ce qu'ils n'ont pas su voir. Dans ton objectif, le monde révèle sa vraie splendeur.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Capture, lumière, instant, beauté révélée</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Vision de la beauté cachée' },
+                        { label: 'Outil', value: 'Appareil photo et intuition' },
+                        { label: 'Force', value: 'Patience et œil artistique' },
+                        { label: 'Mission', value: 'Révéler la beauté du monde' }
+                    ]
+                },
+                {
+                    id: 'conteur',
+                    name: 'La Conteuse d\'Âmes',
+                    subtitle: 'Tisseuse d\'histoires vivantes',
+                    icon: '📖',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>la Conteuse d'Âmes</strong> ! Tu possèdes le don magique de donner vie aux histoires et d'habiter mille personnages.</p>
+                        
+                        <p>Quand tu lis, tu ne fais pas que parcourir des mots : tu vis l'histoire. Sur scène, tu ne joues pas : tu deviens. Ton super-pouvoir te permet de franchir la frontière entre réel et imaginaire, de faire vivre les personnages avec une intensité unique. Les livres sont tes portails, le théâtre ton royaume.</p>
+                        
+                        <p>Tu transportes les autres dans tes mondes narratifs, tu leur fais vivre des émotions authentiques. Ton pouvoir est celui de l'empathie créative ultime : comprendre et incarner toutes les facettes de l'humanité à travers les histoires.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Narration, incarnation, empathie, magie littéraire</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Incarnation narrative' },
+                        { label: 'Outil', value: 'Livres et imagination' },
+                        { label: 'Force', value: 'Empathie créative' },
+                        { label: 'Mission', value: 'Faire vivre les histoires' }
+                    ]
+                },
+                {
+                    id: 'harmonisateur',
+                    name: 'L\'Harmonisatrice Spatiale',
+                    subtitle: 'Maîtresse de l\'ordre créatif',
+                    icon: '✨',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>l'Harmonisatrice Spatiale</strong> ! Tu possèdes le don de transformer le chaos en beauté organisée.</p>
+                        
+                        <p>Pour toi, ranger n'est pas une corvée mais un art. Tu vois l'harmonie potentielle dans chaque espace, tu sais exactement comment organiser pour créer à la fois beauté et fonctionnalité. Ton super-pouvoir transforme une simple chambre en sanctuaire parfaitement équilibré.</p>
+                        
+                        <p>Tu crées des espaces qui respirent, qui apaisent, qui inspirent. Ton don est de voir l'ordre caché dans le désordre et de le révéler. Dans tes mains, l'organisation devient une forme de méditation créative qui profite à tous.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Harmonie, organisation, beauté fonctionnelle, équilibre</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Création d\'harmonie' },
+                        { label: 'Outil', value: 'Vision spatiale' },
+                        { label: 'Force', value: 'Sens de l\'équilibre' },
+                        { label: 'Mission', value: 'Créer des espaces de paix' }
+                    ]
+                },
+                {
+                    id: 'alchimiste',
+                    name: 'L\'Alchimiste Créative',
+                    subtitle: 'Transformatrice de l\'ordinaire',
+                    icon: '🔮',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>l'Alchimiste Créative</strong> ! Tu possèdes le don de transformer n'importe quoi en or créatif.</p>
+                        
+                        <p>Tu vois le potentiel caché dans chaque objet, chaque espace, chaque moment. Une boîte devient un château, une chambre devient une galerie d'art, un après-midi ordinaire devient une aventure créative. Ton super-pouvoir est la transformation pure : tu touches quelque chose et cela devient magique.</p>
+                        
+                        <p>Tu mélanges les disciplines, combines les passions, fusionnes les idées pour créer du nouveau. Ton laboratoire créatif est partout où tu poses ton regard transformateur. Dans tes mains, rien n'est définitif, tout peut devenir extraordinaire.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Transformation, potentiel, fusion créative, magie du quotidien</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Transformation créative' },
+                        { label: 'Outil', value: 'Vision du potentiel' },
+                        { label: 'Force', value: 'Imagination sans limites' },
+                        { label: 'Mission', value: 'Révéler l\'extraordinaire' }
+                    ]
+                },
+                {
+                    id: 'visionnaire',
+                    name: 'La Visionnaire Dimensionnelle',
+                    subtitle: 'Créatrice d\'univers parallèles',
+                    icon: '🌌',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>la Visionnaire Dimensionnelle</strong> ! Tu possèdes le don de voir et créer des mondes entiers dans ton esprit.</p>
+                        
+                        <p>Ton imagination n'a pas de limites. Tu peux visualiser des univers complets avec leurs propres règles, leurs habitants, leurs histoires. Que ce soit avec tes Playmobil, dans tes lectures ou tes rêveries, tu crées des dimensions parallèles où tout est possible.</p>
+                        
+                        <p>Ton super-pouvoir te permet de naviguer entre les réalités, de connecter des idées apparemment sans lien, de voir le grand tableau là où d'autres ne voient que des fragments. Tu es l'architecte de l'impossible, la cartographe de l'imaginaire.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Vision globale, mondes parallèles, imagination infinie, connexions créatives</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Création d\'univers' },
+                        { label: 'Outil', value: 'Imagination multidimensionnelle' },
+                        { label: 'Force', value: 'Vision holistique' },
+                        { label: 'Mission', value: 'Connecter les mondes' }
+                    ]
+                },
+                {
+                    id: 'enchanteur',
+                    name: 'L\'Enchanteresse du Quotidien',
+                    subtitle: 'Magicienne des petits miracles',
+                    icon: '🌟',
+                    description: `
+                        <p>Ton super-pouvoir créatif est celui de <strong>l'Enchanteresse du Quotidien</strong> ! Tu possèdes le don de transformer chaque moment ordinaire en instant magique.</p>
+                        
+                        <p>Tu saupoudres de la magie créative partout où tu passes. Un simple jeu devient une épopée, une promenade devient une chasse au trésor photographique, une soirée en famille devient un moment enchanté. Ton super-pouvoir est de voir et créer la magie dans les petites choses.</p>
+                        
+                        <p>Tu combines toutes tes passions - théâtre, photo, construction, lecture - pour créer des moments uniques. Ton don est de faire ressentir aux autres que la vie est une aventure créative permanente. Dans ton sillage, le monde brille d'une lumière nouvelle.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Magie quotidienne, émerveillement, moments enchantés, joie créative</p>
+                    `,
+                    traits: [
+                        { label: 'Pouvoir', value: 'Enchantement du réel' },
+                        { label: 'Outil', value: 'Regard émerveillé' },
+                        { label: 'Force', value: 'Joie contagieuse' },
+                        { label: 'Mission', value: 'Révéler la magie partout' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
