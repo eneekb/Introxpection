@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton monde virtuel idéal - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton monde virtuel idéal"
+        const quizConfig = {
+            id: 'monde-virtuel',
+            title: 'Ton monde virtuel idéal',
+            description: 'Découvre quel univers virtuel correspond à ta personnalité créative !',
+            
+            questions: [
+                {
+                    text: "Dans un jeu, ce qui t'attire en premier c'est...",
+                    answers: [
+                        { text: "Construire et créer mon propre univers", scores: { architecte: 3, explorateur: 1, narrateur: 1 } },
+                        { text: "Développer des personnages et leurs histoires", scores: { narrateur: 3, social: 2, artiste: 1 } },
+                        { text: "Explorer des mondes vastes et mystérieux", scores: { explorateur: 3, contemplatif: 2, architecte: 1 } },
+                        { text: "Créer une ambiance et décorer avec soin", scores: { artiste: 3, architecte: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans Minecraft, tu préfères construire...",
+                    answers: [
+                        { text: "Une maison cosy avec jardin et détails soignés", scores: { artiste: 3, architecte: 2, social: 1 } },
+                        { text: "Des monuments architecturaux impressionnants", scores: { architecte: 3, artiste: 1, explorateur: 1 } },
+                        { text: "Un village entier avec différents bâtiments", scores: { social: 3, architecte: 2, narrateur: 1 } },
+                        { text: "Des paysages naturels et contemplatifs", scores: { contemplatif: 3, artiste: 2, explorateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans Les Sims, tu passes le plus de temps à...",
+                    answers: [
+                        { text: "Créer des histoires familiales complexes", scores: { narrateur: 3, social: 2, artiste: 1 } },
+                        { text: "Construire et décorer la maison parfaite", scores: { architecte: 3, artiste: 2, contemplatif: 1 } },
+                        { text: "Développer les relations entre personnages", scores: { social: 3, narrateur: 2, contemplatif: 1 } },
+                        { text: "Observer la vie quotidienne de tes Sims", scores: { contemplatif: 3, narrateur: 1, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Le mode de jeu que tu préfères...",
+                    answers: [
+                        { text: "Mode créatif sans contraintes", scores: { artiste: 3, architecte: 2, contemplatif: 1 } },
+                        { text: "Mode survie avec progression", scores: { explorateur: 3, narrateur: 1, social: 1 } },
+                        { text: "Mode histoire avec scénarios", scores: { narrateur: 3, social: 1, explorateur: 1 } },
+                        { text: "Mode paisible sans danger", scores: { contemplatif: 3, artiste: 2, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta première action dans un nouveau monde...",
+                    answers: [
+                        { text: "Trouver le lieu parfait pour construire", scores: { architecte: 3, contemplatif: 2, artiste: 1 } },
+                        { text: "Explorer pour découvrir tous les secrets", scores: { explorateur: 3, narrateur: 1, contemplatif: 1 } },
+                        { text: "Créer mon personnage avec soin", scores: { narrateur: 3, social: 2, artiste: 1 } },
+                        { text: "Admirer les paysages et l'ambiance", scores: { contemplatif: 3, artiste: 2, explorateur: 1 } }
+                    ]
+                },
+                {
+                    text: "L'élément de décoration virtuelle que tu adores...",
+                    answers: [
+                        { text: "Les jardins et espaces naturels", scores: { contemplatif: 3, artiste: 2, architecte: 1 } },
+                        { text: "Les bibliothèques et espaces de lecture", scores: { narrateur: 3, contemplatif: 2, architecte: 1 } },
+                        { text: "Les pièces familiales chaleureuses", scores: { social: 3, artiste: 2, narrateur: 1 } },
+                        { text: "Les détails architecturaux sophistiqués", scores: { architecte: 3, artiste: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Dans un monde ouvert, tu aimes surtout...",
+                    answers: [
+                        { text: "Créer des chemins et routes qui relient tout", scores: { architecte: 3, social: 2, explorateur: 1 } },
+                        { text: "Découvrir chaque recoin et secret caché", scores: { explorateur: 3, contemplatif: 1, narrateur: 1 } },
+                        { text: "Photographier les plus beaux endroits", scores: { artiste: 3, contemplatif: 2, explorateur: 1 } },
+                        { text: "Créer des lieux avec une histoire", scores: { narrateur: 3, artiste: 1, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton style de construction préféré...",
+                    answers: [
+                        { text: "Moderne et épuré avec lignes nettes", scores: { architecte: 3, artiste: 1, contemplatif: 1 } },
+                        { text: "Cottage cosy avec plein de détails", scores: { artiste: 3, social: 2, contemplatif: 1 } },
+                        { text: "Fantaisiste avec une touche narrative", scores: { narrateur: 3, artiste: 2, explorateur: 1 } },
+                        { text: "Naturel intégré dans le paysage", scores: { contemplatif: 3, explorateur: 2, artiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Les PNJ (personnages non-joueurs) pour toi c'est...",
+                    answers: [
+                        { text: "Des habitants qui rendent le monde vivant", scores: { social: 3, narrateur: 2, contemplatif: 1 } },
+                        { text: "Des personnages avec des histoires à découvrir", scores: { narrateur: 3, explorateur: 2, social: 1 } },
+                        { text: "De la décoration qui anime les lieux", scores: { artiste: 3, architecte: 2, social: 1 } },
+                        { text: "Une compagnie paisible dans l'exploration", scores: { contemplatif: 3, explorateur: 2, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Le moment de jeu que tu préfères...",
+                    answers: [
+                        { text: "Quand je termine une construction parfaite", scores: { architecte: 3, artiste: 2, contemplatif: 1 } },
+                        { text: "Quand je découvre un lieu magnifique", scores: { explorateur: 3, contemplatif: 2, artiste: 1 } },
+                        { text: "Quand mon histoire prend vie", scores: { narrateur: 3, social: 2, artiste: 1 } },
+                        { text: "Quand tout est paisible et harmonieux", scores: { contemplatif: 3, artiste: 2, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon d'organiser ton inventaire virtuel...",
+                    answers: [
+                        { text: "Par catégories parfaitement rangées", scores: { architecte: 3, artiste: 1, contemplatif: 1 } },
+                        { text: "Je garde surtout les objets avec une histoire", scores: { narrateur: 3, social: 1, explorateur: 1 } },
+                        { text: "J'accumule tout ce qui est beau ou rare", scores: { explorateur: 3, artiste: 2, narrateur: 1 } },
+                        { text: "Je ne garde que l'essentiel", scores: { contemplatif: 3, architecte: 1, social: 1 } }
+                    ]
+                },
+                {
+                    text: "Les quêtes ou défis que tu aimes...",
+                    answers: [
+                        { text: "Construire selon des thèmes spécifiques", scores: { architecte: 3, artiste: 2, narrateur: 1 } },
+                        { text: "Explorer de nouvelles zones", scores: { explorateur: 3, contemplatif: 1, narrateur: 1 } },
+                        { text: "Créer des relations entre personnages", scores: { social: 3, narrateur: 2, artiste: 1 } },
+                        { text: "Les défis créatifs et artistiques", scores: { artiste: 3, narrateur: 1, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "L'ambiance sonore idéale pour jouer...",
+                    answers: [
+                        { text: "Musique calme et sons de la nature", scores: { contemplatif: 3, artiste: 2, explorateur: 1 } },
+                        { text: "Silence pour me concentrer sur la construction", scores: { architecte: 3, contemplatif: 1, artiste: 1 } },
+                        { text: "Musique qui raconte une histoire", scores: { narrateur: 3, explorateur: 1, social: 1 } },
+                        { text: "Sons ambiants qui rendent le monde vivant", scores: { social: 3, explorateur: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Le type de serveur multijoueur que tu préférerais...",
+                    answers: [
+                        { text: "Serveur créatif pour construire ensemble", scores: { social: 3, architecte: 2, artiste: 1 } },
+                        { text: "Serveur roleplay avec histoires", scores: { narrateur: 3, social: 2, explorateur: 1 } },
+                        { text: "Petit serveur privé avec la famille", scores: { contemplatif: 3, social: 2, artiste: 1 } },
+                        { text: "Serveur exploration avec cartes immenses", scores: { explorateur: 3, social: 1, narrateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta création virtuelle dont tu es la plus fière...",
+                    answers: [
+                        { text: "Une reproduction architecturale complexe", scores: { architecte: 3, artiste: 1, narrateur: 1 } },
+                        { text: "Un monde avec une histoire complète", scores: { narrateur: 3, artiste: 2, social: 1 } },
+                        { text: "Un endroit secret magnifique", scores: { explorateur: 3, contemplatif: 2, artiste: 1 } },
+                        { text: "Un espace décoré avec amour", scores: { artiste: 3, social: 2, contemplatif: 1 } }
+                    ]
+                },
+                {
+                    text: "Les mods ou extensions que tu installerais...",
+                    answers: [
+                        { text: "Plus de blocs et matériaux de construction", scores: { architecte: 3, artiste: 2, narrateur: 1 } },
+                        { text: "Nouveaux mondes à explorer", scores: { explorateur: 3, contemplatif: 1, narrateur: 1 } },
+                        { text: "Options de personnalisation des personnages", scores: { narrateur: 3, social: 2, artiste: 1 } },
+                        { text: "Améliorations graphiques et ambiance", scores: { artiste: 3, contemplatif: 2, architecte: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton rapport au temps dans les jeux...",
+                    answers: [
+                        { text: "Je peux passer des heures sur un détail", scores: { artiste: 3, architecte: 2, contemplatif: 1 } },
+                        { text: "J'aime prendre mon temps pour explorer", scores: { explorateur: 3, contemplatif: 2, narrateur: 1 } },
+                        { text: "Je développe lentement mes histoires", scores: { narrateur: 3, social: 1, artiste: 1 } },
+                        { text: "Je joue par sessions courtes mais intenses", scores: { social: 3, architecte: 1, explorateur: 1 } }
+                    ]
+                },
+                {
+                    text: "La capture d'écran que tu ferais...",
+                    answers: [
+                        { text: "Un coucher de soleil sur ton monde", scores: { contemplatif: 3, artiste: 2, explorateur: 1 } },
+                        { text: "Ta plus belle construction", scores: { architecte: 3, artiste: 2, social: 1 } },
+                        { text: "Un moment d'histoire touchant", scores: { narrateur: 3, social: 2, contemplatif: 1 } },
+                        { text: "Un paysage découvert en explorant", scores: { explorateur: 3, contemplatif: 2, artiste: 1 } }
+                    ]
+                },
+                {
+                    text: "Ce que tu partagerais avec ta famille...",
+                    answers: [
+                        { text: "Une visite guidée de tes créations", scores: { social: 3, architecte: 2, artiste: 1 } },
+                        { text: "Les histoires de tes personnages", scores: { narrateur: 3, social: 2, contemplatif: 1 } },
+                        { text: "Les endroits magnifiques découverts", scores: { explorateur: 3, contemplatif: 2, social: 1 } },
+                        { text: "Des moments de jeu ensemble", scores: { social: 3, contemplatif: 1, narrateur: 1 } }
+                    ]
+                },
+                {
+                    text: "Ton monde virtuel idéal serait...",
+                    answers: [
+                        { text: "Un canvas infini pour créer", scores: { architecte: 3, artiste: 2, narrateur: 1 } },
+                        { text: "Un univers vivant avec des histoires", scores: { narrateur: 3, social: 2, explorateur: 1 } },
+                        { text: "Un monde vaste à explorer sans fin", scores: { explorateur: 3, contemplatif: 1, artiste: 1 } },
+                        { text: "Un refuge paisible et magnifique", scores: { contemplatif: 3, artiste: 2, social: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'architecte',
+                    name: 'L\'Architecte Visionnaire',
+                    subtitle: 'Bâtisseuse de mondes',
+                    icon: '🏗️',
+                    description: `
+                        <p>Tu es une <strong>Architecte Visionnaire</strong> ! Dans les mondes virtuels, tu es celle qui transforme les pixels en merveilles architecturales.</p>
+                        
+                        <p>Ton plaisir ultime ? Concevoir et construire des structures impressionnantes, qu'il s'agisse de maisons modernes dans Les Sims ou de monuments épiques dans Minecraft. Tu as l'œil pour les proportions, les détails et l'harmonie. Chaque bloc posé a sa raison d'être dans ta vision globale.</p>
+                        
+                        <p>Tu aimes l'ordre et la planification. Tes constructions ne sont pas seulement belles, elles sont fonctionnelles et bien pensées. Tu es capable de passer des heures à perfectionner un détail parce que tu sais que c'est ce qui fait la différence entre une bonne construction et un chef-d'œuvre.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Précision, vision, création, perfection</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Structuré et impressionnant' },
+                        { label: 'Plaisir', value: 'Construire du grandiose' },
+                        { label: 'Force', value: 'Vision architecturale' },
+                        { label: 'Devise', value: 'Chaque bloc compte' }
+                    ]
+                },
+                {
+                    id: 'narrateur',
+                    name: 'La Narratrice d\'Histoires',
+                    subtitle: 'Créatrice de destins',
+                    icon: '📖',
+                    description: `
+                        <p>Tu es une <strong>Narratrice d\'Histoires</strong> ! Les mondes virtuels sont pour toi des scènes où se jouent mille drames et comédies.</p>
+                        
+                        <p>Dans Les Sims, tu crées des familles avec des personnalités complexes et tu suis leurs aventures avec passion. Dans Minecraft, chaque construction a une histoire, chaque lieu a une âme. Tu ne joues pas, tu mets en scène. Tes mondes virtuels sont peuplés de personnages auxquels tu donnes vie.</p>
+                        
+                        <p>Ta créativité s'exprime à travers les récits que tu tisses. Tu aimes développer des relations entre personnages, créer des intrigues, imaginer des backstories. Pour toi, un jeu n'est vraiment intéressant que s'il permet de raconter des histoires touchantes.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Imagination, récit, personnages, émotion</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Narratif et émotionnel' },
+                        { label: 'Plaisir', value: 'Créer des histoires' },
+                        { label: 'Force', value: 'Donner vie aux mondes' },
+                        { label: 'Devise', value: 'Chaque lieu a une histoire' }
+                    ]
+                },
+                {
+                    id: 'explorateur',
+                    name: 'L\'Exploratrice Curieuse',
+                    subtitle: 'Découvreuse de merveilles',
+                    icon: '🗺️',
+                    description: `
+                        <p>Tu es une <strong>Exploratrice Curieuse</strong> ! Pour toi, les mondes virtuels sont des terres d'aventure infinies à découvrir.</p>
+                        
+                        <p>Ton plus grand plaisir ? Partir à l'aventure sans carte ni plan, juste pour voir ce qui se cache derrière la prochaine colline. Dans Minecraft, tu explores chaque grotte, chaque biome. Tu cherches les villages cachés, les temples perdus, les paysages à couper le souffle.</p>
+                        
+                        <p>Tu es motivée par la découverte et la surprise. Chaque nouveau monde est une promesse d'aventures. Tu aimes capturer ces moments magiques où tu tombes sur un lieu extraordinaire que personne n'a encore vu. L'exploration est ta façon de jouer.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Découverte, aventure, curiosité, liberté</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Aventureux et libre' },
+                        { label: 'Plaisir', value: 'Découvrir l\'inconnu' },
+                        { label: 'Force', value: 'Curiosité infinie' },
+                        { label: 'Devise', value: 'Le voyage est le but' }
+                    ]
+                },
+                {
+                    id: 'artiste',
+                    name: 'L\'Artiste Décoratrice',
+                    subtitle: 'Peintre de pixels',
+                    icon: '🎨',
+                    description: `
+                        <p>Tu es une <strong>Artiste Décoratrice</strong> ! Les mondes virtuels sont ta toile où tu exprimes ta créativité débordante.</p>
+                        
+                        <p>Que ce soit dans Les Sims où tu passes des heures à décorer chaque pièce, ou dans Minecraft où tu crées des jardins magnifiques, tu as le don de transformer les espaces virtuels en œuvres d'art. Les couleurs, les textures, l'ambiance... tout compte pour créer la beauté.</p>
+                        
+                        <p>Tu vois la poésie dans les détails : un tableau bien placé, des fleurs qui complètent un chemin, une vue parfaitement cadrée. Ton monde virtuel est une galerie d'art vivante où chaque coin reflète ta sensibilité artistique unique.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Beauté, détails, harmonie, expression</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Esthétique et détaillé' },
+                        { label: 'Plaisir', value: 'Créer de la beauté' },
+                        { label: 'Force', value: 'Sens artistique' },
+                        { label: 'Devise', value: 'La beauté est partout' }
+                    ]
+                },
+                {
+                    id: 'contemplatif',
+                    name: 'La Contemplative Zen',
+                    subtitle: 'Gardienne de la sérénité',
+                    icon: '🌸',
+                    description: `
+                        <p>Tu es une <strong>Contemplative Zen</strong> ! Les mondes virtuels sont pour toi des refuges de paix et de beauté.</p>
+                        
+                        <p>Tu joues pour la détente et la contemplation. Dans Minecraft, tu aimes construire des espaces naturels paisibles, observer les couchers de soleil virtuels. Dans Les Sims, tu crées des vies harmonieuses et sereines. Tu privilégies toujours la beauté tranquille à l'action frénétique.</p>
+                        
+                        <p>Ton approche du jeu est méditative. Tu prends le temps d'apprécier chaque moment, chaque vue. Tes mondes virtuels sont des havres de paix où tu peux te ressourcer, comme des jardins zen numériques où règne l'harmonie.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Sérénité, harmonie, contemplation, paix</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Paisible et naturel' },
+                        { label: 'Plaisir', value: 'Créer l\'harmonie' },
+                        { label: 'Force', value: 'Apprécier l\'instant' },
+                        { label: 'Devise', value: 'La paix dans les pixels' }
+                    ]
+                },
+                {
+                    id: 'social',
+                    name: 'La Bâtisseuse de Communautés',
+                    subtitle: 'Créatrice de liens',
+                    icon: '🏘️',
+                    description: `
+                        <p>Tu es une <strong>Bâtisseuse de Communautés</strong> ! Pour toi, les mondes virtuels prennent vie quand ils sont partagés.</p>
+                        
+                        <p>Dans Minecraft, tu construis des villages entiers, des espaces communautaires. Dans Les Sims, tu gères des quartiers, tu crées des liens entre familles. Tu aimes quand tes mondes sont vivants et habités. Jouer avec ta famille ou créer pour les autres est ce qui te motive.</p>
+                        
+                        <p>Tu as le don de créer des espaces où chacun se sent bienvenu. Tes constructions ne sont pas juste belles, elles sont pensées pour être vécues et partagées. Tu transformes les jeux solo en expériences collectives pleines de chaleur.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Partage, communauté, chaleur, connexion</p>
+                    `,
+                    traits: [
+                        { label: 'Style', value: 'Accueillant et vivant' },
+                        { label: 'Plaisir', value: 'Construire ensemble' },
+                        { label: 'Force', value: 'Créer du lien' },
+                        { label: 'Devise', value: 'Ensemble c\'est mieux' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
