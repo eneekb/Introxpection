@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton type de relation familiale - Introxpection</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="container">
+            <button class="back-btn" onclick="goHome()">← Accueil</button>
+            <h1 class="quiz-title">Introxpection</h1>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span>Question <span class="current-question">1</span> sur <span class="total-questions">20</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <!-- Le contenu sera généré par JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Introxpection - Créé avec ❤️ pour Roxanne</p>
+        </div>
+    </footer>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // Fonction pour le bouton retour
+        function goHome() {
+            if (confirm('Veux-tu vraiment quitter ce test ? Tes réponses seront perdues.')) {
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Configuration du test "Ton type de relation familiale"
+        const quizConfig = {
+            id: 'relation-familiale',
+            title: 'Ton type de relation familiale',
+            description: 'Comment exprimes-tu ton amour pour ta famille ?',
+            
+            questions: [
+                {
+                    text: "Pour montrer ton affection à ta famille, tu préfères...",
+                    answers: [
+                        { text: "Un gros câlin spontané qui dit tout", scores: { cocon: 3, harmonie: 2, soutien: 1 } },
+                        { text: "Une longue discussion à cœur ouvert", scores: { echange: 3, soutien: 2, complicite: 1 } },
+                        { text: "Faire quelque chose de spécial ensemble", scores: { complicite: 3, traditions: 2, cocon: 1 } },
+                        { text: "Un petit geste ou attention qui fait plaisir", scores: { traditions: 3, harmonie: 2, soutien: 1 } }
+                    ]
+                },
+                {
+                    text: "Le dimanche idéal en famille, c'est...",
+                    answers: [
+                        { text: "Tous ensemble sur le canapé pour un film", scores: { cocon: 3, harmonie: 2, traditions: 1 } },
+                        { text: "Un repas où chacun raconte sa semaine", scores: { echange: 3, traditions: 2, harmonie: 1 } },
+                        { text: "Une activité créative ou un projet commun", scores: { complicite: 3, echange: 2, cocon: 1 } },
+                        { text: "Chacun dans son coin mais ensemble dans la maison", scores: { harmonie: 3, soutien: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu as quelque chose d'important à dire...",
+                    answers: [
+                        { text: "Tu attends le bon moment pour une vraie conversation", scores: { echange: 3, soutien: 2, harmonie: 1 } },
+                        { text: "Tu en parles naturellement pendant un câlin", scores: { cocon: 3, soutien: 2, echange: 1 } },
+                        { text: "Tu écris une lettre ou une carte pour mieux t'exprimer", scores: { traditions: 3, echange: 2, complicite: 1 } },
+                        { text: "Tu proposes une activité à deux pour en discuter", scores: { complicite: 3, harmonie: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Les moments en famille que tu préfères, ce sont...",
+                    answers: [
+                        { text: "Les rituels du quotidien (repas, soirées...)", scores: { traditions: 3, harmonie: 2, cocon: 1 } },
+                        { text: "Les grandes discussions sur tout et rien", scores: { echange: 3, soutien: 2, complicite: 1 } },
+                        { text: "Les moments de tendresse et de réconfort", scores: { cocon: 3, soutien: 2, harmonie: 1 } },
+                        { text: "Les projets et activités qu'on fait ensemble", scores: { complicite: 3, traditions: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec ton frère, c'est plutôt...",
+                    answers: [
+                        { text: "Complicité et fous rires partagés", scores: { complicite: 3, cocon: 2, harmonie: 1 } },
+                        { text: "Chacun son espace mais toujours là l'un pour l'autre", scores: { harmonie: 3, soutien: 2, traditions: 1 } },
+                        { text: "Des échanges profonds malgré les différences", scores: { echange: 3, soutien: 2, complicite: 1 } },
+                        { text: "Des petites traditions rien qu'à vous deux", scores: { traditions: 3, complicite: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Les soirées avec tes parents, tu les imagines...",
+                    answers: [
+                        { text: "Blottie entre eux sur le canapé", scores: { cocon: 3, harmonie: 2, traditions: 1 } },
+                        { text: "À discuter de sujets passionnants", scores: { echange: 3, complicite: 2, soutien: 1 } },
+                        { text: "À faire un jeu de société ou une activité", scores: { complicite: 3, traditions: 2, cocon: 1 } },
+                        { text: "Dans un silence confortable, chacun avec son livre", scores: { harmonie: 3, traditions: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour fêter un anniversaire en famille...",
+                    answers: [
+                        { text: "Tu organises une surprise avec traditions familiales", scores: { traditions: 3, complicite: 2, cocon: 1 } },
+                        { text: "Tu prépares un discours touchant", scores: { echange: 3, soutien: 2, traditions: 1 } },
+                        { text: "Tu fais un câlin géant et des bisous", scores: { cocon: 3, harmonie: 2, soutien: 1 } },
+                        { text: "Tu crées quelque chose de spécial (carte, cadeau fait main)", scores: { complicite: 3, traditions: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand quelqu'un de ta famille a un souci...",
+                    answers: [
+                        { text: "Tu es là pour écouter et conseiller", scores: { soutien: 3, echange: 2, harmonie: 1 } },
+                        { text: "Tu offres réconfort et câlins", scores: { cocon: 3, soutien: 2, harmonie: 1 } },
+                        { text: "Tu proposes de faire quelque chose pour changer les idées", scores: { complicite: 3, soutien: 2, cocon: 1 } },
+                        { text: "Tu respectes son besoin d'espace tout en restant disponible", scores: { harmonie: 3, soutien: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Les vacances en famille, pour toi c'est...",
+                    answers: [
+                        { text: "L'occasion de créer de nouveaux souvenirs ensemble", scores: { traditions: 3, complicite: 2, cocon: 1 } },
+                        { text: "Du temps pour vraiment se retrouver et discuter", scores: { echange: 3, harmonie: 2, soutien: 1 } },
+                        { text: "Des moments de proximité sans le stress du quotidien", scores: { cocon: 3, harmonie: 2, traditions: 1 } },
+                        { text: "Découvrir et partager de nouvelles expériences", scores: { complicite: 3, echange: 2, traditions: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta façon préférée de dire 'je t'aime' à ta famille...",
+                    answers: [
+                        { text: "Par des gestes tendres et des câlins", scores: { cocon: 3, harmonie: 2, soutien: 1 } },
+                        { text: "En le disant avec des mots choisis", scores: { echange: 3, traditions: 2, soutien: 1 } },
+                        { text: "En faisant des choses pour eux", scores: { soutien: 3, complicite: 2, traditions: 1 } },
+                        { text: "Par des petites attentions du quotidien", scores: { harmonie: 3, traditions: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Les repas en famille sont pour toi...",
+                    answers: [
+                        { text: "Un moment sacré de partage et de discussion", scores: { echange: 3, traditions: 2, harmonie: 1 } },
+                        { text: "L'occasion de se retrouver dans la bonne humeur", scores: { cocon: 3, complicite: 2, traditions: 1 } },
+                        { text: "Un rituel important qui rythme la journée", scores: { traditions: 3, harmonie: 2, echange: 1 } },
+                        { text: "Un temps pour prendre soin les uns des autres", scores: { soutien: 3, harmonie: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec ta maman, les meilleurs moments sont...",
+                    answers: [
+                        { text: "Les câlins et moments de tendresse", scores: { cocon: 3, soutien: 2, harmonie: 1 } },
+                        { text: "Les confidences et discussions à cœur ouvert", scores: { echange: 3, soutien: 2, cocon: 1 } },
+                        { text: "Les activités qu'on fait ensemble", scores: { complicite: 3, traditions: 2, cocon: 1 } },
+                        { text: "Les petits rituels quotidiens partagés", scores: { traditions: 3, harmonie: 2, soutien: 1 } }
+                    ]
+                },
+                {
+                    text: "Avec ton papa, tu aimes particulièrement...",
+                    answers: [
+                        { text: "Les grandes discussions sur des sujets variés", scores: { echange: 3, complicite: 2, soutien: 1 } },
+                        { text: "Les moments de complicité dans vos activités", scores: { complicite: 3, traditions: 2, echange: 1 } },
+                        { text: "Son soutien et ses conseils bienveillants", scores: { soutien: 3, echange: 2, harmonie: 1 } },
+                        { text: "La présence rassurante et les moments calmes", scores: { harmonie: 3, cocon: 2, soutien: 1 } }
+                    ]
+                },
+                {
+                    text: "Les traditions familiales pour toi, c'est...",
+                    answers: [
+                        { text: "Essentiel pour créer des souvenirs communs", scores: { traditions: 3, cocon: 2, harmonie: 1 } },
+                        { text: "L'occasion de se retrouver et d'échanger", scores: { echange: 3, traditions: 2, complicite: 1 } },
+                        { text: "Des moments de tendresse et de proximité", scores: { cocon: 3, traditions: 2, soutien: 1 } },
+                        { text: "Une façon de montrer qu'on tient les uns aux autres", scores: { soutien: 3, harmonie: 2, traditions: 1 } }
+                    ]
+                },
+                {
+                    text: "Quand tu penses à ta famille, tu ressens...",
+                    answers: [
+                        { text: "Une chaleur et un besoin de câlins", scores: { cocon: 3, soutien: 2, harmonie: 1 } },
+                        { text: "L'envie de partager et discuter avec eux", scores: { echange: 3, complicite: 2, traditions: 1 } },
+                        { text: "Un sentiment de sécurité et d'équilibre", scores: { harmonie: 3, soutien: 2, cocon: 1 } },
+                        { text: "De la gratitude pour tous vos moments partagés", scores: { traditions: 3, harmonie: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Pour exprimer ta créativité en famille...",
+                    answers: [
+                        { text: "Tu proposes des projets à faire ensemble", scores: { complicite: 3, traditions: 2, echange: 1 } },
+                        { text: "Tu crées des surprises et des cadeaux personnalisés", scores: { soutien: 3, complicite: 2, cocon: 1 } },
+                        { text: "Tu partages tes créations et demandes leur avis", scores: { echange: 3, complicite: 2, harmonie: 1 } },
+                        { text: "Tu décores la maison pour créer une ambiance", scores: { harmonie: 3, traditions: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Les photos de famille, pour toi c'est...",
+                    answers: [
+                        { text: "Des trésors qui capturent vos moments de bonheur", scores: { traditions: 3, cocon: 2, harmonie: 1 } },
+                        { text: "L'occasion de se remémorer et de discuter", scores: { echange: 3, traditions: 2, complicite: 1 } },
+                        { text: "Une façon de garder vos liens vivants", scores: { soutien: 3, harmonie: 2, traditions: 1 } },
+                        { text: "Des projets créatifs à faire ensemble", scores: { complicite: 3, echange: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "L'espace familial idéal pour toi...",
+                    answers: [
+                        { text: "Un grand canapé où tout le monde peut se blottir", scores: { cocon: 3, harmonie: 2, traditions: 1 } },
+                        { text: "Une grande table pour les repas et discussions", scores: { echange: 3, traditions: 2, complicite: 1 } },
+                        { text: "Des espaces pour les activités communes", scores: { complicite: 3, harmonie: 2, echange: 1 } },
+                        { text: "Un lieu paisible où chacun se sent bien", scores: { harmonie: 3, soutien: 2, cocon: 1 } }
+                    ]
+                },
+                {
+                    text: "Les cartes postales et messages que tu envoies...",
+                    answers: [
+                        { text: "Sont remplis de mots doux et d'affection", scores: { cocon: 3, traditions: 2, soutien: 1 } },
+                        { text: "Racontent en détail tes aventures et pensées", scores: { echange: 3, complicite: 2, traditions: 1 } },
+                        { text: "Montrent que tu penses à eux même loin", scores: { soutien: 3, traditions: 2, harmonie: 1 } },
+                        { text: "Sont créatifs et personnalisés pour chacun", scores: { complicite: 3, soutien: 2, echange: 1 } }
+                    ]
+                },
+                {
+                    text: "Ta vision de la famille dans 10 ans...",
+                    answers: [
+                        { text: "Toujours aussi proche avec encore plus de complicité", scores: { cocon: 3, complicite: 2, harmonie: 1 } },
+                        { text: "Des échanges encore plus riches et profonds", scores: { echange: 3, soutien: 2, traditions: 1 } },
+                        { text: "De nouvelles traditions tout en gardant les anciennes", scores: { traditions: 3, harmonie: 2, complicite: 1 } },
+                        { text: "Un équilibre parfait entre proximité et indépendance", scores: { harmonie: 3, soutien: 2, echange: 1 } }
+                    ]
+                }
+            ],
+            
+            profiles: [
+                {
+                    id: 'cocon',
+                    name: 'Le Cocon Chaleureux',
+                    subtitle: 'L\'amour par la tendresse',
+                    icon: '🤗',
+                    description: `
+                        <p>Pour toi, la famille c'est avant tout <strong>la chaleur et la tendresse</strong> ! Tu es le cœur battant de ton foyer, celle qui apporte douceur et réconfort à tous.</p>
+                        
+                        <p>Tu exprimes ton amour par les gestes : les câlins avec maman, les moments blottis sur le canapé, les contacts physiques qui disent "je t'aime" mieux que les mots. Pour toi, rien ne vaut la proximité physique pour créer et maintenir les liens familiaux.</p>
+                        
+                        <p>Ta famille est ton refuge, ton cocon protecteur où tu peux être totalement toi-même. Tu crées une atmosphère chaleureuse où chacun se sent aimé et en sécurité. Les moments simples passés ensemble sont tes plus grands trésors.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Tendresse, câlins, chaleur, proximité</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Gestes tendres et câlins' },
+                        { label: 'Moments préférés', value: 'Blottis ensemble' },
+                        { label: 'Force', value: 'Créer de la chaleur humaine' },
+                        { label: 'Devise', value: 'Un câlin vaut mille mots' }
+                    ]
+                },
+                {
+                    id: 'echange',
+                    name: 'L\'Échange Intellectuel',
+                    subtitle: 'L\'amour par la parole',
+                    icon: '💬',
+                    description: `
+                        <p>Pour toi, la famille c'est <strong>le partage et la communication</strong> ! Tu es celle qui enrichit les liens familiaux par des discussions profondes et passionnantes.</p>
+                        
+                        <p>Les longues conversations avec papa, les confidences avec maman, les débats animés au dîner... C'est comme ça que tu te connectes vraiment avec ta famille. Tu aimes comprendre ce que chacun pense, ressent, et partager tes propres réflexions.</p>
+                        
+                        <p>Pour toi, une famille unie est une famille qui communique. Tu crées des espaces de dialogue où chacun peut s'exprimer librement. Ces échanges nourrissent vos liens et créent une compréhension mutuelle profonde.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Communication, échange, compréhension, dialogue</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Mots et discussions' },
+                        { label: 'Moments préférés', value: 'Grandes conversations' },
+                        { label: 'Force', value: 'Créer du lien par la parole' },
+                        { label: 'Devise', value: 'Parler c\'est se comprendre' }
+                    ]
+                },
+                {
+                    id: 'traditions',
+                    name: 'Les Traditions Partagées',
+                    subtitle: 'L\'amour par les rituels',
+                    icon: '🎭',
+                    description: `
+                        <p>Pour toi, la famille c'est <strong>les traditions et les souvenirs partagés</strong> ! Tu es la gardienne des moments précieux et des rituels qui vous unissent.</p>
+                        
+                        <p>Les cartes postales que tu envoies, les photos que tu prends, les traditions que tu perpétues... Tout cela tisse la trame de votre histoire familiale. Tu aimes créer des moments spéciaux qui deviendront des souvenirs inoubliables.</p>
+                        
+                        <p>Pour toi, ces rituels sont le ciment de la famille. Ils créent un sentiment d'appartenance et de continuité. Chaque tradition est une façon de dire "nous sommes une famille" et de célébrer vos liens uniques.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Traditions, souvenirs, rituels, héritage</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Rituels et traditions' },
+                        { label: 'Moments préférés', value: 'Célébrations familiales' },
+                        { label: 'Force', value: 'Créer des souvenirs durables' },
+                        { label: 'Devise', value: 'Les traditions nous unissent' }
+                    ]
+                },
+                {
+                    id: 'complicite',
+                    name: 'La Complicité Créative',
+                    subtitle: 'L\'amour par le partage d\'activités',
+                    icon: '🎨',
+                    description: `
+                        <p>Pour toi, la famille c'est <strong>la complicité et les projets partagés</strong> ! Tu es celle qui transforme le temps en famille en aventures créatives.</p>
+                        
+                        <p>Construire ensemble, créer, jouer, explorer... C'est en faisant des choses ensemble que tu te sens vraiment connectée à ta famille. Que ce soit un projet Lego avec ton frère ou une séance photo avec tes parents, ces moments de création commune sont précieux.</p>
+                        
+                        <p>Tu crées des occasions de partager des expériences uniques. Pour toi, ces activités ne sont pas juste du divertissement : elles sont des façons de se découvrir, de collaborer et de renforcer vos liens par l'action.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Complicité, créativité, projets, partage</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Activités communes' },
+                        { label: 'Moments préférés', value: 'Projets créatifs ensemble' },
+                        { label: 'Force', value: 'Unir par l\'action' },
+                        { label: 'Devise', value: 'Créer ensemble nous rapproche' }
+                    ]
+                },
+                {
+                    id: 'harmonie',
+                    name: 'L\'Harmonie Paisible',
+                    subtitle: 'L\'amour par la présence',
+                    icon: '🕊️',
+                    description: `
+                        <p>Pour toi, la famille c'est <strong>l'harmonie et la présence paisible</strong> ! Tu es celle qui crée un équilibre serein où chacun peut être soi-même.</p>
+                        
+                        <p>Tu n'as pas toujours besoin de mots ou de gestes pour exprimer ton amour. Ta simple présence, le fait d'être ensemble dans le même espace, suffit à créer ce lien spécial. Tu apprécies ces moments de calme partagé où chacun vaque à ses occupations tout en étant ensemble.</p>
+                        
+                        <p>Tu cultives une atmosphère de paix et de respect mutuel. Pour toi, une famille heureuse est une famille où chacun a sa place, où les silences sont confortables et où l'amour s'exprime dans la sérénité du quotidien.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Harmonie, présence, équilibre, sérénité</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Présence bienveillante' },
+                        { label: 'Moments préférés', value: 'Calme partagé' },
+                        { label: 'Force', value: 'Créer l\'harmonie' },
+                        { label: 'Devise', value: 'Ensemble dans la paix' }
+                    ]
+                },
+                {
+                    id: 'soutien',
+                    name: 'Le Soutien Inconditionnel',
+                    subtitle: 'L\'amour par l\'entraide',
+                    icon: '💪',
+                    description: `
+                        <p>Pour toi, la famille c'est <strong>le soutien et l'entraide inconditionnels</strong> ! Tu es celle sur qui on peut toujours compter, le pilier solide de ta famille.</p>
+                        
+                        <p>Tu exprimes ton amour en étant là pour les autres : écouter, conseiller, aider, encourager. Que ce soit pour les petits soucis du quotidien ou les grands défis de la vie, tu es présente. Tu sais exactement ce dont chacun a besoin et tu le donnes généreusement.</p>
+                        
+                        <p>Pour toi, l'amour familial se prouve par les actes. Tu crées un environnement où chacun sait qu'il peut compter sur les autres. Cette solidarité est le fondement de votre force familiale.</p>
+                        
+                        <p><em>Tes mots-clés :</em> Soutien, entraide, écoute, solidarité</p>
+                    `,
+                    traits: [
+                        { label: 'Expression', value: 'Aide et écoute' },
+                        { label: 'Moments préférés', value: 'Être là quand il faut' },
+                        { label: 'Force', value: 'Fiabilité absolue' },
+                        { label: 'Devise', value: 'Toujours là les uns pour les autres' }
+                    ]
+                }
+            ]
+        };
+
+        // Initialisation du quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé, initialisation du quiz...');
+            console.log('Config:', quizConfig);
+            
+            try {
+                window.quizEngine = initQuiz(quizConfig);
+                console.log('Quiz engine créé:', window.quizEngine);
+            } catch (error) {
+                console.error('Erreur création quiz:', error);
+            }
+        });
+    </script>
+</body>
+</html>
